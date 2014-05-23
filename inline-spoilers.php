@@ -23,12 +23,12 @@ function is_load_textdomain() {
 add_shortcode ( 'spoiler', 'is_spoiler_shortcode' );
 function is_spoiler_shortcode( $atts, $content ) {
 	extract( shortcode_atts( array (
-		'title' => ''
+		'title' => __('Spoiler', 'is')
 	), $atts ) );
 
 	$output  = "<div class=\"spoiler-wrap\">\n";
 	$output .= "<div class=\"spoiler-head\" title=\"". __('Expand', 'is') ."\">\n";
-	$output .= ($title == '')?__('Expand', 'is'):$title;
+	$output .= $title;
 	$output .= "\n</div>\n";
 	$output .= "<div class=\"spoiler-body\">\n";
 	$output .= $content;
