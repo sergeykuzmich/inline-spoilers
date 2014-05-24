@@ -1,4 +1,4 @@
-=== Plugin Name ===
+=== Inline Spoilers ===
 Contributors: Umnyjcom
 Donate link: http://kuzmi.ch
 Tags: shortcode, spoiler
