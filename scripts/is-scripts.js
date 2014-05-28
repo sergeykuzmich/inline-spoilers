@@ -1,7 +1,5 @@
 /**
  * @package Inline Spoilers
- * @version 1.0
- * @since 1.0
  */
 
 jQuery(function(){
