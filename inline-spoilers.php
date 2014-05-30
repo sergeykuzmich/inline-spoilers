@@ -1,11 +1,13 @@
 <?php
 /*
 Plugin Name: Inline Spoilers
-Plugin URI: http://kuzmi.ch
+Plugin URI: https://wordpress.org/plugins/inline-spoilers/
 Description: The plugin allows to create content spoilers with simple shortcode.
-Version: 1.0.2
+Version: 1.1.2
 Author: Sergey Kuzmich
 Author URI: http://kuzmi.ch
+Text Domain: inline-spoilers
+Domain Path: /languages/
 License: GPLv2
 */
 
@@ -13,22 +15,31 @@ License: GPLv2
  * @package Inline Spoilers
  */
 
+if ( ! defined( 'WPINC' ) ) {
+	die;
+}
+
 add_action( 'plugins_loaded', 'is_load_textdomain' );
 function is_load_textdomain() {
-	load_plugin_textdomain( 'is', false, dirname( plugin_basename( __FILE__ ) ) . '/languages' ); 
+	load_plugin_textdomain( 'inline-spoilers', false, dirname( plugin_basename( __FILE__ ) ) . '/languages' ); 
 }
 
 add_shortcode ( 'spoiler', 'is_spoiler_shortcode' );
 function is_spoiler_shortcode( $atts, $content ) {
 	extract( shortcode_atts( array (
-		'title' => __('Spoiler', 'is')
+		'title' => __('Spoiler', 'inline-spoilers'),
+		'initial_state' => 'collapsed'
 	), $atts ) );
 
+	$title = esc_attr( $title );
+	$head_class = (esc_attr( $initial_state ) == 'collapsed')?'':' expanded';
+	$body_class = (esc_attr( $initial_state ) == 'collapsed')?' collapsed':'';
+
 	$output  = "<div class=\"spoiler-wrap\">\n";
-	$output .= "<div class=\"spoiler-head\" title=\"". __('Expand', 'is') ."\">\n";
+	$output .= "<div class=\"spoiler-head".$head_class."\" title=\"". __('Expand', 'inline-spoilers') ."\">\n";
 	$output .= $title;
 	$output .= "\n</div>\n";
-	$output .= "<div class=\"spoiler-body\">\n";
+	$output .= "<div class=\"spoiler-body".$body_class."\">\n";
 	$output .= do_shortcode($content);
 	$output .= "\n</div>\n";
 	$output .= "</div>\n";
@@ -46,8 +57,8 @@ function is_styles_scripts() {
 		wp_enqueue_style( 'is_style' );
 		wp_enqueue_script( 'is_script' );
 
-		$translation_array = array( 'expand' 	=> __( 'Expand', 'is' ), 
-									'collapse' 	=> __( 'Collapse', 'is' ) );
+		$translation_array = array( 'expand' 	=> __( 'Expand', 'inline-spoilers' ), 
+									'collapse' 	=> __( 'Collapse', 'inline-spoilers' ) );
 
 		wp_localize_script( 'is_script', 'title', $translation_array );
 	}  
