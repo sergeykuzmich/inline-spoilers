@@ -3,7 +3,7 @@
 Plugin Name: Inline Spoilers
 Plugin URI: https://wordpress.org/plugins/inline-spoilers/
 Description: The plugin allows to create content spoilers with simple shortcode.
-Version: 1.1.2
+Version: 1.2.2
 Author: Sergey Kuzmich
 Author URI: http://kuzmi.ch
 Text Domain: inline-spoilers
@@ -32,14 +32,15 @@ function is_spoiler_shortcode( $atts, $content ) {
 	), $atts ) );
 
 	$title = esc_attr( $title );
-	$head_class = (esc_attr( $initial_state ) == 'collapsed')?'':' expanded';
-	$body_class = (esc_attr( $initial_state ) == 'collapsed')?' collapsed':'';
+	$head_class = (esc_attr( $initial_state ) == 'collapsed')?' collapsed':' expanded';
+
+	$body_atts = (esc_attr( $initial_state ) == 'collapsed')?'style="display: none;"':'style="display: block;"';
 
 	$output  = "<div class=\"spoiler-wrap\">\n";
 	$output .= "<div class=\"spoiler-head".$head_class."\" title=\"". __('Expand', 'inline-spoilers') ."\">\n";
 	$output .= $title;
 	$output .= "\n</div>\n";
-	$output .= "<div class=\"spoiler-body".$body_class."\">\n";
+	$output .= "<div class=\"spoiler-body\" ".$body_atts.">\n";
 	$output .= do_shortcode($content);
 	$output .= "\n</div>\n";
 	$output .= "</div>\n";
@@ -54,8 +55,8 @@ function is_styles_scripts() {
 	wp_register_script( 'inline-spoilers_script', plugins_url( 'scripts/inline-spoilers-scripts.js', __FILE__ ), array( 'jquery' ), '1.0', true );
 
 	if( has_shortcode( $post->post_content, 'spoiler' ) ) {
-		wp_enqueue_style( 'is_style' );
-		wp_enqueue_script( 'is_script' );
+		wp_enqueue_style( 'inline-spoilers_style' );
+		wp_enqueue_script( 'inline-spoilers_script' );
 
 		$translation_array = array( 'expand' 	=> __( 'Expand', 'inline-spoilers' ), 
 									'collapse' 	=> __( 'Collapse', 'inline-spoilers' ) );
