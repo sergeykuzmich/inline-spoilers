@@ -79,7 +79,3 @@ To remove default title you can use
 
 ### 1.0.1 ###
 * Plugin Release
-
-## For Developers ##
-
-[GitHub Repo](https://github.com/SergeyKuzmich/inline-spoilers)

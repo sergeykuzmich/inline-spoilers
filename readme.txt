@@ -1,5 +1,5 @@
 === Inline Spoilers ===
-Contributors: Umnyjcom
+Contributors: sergeykuzmich
 Tags: shortcode, spoiler
 Requires at least: 3.9.1
 Tested up to: 4.1.1
@@ -60,7 +60,3 @@ To remove default title you can use
 
 = 1.0.1 =
 * Plugin Release
-
-== For Developers ==
-
-[GitHub Repo](https://github.com/SergeyKuzmich/inline-spoilers)
