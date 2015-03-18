@@ -44,17 +44,17 @@ To remove default title you can use
 ###1. To add a spoilered content to your post/page just put that content between [spoiler][/spoiler] shortcode
 ###
 ![To add a spoilered content to your post/page just put that content between [spoiler][/spoiler] shortcode
-](https://ps.w.org/inline-spoilers/assets/screenshot-1.png)
+](http://ps.w.org/inline-spoilers/assets/screenshot-1.png)
 
 ###2. Collapsed spoiler in your post/page
 ###
 ![Collapsed spoiler in your post/page
-](https://ps.w.org/inline-spoilers/assets/screenshot-2.png)
+](http://ps.w.org/inline-spoilers/assets/screenshot-2.png)
 
 ###3. Expanded spoiler
 ###
 ![Expanded spoiler
-](https://ps.w.org/inline-spoilers/assets/screenshot-3.png)
+](http://ps.w.org/inline-spoilers/assets/screenshot-3.png)
 
 
 ## Changelog ##
