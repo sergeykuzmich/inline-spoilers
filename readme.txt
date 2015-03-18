@@ -1,5 +1,5 @@
 === Inline Spoilers ===
-Contributors: Sergey Kuzmich
+Contributors: Umnyjcom
 Tags: shortcode, spoiler
 Requires at least: 3.9.1
 Tested up to: 4.1.1
@@ -26,11 +26,11 @@ To change layout of a spoiler, please, edit `styles/inline-spoilers-styles.css` 
 
 = How to remove text from the title? =
 To remove default title you can use
-```
+`
 [spoiler title="&nbsp;"]
 ...
 [/spoiler]
-```
+`
 
 == Screenshots ==
 
