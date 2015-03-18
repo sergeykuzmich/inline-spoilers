@@ -1,5 +1,5 @@
 # Inline Spoilers #
-**Contributors:** Umnyjcom [http://kuzmi.ch]
+**Contributors:** Sergey Kuzmich
   
 **Tags:** shortcode, spoiler
   

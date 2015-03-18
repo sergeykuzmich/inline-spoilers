@@ -1,5 +1,5 @@
 === Inline Spoilers ===
-Contributors: Umnyjcom [http://kuzmi.ch]
+Contributors: Sergey Kuzmich
 Tags: shortcode, spoiler
 Requires at least: 3.9.1
 Tested up to: 4.1.1
