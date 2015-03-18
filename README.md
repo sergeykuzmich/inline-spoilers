@@ -35,26 +35,28 @@ To change layout of a spoiler, please, edit `styles/inline-spoilers-styles.css` 
 
 ### How to remove text from the title? ###
 To remove default title you can use
-[spoiler title="&#38;nbsp;"]
+```
+[spoiler title="&nbsp;"]
 ...
 [/spoiler]
+```
 
 ## Screenshots ##
 
-###1. To add a spoilered content to your post/page just put that content between [spoiler][/spoiler] shortcode
+###1. To add a spoilered content to your post/page just put that content between `[spoiler][/spoiler]` shortcode
 ###
-![To add a spoilered content to your post/page just put that content between [spoiler][/spoiler] shortcode
-](http://ps.w.org/inline-spoilers/assets/screenshot-1.png)
+![To add a spoilered content to your post/page just put that content between `[spoiler][/spoiler]` shortcode
+](https://cloud.githubusercontent.com/assets/2089534/6707541/fbe4f21e-cd78-11e4-9ecd-1beba5d054f0.png)
 
 ###2. Collapsed spoiler in your post/page
 ###
 ![Collapsed spoiler in your post/page
-](http://ps.w.org/inline-spoilers/assets/screenshot-2.png)
+](https://cloud.githubusercontent.com/assets/2089534/6707542/fbe314f8-cd78-11e4-8995-7c39bfbac151.png)
 
 ###3. Expanded spoiler
 ###
 ![Expanded spoiler
-](http://ps.w.org/inline-spoilers/assets/screenshot-3.png)
+](https://cloud.githubusercontent.com/assets/2089534/6707540/fbe32ff6-cd78-11e4-8140-cb828ea7ff97.png)
 
 
 ## Changelog ##
