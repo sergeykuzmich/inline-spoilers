@@ -4,9 +4,8 @@
 
 div.spoiler-wrap {
     background-color: #E9E9E6;
-    border-color: #C3CBD1;
-    border-style: solid;
-    border-width: 1px 1px 1px 2px;
+    border: 1px solid #C3CBD1;
+    border-left-width: 2px;
     clear: both;
     display: block;
     margin: 6px auto;
