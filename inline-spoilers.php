@@ -46,7 +46,7 @@ function is_spoiler_shortcode( $atts, $content ) {
 	$output .= WP_DEBUG ? " <!-- .spoiler-head -->\n" : "";
 	$output .= "<div class=\"spoiler-body\" " . $body_atts . ">";
 	$output .= WP_DEBUG ? "\n" : "";
-	$output .= preg_replace( "%^</p>\n(.*)\n<p>$%simx", '$1', do_shortcode( $content ) );
+    $output .= balanceTags( do_shortcode( $content ), true );
 	$output .= WP_DEBUG ? "\n" : "";
 	$output .= "</div>";
 	$output .= WP_DEBUG ? " <!-- .spoiler-body -->\n" : "";
