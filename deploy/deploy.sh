@@ -3,9 +3,10 @@
 # @Author: Sergey Kuzmich
 # @Date:   2017-10-15 00:47:04
 # @Last Modified by:   Sergey Kuzmich
-# @Last Modified time: 2017-10-15 23:18:14
+# @Last Modified time: 2017-10-15 23:20:48
 
 echo "Deploying tag $TRAVIS_TAG"
+pwd
 
 export SVN_REPOSITORY_DIR="~/inline-spoilers-svn"
 
@@ -40,6 +41,6 @@ mkdir $SVN_REPOSITORY_DIR/tags/$TRAVIS_TAG
 cp -R $SVN_REPOSITORY_DIR/trunk/* $SVN_REPOSITORY_DIR/tags/$TRAVIS_TAG
 
 # 11. Commit SVN changes
-svn ci --message "Release $TRAVIS_TAG" --username $SVN_USERNAME --password $SVN_PASSWORD --non-interactive
+# svn ci --message "Release $TRAVIS_TAG" --username $SVN_USERNAME --password $SVN_PASSWORD --non-interactive
 
 echo "Deployment of $TRAVIS_TAG is complete"
