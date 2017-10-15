@@ -7,6 +7,8 @@
 
 **Tested up to:** 4.1.1
 
+**Requires PHP at least:** 5.5
+
 **Stable tag:** 1.2.5
 
 **License:** GPLv2 or later
