@@ -3,7 +3,7 @@
 # @Author: Sergey Kuzmich
 # @Date:   2017-10-15 00:47:04
 # @Last Modified by:   Sergey Kuzmich
-# @Last Modified time: 2017-10-15 23:25:03
+# @Last Modified time: 2017-10-15 23:26:25
 
 echo "Deploying tag $TRAVIS_TAG"
 
@@ -14,7 +14,7 @@ svn co $SVN_REPOSITORY ../inline-spoilers-svn
 cp -R ./* ../inline-spoilers-svn/trunk/
 
 #  3. Go to trunk/
-cd $SVN_REPOSITORY_DIR/trunk/
+cd ../inline-spoilers-svn/trunk/
 
 #  4. Move assets/ to SVN /assets/
 mv ./assets/ ../assets/
