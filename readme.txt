@@ -40,26 +40,5 @@ To remove default title you can use
 
 == Changelog ==
 
-= 1.2.4 =
-* Update spoiled content formatting method
-
-= 1.2.4 =
-* Add WP_DEBUG mode
-* Fix incorrect paragraph tags inside the spoiler
-
-= 1.2.3 =
-* JavaScript bug fix
-
-= 1.2.2 =
-* Update spoiler default behaviour
-
-= 1.1.2 =
-* Update Russian translation
-* Add attribute 'initial_state' to define default state of a spoiler `initial_state=(expanded|collapsed)`. Default state is 'collapsed'
-* Security updates
-
-= 1.0.2 =
-* Update Russian translation
-
-= 1.0.1 =
-* Plugin Release
+= 1.2.5 =
+* Balance content html tags
