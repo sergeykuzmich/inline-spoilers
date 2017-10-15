@@ -4,7 +4,7 @@ Tags: shortcode, spoiler
 Requires at least: 3.9.1
 Tested up to: 4.1.1
 Requires PHP at least: 5.5
-Stable tag: 1.2.5
+Stable tag: 1.2.6
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -35,11 +35,11 @@ To remove default title you can use
 
 == Screenshots ==
 
-1. To add a spoilered content to your post/page just put that content between `[spoiler][/spoiler]` shortcode
-2. Collapsed spoiler in your post/page
+1. Spoiler shortcode `[spoiler][/spoiler]`
+2. Collapsed spoiler
 3. Expanded spoiler
 
 == Changelog ==
 
-= 1.2.5 =
-* Balance content html tags
+= 1.2.6 =
+* Setup automated deployment with TravisCI

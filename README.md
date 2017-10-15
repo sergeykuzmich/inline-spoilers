@@ -9,7 +9,7 @@
 
 **Requires PHP at least:** 5.5
 
-**Stable tag:** 1.2.5
+**Stable tag:** 1.2.6
 
 **License:** GPLv2 or later
 
@@ -43,23 +43,17 @@ To remove default title you can use
 
 ## Screenshots ##
 
-###1. To add a spoilered content to your post/page just put that content between `[spoiler][/spoiler]` shortcode
-###
-![To add a spoilered content to your post/page just put that content between `[spoiler][/spoiler]` shortcode
-](https://cloud.githubusercontent.com/assets/2089534/6707541/fbe4f21e-cd78-11e4-9ecd-1beba5d054f0.png)
+### 1. Spoiler shortcode `[spoiler][/spoiler]`
+![Spoiler shortcode](https://cloud.githubusercontent.com/assets/2089534/6707541/fbe4f21e-cd78-11e4-9ecd-1beba5d054f0.png)
 
-###2. Collapsed spoiler in your post/page
-###
-![Collapsed spoiler in your post/page
-](https://cloud.githubusercontent.com/assets/2089534/6707542/fbe314f8-cd78-11e4-8995-7c39bfbac151.png)
+### 2. Collapsed spoiler
+![Collapsed spoiler](https://cloud.githubusercontent.com/assets/2089534/6707542/fbe314f8-cd78-11e4-8995-7c39bfbac151.png)
 
-###3. Expanded spoiler
-###
-![Expanded spoiler
-](https://cloud.githubusercontent.com/assets/2089534/6707540/fbe32ff6-cd78-11e4-8140-cb828ea7ff97.png)
+### 3. Expanded spoiler
+![Expanded spoiler](https://cloud.githubusercontent.com/assets/2089534/6707540/fbe32ff6-cd78-11e4-8140-cb828ea7ff97.png)
 
 
 ## Changelog ##
 
-### 1.2.5 ###
-* Balance content html tags
+### 1.2.6 ###
+* Setup automated deployment with TravisCI
