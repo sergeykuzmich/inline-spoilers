@@ -17,9 +17,9 @@ deploy:
   skip_cleanup: true
   provider: script
   script: deploy/deploy.sh
-  on:
-    tags: true
-    php: 7.0
+  # on:
+  #   tags: true
+  #   php: 7.0
 env:
   global:
   - secure: fm0jN2lY1UdLvKxNrcGR/2EO6blAkkQl4u7zi5Jvj/L9WuAWULKy4/4wlFiFa2ZEp7llVqD8/aSmlPkEgdqvNO+VN2lsk1HvoK58O7SlaC+Cald/Q2QONaNQXQkn8kBAq0qn01op1cgLEWHZCNOmYJ5apVbbOGdMLlj6JoR8fIIysWMpv0ZVpeEp4LvvU0DNaMJofRFpzPI67LTOrw53B/sCJTo16iossUh02r4mqAUhKHDDZyG/BoPUgefhb8h6fCCirg/e5D1HPIXqYbcA3Q7ELcXr06pmRlHTihE6vfSSbAvRKzn95PB4Km0G6s1t9RValORWgcIJKU4TyxLSfQ/1wWP3yTRjseczs23P3cePc41O0LzYmk38ZqiDnfQofJJ2hID5TnJFj2mQbCkP3OLyhNaovk+F2vUQZhKS3ZInbATFYXlRAUkSsIIrrFBvN9cfG9LQ5vRoLFtOhMjKxRAvn5bzNH/tEwG9xnnNnbnZ9IUEXSXZbAu5+OVH55HTGOsAQYzigto1jXAiwfE+BM1mR/y5ozD6hz9DLLJ4FLh6Pg23u8snvr5jrqw57FG0/QRoXEZwVVs8Gy6RYns/wufh5xDSAS/en+XCVS+m/A4n/7+3Zms6GOE6ytW78AbKrZOE4fzgSy3rNpT+huWyMam02sx1+hR0PGkkZCNjubc=
