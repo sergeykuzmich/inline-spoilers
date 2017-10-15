@@ -4,6 +4,9 @@ language: php
 git:
   depth: 5
 
+script:
+- php -l *.php
+
 deploy:
   skip_cleanup: true
   provider: script
