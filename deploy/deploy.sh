@@ -3,9 +3,9 @@
 # @Author: Sergey Kuzmich
 # @Date:   2017-10-15 00:47:04
 # @Last Modified by:   Sergey Kuzmich
-# @Last Modified time: 2017-10-15 23:26:25
+# @Last Modified time: 2017-10-15 23:27:27
 
-echo "Deploying tag $TRAVIS_TAG"
+echo "Deploying tag $TRAVIS_BRANCH"
 
 #  1. Clone complete SVN repository to separate directory
 svn co $SVN_REPOSITORY ../inline-spoilers-svn
