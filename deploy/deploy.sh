@@ -3,7 +3,7 @@
 # @Author: Sergey Kuzmich
 # @Date:   2017-10-15 00:47:04
 # @Last Modified by:   Sergey Kuzmich
-# @Last Modified time: 2017-10-15 23:31:04
+# @Last Modified time: 2017-10-15 23:39:39
 
 echo "Deploying tag $TRAVIS_TAG"
 
@@ -37,7 +37,10 @@ mkdir ../tags/$TRAVIS_TAG
 # 10. Copy trunk/ to tags/{tag}/
 cp -R ./* ../tags/$TRAVIS_TAG
 
-# 11. Commit SVN changes
+# 11. Show tags
+ls ../tags/
+
+# 12. Commit SVN changes
 svn ci --message "Release $TRAVIS_TAG" --username $SVN_USERNAME --password $SVN_PASSWORD --non-interactive
 
 echo "Deployment of $TRAVIS_TAG is complete"
