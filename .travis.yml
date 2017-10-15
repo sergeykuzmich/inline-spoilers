@@ -9,10 +9,11 @@ git:
   depth: 5
 script:
 - php -l *.php
+- pwd
 deploy:
   skip_cleanup: true
   provider: script
-  script: deploy/deploy.sh $TRAVIS_TAG
+  script: deploy/deploy.sh
   on:
     tags: true
     branch: master
