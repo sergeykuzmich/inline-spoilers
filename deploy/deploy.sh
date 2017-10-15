@@ -3,7 +3,7 @@
 # @Author: Sergey Kuzmich
 # @Date:   2017-10-15 00:47:04
 # @Last Modified by:   Sergey Kuzmich
-# @Last Modified time: 2017-10-15 23:56:30
+# @Last Modified time: 2017-10-16 00:00:39
 
 #  1. Clone complete SVN repository to separate directory
 svn co $SVN_REPOSITORY ../inline-spoilers-svn
@@ -41,5 +41,8 @@ mkdir ./tags/$TRAVIS_TAG
 # 12. Copy trunk/ to tags/{tag}/
 cp -R ./trunk/* ./tags/$TRAVIS_TAG
 
-# 12. Commit SVN tag
+# 13. Show tags
+ls ./tags/
+
+# 14. Commit SVN tag
 svn ci --message "Release $TRAVIS_TAG" --username $SVN_USERNAME --password $SVN_PASSWORD --non-interactive
