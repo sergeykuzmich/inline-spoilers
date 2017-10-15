@@ -3,7 +3,9 @@
 # @Author: Sergey Kuzmich
 # @Date:   2017-10-15 00:47:04
 # @Last Modified by:   Sergey Kuzmich
-# @Last Modified time: 2017-10-15 22:37:36
+# @Last Modified time: 2017-10-15 23:13:47
+
+echo "Deploying tag $TRAVIS_TAG"
 
 export SVN_REPOSITORY_DIR="~/inline-spoilers-svn"
 
@@ -31,14 +33,13 @@ rm -rf .travis.yml
 #  8. Delete README.md
 rm -rf README.md
 
-#  9. Get git pushed tag
-export $TAG="$(git describe --tags)"
+#  9. Create SVN tag directory
+mkdir $SVN_REPOSITORY_DIR/tags/$TRAVIS_TAG
 
-# 10. Create SVN tag directory
-mkdir $SVN_REPOSITORY_DIR/tags/$TAG
+# 10. Copy trunk/ to tags/{tag}/
+cp -R $SVN_REPOSITORY_DIR/trunk/* $SVN_REPOSITORY_DIR/tags/$TRAVIS_TAG
 
-# 11. Copy trunk/ to tags/{tag}/
-cp -R $SVN_REPOSITORY_DIR/trunk/* $SVN_REPOSITORY_DIR/tags/$TAG
+# 11. Commit SVN changes
+svn ci --message "Release $TRAVIS_TAG" --username $SVN_USERNAME --password $SVN_PASSWORD --non-interactive
 
-# 12. Commit SVN changes
-svn ci --message "Release $TAG" --username $SVN_USERNAME --password $SVN_PASSWORD --non-interactive
+echo "Deployment of $TRAVIS_TAG is complete"
