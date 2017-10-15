@@ -3,18 +3,15 @@
 # @Author: Sergey Kuzmich
 # @Date:   2017-10-15 00:47:04
 # @Last Modified by:   Sergey Kuzmich
-# @Last Modified time: 2017-10-15 23:22:33
+# @Last Modified time: 2017-10-15 23:25:03
 
 echo "Deploying tag $TRAVIS_TAG"
-pwd
-
-export SVN_REPOSITORY_DIR="../inline-spoilers-svn"
 
 #  1. Clone complete SVN repository to separate directory
-svn co $SVN_REPOSITORY $SVN_REPOSITORY_DIR
+svn co $SVN_REPOSITORY ../inline-spoilers-svn
 
 #  2. Copy git repository contents to SNV trunk/ directory
-cp -R ./* $SVN_REPOSITORY_DIR/trunk/
+cp -R ./* ../inline-spoilers-svn/trunk/
 
 #  3. Go to trunk/
 cd $SVN_REPOSITORY_DIR/trunk/
@@ -35,10 +32,10 @@ rm -rf .travis.yml
 rm -rf README.md
 
 #  9. Create SVN tag directory
-mkdir $SVN_REPOSITORY_DIR/tags/$TRAVIS_TAG
+mkdir ../tags/$TRAVIS_TAG
 
 # 10. Copy trunk/ to tags/{tag}/
-cp -R $SVN_REPOSITORY_DIR/trunk/* $SVN_REPOSITORY_DIR/tags/$TRAVIS_TAG
+cp -R ./trunk/* ../tags/$TRAVIS_TAG
 
 # 11. Commit SVN changes
 # svn ci --message "Release $TRAVIS_TAG" --username $SVN_USERNAME --password $SVN_PASSWORD --non-interactive
