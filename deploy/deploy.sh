@@ -3,10 +3,10 @@
 # @Author: Sergey Kuzmich
 # @Date:   2017-10-15 00:47:04
 # @Last Modified by:   Sergey Kuzmich
-# @Last Modified time: 2017-10-16 00:07:00
+# @Last Modified time: 2017-10-16 00:10:46
 
 #  1. Clone complete SVN repository to separate directory
-svn co $SVN_REPOSITORY ../inline-spoilers-svn
+svn co https://plugins.svn.wordpress.org/inline-spoilers/ ../inline-spoilers-svn
 
 #  2. Copy git repository contents to SNV trunk/ directory
 cp -R ./* ../inline-spoilers-svn/trunk/
@@ -32,17 +32,11 @@ rm -rf README.md
 #  9. Go to SVN home directory
 cd ../
 
-# 10. Send trunk/ updates
-svn ci --message "Prepare $TRAVIS_BRANCH version" --username $SVN_USERNAME --password $SVN_PASSWORD --non-interactive
+# 10. Copy trunk/ to tags/{tag}/
+svn cp trunk tags/$TRAVIS_TAG
 
-# 11. Create SVN tag directory
-mkdir ./tags/$TRAVIS_BRANCH
-
-# 12. Copy trunk/ to tags/{tag}/
-cp -R ./trunk/* ./tags/$TRAVIS_BRANCH
-
-# 13. Show tags
-ls -l ./tags/
-
-# 14. Commit SVN tag
-svn ci --message "Release $TRAVIS_BRANCH" --username $SVN_USERNAME --password $SVN_PASSWORD --non-interactive
+# 11. Commit SVN tag
+svn ci  --message "Release $TRAVIS_TAG" \
+        --username $SVN_USERNAME \
+        --password $SVN_PASSWORD \
+        --non-interactive
