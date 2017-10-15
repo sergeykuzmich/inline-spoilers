@@ -3,7 +3,7 @@
 # @Author: Sergey Kuzmich
 # @Date:   2017-10-15 00:47:04
 # @Last Modified by:   Sergey Kuzmich
-# @Last Modified time: 2017-10-15 23:27:27
+# @Last Modified time: 2017-10-15 23:28:24
 
 echo "Deploying tag $TRAVIS_BRANCH"
 
@@ -32,12 +32,12 @@ rm -rf .travis.yml
 rm -rf README.md
 
 #  9. Create SVN tag directory
-mkdir ../tags/$TRAVIS_TAG
+mkdir ../tags/$TRAVIS_BRANCH
 
 # 10. Copy trunk/ to tags/{tag}/
-cp -R ./trunk/* ../tags/$TRAVIS_TAG
+cp -R ./trunk/* ../tags/$TRAVIS_BRANCH
 
 # 11. Commit SVN changes
-# svn ci --message "Release $TRAVIS_TAG" --username $SVN_USERNAME --password $SVN_PASSWORD --non-interactive
+# svn ci --message "Release $TRAVIS_BRANCH" --username $SVN_USERNAME --password $SVN_PASSWORD --non-interactive
 
-echo "Deployment of $TRAVIS_TAG is complete"
+echo "Deployment of $TRAVIS_BRANCH is complete"
