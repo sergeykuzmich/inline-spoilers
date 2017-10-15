@@ -3,7 +3,7 @@
 # @Author: Sergey Kuzmich
 # @Date:   2017-10-15 00:47:04
 # @Last Modified by:   Sergey Kuzmich
-# @Last Modified time: 2017-10-15 23:13:47
+# @Last Modified time: 2017-10-15 23:18:14
 
 echo "Deploying tag $TRAVIS_TAG"
 
@@ -13,13 +13,13 @@ export SVN_REPOSITORY_DIR="~/inline-spoilers-svn"
 svn co $SVN_REPOSITORY $SVN_REPOSITORY_DIR
 
 #  2. Copy git repository contents to SNV trunk/ directory
-cp -R ~/inline-spoilers/* $SVN_REPOSITORY_DIR/trunk/
+cp -R ./* $SVN_REPOSITORY_DIR/trunk/
 
 #  3. Go to trunk/
 cd $SVN_REPOSITORY_DIR/trunk/
 
 #  4. Move assets/ to SVN /assets/
-mv assets/ ../assets/
+mv ./assets/ ../assets/
 
 #  5. Delete .git/
 rm -rf .git/
