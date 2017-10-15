@@ -1,17 +1,14 @@
-sudo: required
 dist: trusty
 
 git:
   depth: 5
 
-before_deploy:
-- sudo apt-get update -qq
-- sudo apt-get install -qq subversion
-
 deploy:
   skip_cleanup: true
   provider: script
   script: deploy/deploy.sh
+  on:
+    tags: true
 
 env:
   global:
