@@ -3,9 +3,7 @@
 # @Author: Sergey Kuzmich
 # @Date:   2017-10-15 00:47:04
 # @Last Modified by:   Sergey Kuzmich
-# @Last Modified time: 2017-10-16 00:05:28
-
-export $TRAVIS_TAG=$TRAVIS_BRANCH
+# @Last Modified time: 2017-10-16 00:07:00
 
 #  1. Clone complete SVN repository to separate directory
 svn co $SVN_REPOSITORY ../inline-spoilers-svn
@@ -35,16 +33,16 @@ rm -rf README.md
 cd ../
 
 # 10. Send trunk/ updates
-svn ci --message "Prepare $TRAVIS_TAG version" --username $SVN_USERNAME --password $SVN_PASSWORD --non-interactive
+svn ci --message "Prepare $TRAVIS_BRANCH version" --username $SVN_USERNAME --password $SVN_PASSWORD --non-interactive
 
 # 11. Create SVN tag directory
-mkdir ./tags/$TRAVIS_TAG
+mkdir ./tags/$TRAVIS_BRANCH
 
 # 12. Copy trunk/ to tags/{tag}/
-cp -R ./trunk/* ./tags/$TRAVIS_TAG
+cp -R ./trunk/* ./tags/$TRAVIS_BRANCH
 
 # 13. Show tags
 ls -l ./tags/
 
 # 14. Commit SVN tag
-svn ci --message "Release $TRAVIS_TAG" --username $SVN_USERNAME --password $SVN_PASSWORD --non-interactive
+svn ci --message "Release $TRAVIS_BRANCH" --username $SVN_USERNAME --password $SVN_PASSWORD --non-interactive
