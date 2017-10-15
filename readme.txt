@@ -41,5 +41,5 @@ To remove default title you can use
 
 == Changelog ==
 
-= 1.2.6 =
+= 1.2.8 =
 * Setup automated deployment with TravisCI
