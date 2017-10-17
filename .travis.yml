@@ -9,6 +9,7 @@ git:
   depth: 5
 branches:
   only:
+  - master
   - "/\\d\\.\\d\\.\\d/"
 script:
 - php -l *.php
