@@ -3,16 +3,16 @@
 # @Author: Sergey Kuzmich
 # @Date:   2017-10-15 00:47:04
 # @Last Modified by:   Sergey Kuzmich
-# @Last Modified time: 2017-10-16 00:10:46
+# @Last Modified time: 2017-10-17 12:38:13
 
 #  1. Clone complete SVN repository to separate directory
-svn co https://plugins.svn.wordpress.org/inline-spoilers/ ../inline-spoilers-svn
+svn co $SNV_REPOSITORY ../svn
 
 #  2. Copy git repository contents to SNV trunk/ directory
-cp -R ./* ../inline-spoilers-svn/trunk/
+cp -R ./* ../svn/trunk/
 
 #  3. Go to trunk/
-cd ../inline-spoilers-svn/trunk/
+cd ../svn/trunk/
 
 #  4. Move assets/ to SVN /assets/
 mv ./assets/ ../assets/
