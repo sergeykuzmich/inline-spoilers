@@ -26,7 +26,7 @@ function is_load_textdomain() {
 
 add_shortcode( 'spoiler', 'is_spoiler_shortcode' );
 function is_spoiler_shortcode( $atts, $content ) {
-	$output = "";
+	$output = $head = $body = "";
 
 	extract( shortcode_atts( array(
 		'title'         => __( 'Spoiler', 'inline-spoilers' ),
@@ -41,13 +41,24 @@ function is_spoiler_shortcode( $atts, $content ) {
 	$head_hint = ( esc_attr( $initial_state ) == 'collapsed' )
 									? 'Expand' : 'Collapse';
 
+	$head .= "<div class=\"spoiler-head no-icon " . $head_class . "\" title=\"" . __( $head_hint, 'inline-spoilers' ) . "\">";
+		$head .= $title;
+	$head .= "</div>";
+
+	$body .= "<div class=\"spoiler-body\" " . $body_atts . ">";
+  	$body .= balanceTags( do_shortcode( $content ), true );
+	$body .= "</div>";
+
+	$extra .= "<div class=\"spoiler-body\">";
+  	$extra .= balanceTags( do_shortcode( $content ), true );
+	$extra .= "</div>";
+
 	$output .= "<div class=\"spoiler-wrap\">";
-		$output .= "<div class=\"spoiler-head" . $head_class . "\" title=\"" . __( $head_hint, 'inline-spoilers' ) . "\">";
-			$output .= $title;
-		$output .= "</div>";
-		$output .= "<div class=\"spoiler-body\" " . $body_atts . ">";
-	  	$output .= balanceTags( do_shortcode( $content ), true );
-		$output .= "</div>";
+		$output .= $head;
+		$output .= $body;
+		$output .= "<noscript>";
+			$output .= ( esc_attr( $initial_state ) == 'collapsed' ) ? $extra : "";
+		$output .= "</noscript>";
 	$output .= "</div>";
 
 	return $output;
