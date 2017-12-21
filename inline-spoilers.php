@@ -26,6 +26,8 @@ function is_load_textdomain() {
 
 add_shortcode( 'spoiler', 'is_spoiler_shortcode' );
 function is_spoiler_shortcode( $atts, $content ) {
+	$output = $head = $body = "";
+
 	extract( shortcode_atts( array(
 		'title'         => __( 'Spoiler', 'inline-spoilers' ),
 		'initial_state' => 'collapsed'
@@ -36,22 +38,28 @@ function is_spoiler_shortcode( $atts, $content ) {
 
 	$body_atts = ( esc_attr( $initial_state ) == 'collapsed' ) ? 'style="display: none;"' : 'style="display: block;"';
 
-	$output = "<div class=\"spoiler-wrap\">";
-	$output .= WP_DEBUG ? "\n" : "";
-	$output .= "<div class=\"spoiler-head" . $head_class . "\" title=\"" . __( 'Expand', 'inline-spoilers' ) . "\">";
-	$output .= WP_DEBUG ? "\n" : "";
-	$output .= $title;
-	$output .= WP_DEBUG ? "\n" : "";
+	$head_hint = ( esc_attr( $initial_state ) == 'collapsed' )
+									? 'Expand' : 'Collapse';
+
+	$head .= "<div class=\"spoiler-head no-icon " . $head_class . "\" title=\"" . __( $head_hint, 'inline-spoilers' ) . "\">";
+		$head .= $title;
+	$head .= "</div>";
+
+	$body .= "<div class=\"spoiler-body\" " . $body_atts . ">";
+  	$body .= balanceTags( do_shortcode( $content ), true );
+	$body .= "</div>";
+
+	$extra .= "<div class=\"spoiler-body\">";
+  	$extra .= balanceTags( do_shortcode( $content ), true );
+	$extra .= "</div>";
+
+	$output .= "<div class=\"spoiler-wrap\">";
+		$output .= $head;
+		$output .= $body;
+		$output .= "<noscript>";
+			$output .= ( esc_attr( $initial_state ) == 'collapsed' ) ? $extra : "";
+		$output .= "</noscript>";
 	$output .= "</div>";
-	$output .= WP_DEBUG ? " <!-- .spoiler-head -->\n" : "";
-	$output .= "<div class=\"spoiler-body\" " . $body_atts . ">";
-	$output .= WP_DEBUG ? "\n" : "";
-    $output .= balanceTags( do_shortcode( $content ), true );
-	$output .= WP_DEBUG ? "\n" : "";
-	$output .= "</div>";
-	$output .= WP_DEBUG ? " <!-- .spoiler-body -->\n" : "";
-	$output .= "</div>";
-	$output .= WP_DEBUG ? " <!-- .spoiler-wrap -->\n" : "";
 
 	return $output;
 }

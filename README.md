@@ -9,7 +9,7 @@
 
 **Requires PHP at least:** 5.5
 
-**Stable tag:** 1.2.8
+**Stable tag:** 1.3.0
 
 **License:** GPLv2 or later
 
@@ -55,5 +55,5 @@ To remove default title you can use
 
 ## Changelog ##
 
-### 1.2.8 ###
-* Setup automated deployment with TravisCI
+### 1.3.0 ###
+* Always show spoiler contents while javascript is disabled

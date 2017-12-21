@@ -32,6 +32,12 @@ div.spoiler-head.expanded {
     background: url(data:image/gif;base64,R0lGODlhCQAJAMQeAOLt+ff8//z+/4CRxo2by7vF6a254X6PxICQw87a74CQxuXo84CQxM/b7/H6/v7+/oGRxouayoGSxv7+/8LN7IqZyv7//4KSxur0/MrV74OTx9Ld8trl9gwMDP///wAAACH5BAEAAB4ALAAAAAAJAAkAAAU4oFcpwzFAkWgUVLZxCQGxLgdgGtS+t6NJmY5QOEFcNo/kZGLRXGwYR0DQjDSiU8uCIJJIGJdLKgQAOw==) no-repeat left center;
 }
 
+div.spoiler-head.collapsed.no-icon, div.spoiler-head.expanded.no-icon {
+    background: none;
+    cursor: auto;
+    padding: 0 6px 0 6px;
+}
+
 div.spoiler-body {
     background: #F5F5F5;
     border-top: 1px solid #C3CBD1;

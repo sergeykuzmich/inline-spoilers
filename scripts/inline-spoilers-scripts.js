@@ -3,6 +3,7 @@
  */
 
 jQuery(function () {
+    jQuery(".spoiler-head").removeClass("no-icon");
     jQuery(".spoiler-head").on('click', function (event) {
         $this = jQuery(this);
         if ($this.hasClass("expanded")) {
