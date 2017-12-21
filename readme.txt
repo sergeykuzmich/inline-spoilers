@@ -4,7 +4,7 @@ Tags: shortcode, spoiler
 Requires at least: 3.9.1
 Tested up to: 4.1.1
 Requires PHP at least: 5.5
-Stable tag: 1.3.0
+Stable tag: 1.3.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -41,5 +41,5 @@ To remove default title you can use
 
 == Changelog ==
 
-= 1.3.0 =
+= 1.3.1 =
 * Always show spoiler contents while javascript is disabled
