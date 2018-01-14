@@ -11,8 +11,16 @@ branches:
   only:
   - master
   - "/\\d\\.\\d\\.\\d/"
+before_install:
+  - export PHPCS_DIR=/tmp/phpcs
+  - export SNIFFS_DIR=/tmp/sniffs
+  - git clone -b master --depth 1 https://github.com/squizlabs/PHP_CodeSniffer.git $PHPCS_DIR
+  - git clone -b master --depth 1 https://github.com/WordPress-Coding-Standards/WordPress-Coding-Standards.git $SNIFFS_DIR
+  - $PHPCS_DIR/bin/phpcs --config-set installed_paths $SNIFFS_DIR
+  - phpenv rehash
 script:
-- php -l *.php
+  - php -l *.php
+  - $PHPCS_DIR/bin/phpcs --standard=WordPress-VIP --extensions=php .
 deploy:
   skip_cleanup: true
   provider: script
