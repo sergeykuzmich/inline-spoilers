@@ -27,8 +27,8 @@ function is_load_textdomain() {
 add_shortcode( 'spoiler', 'is_spoiler_shortcode' );
 function is_spoiler_shortcode( $atts, $content ) {
 	$output = '';
-	$head = "";
-	$body = '';
+	$head   = '';
+	$body   = '';
 
 	$attributes = shortcode_atts( array(
 		'title'         => __( 'Spoiler', 'inline-spoilers' ),
