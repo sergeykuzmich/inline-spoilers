@@ -1,4 +1,10 @@
 # Inline Spoilers #
+
+[![Plugin Downloads](https://img.shields.io/wordpress/plugin/dt/inline-spoilers.svg)](https://wordpress.org/plugins/inline-spoilers/)
+[![Plugin Version](https://img.shields.io/wordpress/plugin/v/inline-spoilers.svg)](https://wordpress.org/plugins/inline-spoilers/)
+[![Wordpress Version](https://img.shields.io/wordpress/v/inline-spoilers.svg)](https://wordpress.org/plugins/inline-spoilers/)
+[![Plugin Rating](https://img.shields.io/wordpress/plugin/r/inline-spoilers.svg)](https://wordpress.org/plugins/inline-spoilers/)
+
 **Contributors:** Sergey Kuzmich
 
 **Tags:** shortcode, spoiler
