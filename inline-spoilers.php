@@ -3,12 +3,12 @@
 Plugin Name: Inline Spoilers
 Plugin URI: https://wordpress.org/plugins/inline-spoilers/
 Description: The plugin allows to create content spoilers with simple shortcode.
-Version: 1.3.1
+Version: 1.3.2
 Author: Sergey Kuzmich
 Author URI: http://kuzmi.ch
 Text Domain: inline-spoilers
 Domain Path: /languages/
-License: GPLv2
+License: GPLv3
 */
 
 /**
@@ -49,19 +49,19 @@ function is_spoiler_shortcode( $atts, $content ) {
 									? __( 'Expand', 'inline-spoilers' )
 									: __( 'Collapse', 'inline-spoilers' );
 
-	$head .= '<div class=\"spoiler-head no-icon ' . $head_class . '\" title=\"' . $head_hint . '\">';
+	$head .= '<div class="spoiler-head no-icon ' . $head_class . '" title="' . $head_hint . '">';
 	$head .= $title;
 	$head .= '</div>';
 
-	$body .= '<div class=\"spoiler-body\" ' . $body_atts . '>';
+	$body .= '<div class="spoiler-body" ' . $body_atts . '>';
 	$body .= balanceTags( do_shortcode( $content ), true );
 	$body .= '</div>';
 
-	$extra .= '<div class=\"spoiler-body\">';
+	$extra .= '<div class="spoiler-body">';
 	$extra .= balanceTags( do_shortcode( $content ), true );
 	$extra .= '</div>';
 
-	$output .= '<div class=\"spoiler-wrap\">';
+	$output .= '<div class="spoiler-wrap">';
 	$output .= $head;
 	$output .= $body;
 	$output .= '<noscript>';
