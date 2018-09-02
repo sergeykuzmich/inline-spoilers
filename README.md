@@ -11,15 +11,15 @@
 
 **Requires at least:** 3.9.1
 
-**Tested up to:** 4.1.1
+**Tested up to:** 4.9.8
 
 **Requires PHP at least:** 5.5
 
-**Stable tag:** 1.3.1
+**Stable tag:** 1.3.2
 
-**License:** GPLv2 or later
+**License:** GPLv3 or later
 
-**License URI:** http://www.gnu.org/licenses/gpl-2.0.html
+**License URI:** http://www.gnu.org/licenses/gpl-3.0.html
 
 
 The plugin allows to create content spoilers with simple shortcode.
@@ -61,5 +61,5 @@ To remove default title you can use
 
 ## Changelog ##
 
-### 1.3.1 ###
-* Always show spoiler contents while javascript is disabled
+### 1.3.2 ###
+* Compatibility up to Wordpress 4.9.8
