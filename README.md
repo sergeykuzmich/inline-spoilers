@@ -15,7 +15,7 @@
 
 **Requires PHP at least:** 5.5
 
-**Stable tag:** 1.3.2
+**Stable tag:** 1.3.3
 
 **License:** GPLv3 or later
 
@@ -61,5 +61,5 @@ To remove default title you can use
 
 ## Changelog ##
 
-### 1.3.2 ###
-* Compatibility up to Wordpress 4.9.8
+### 1.3.3 ###
+* Fix https://wordpress.org/support/topic/notice-undefined-variable-extra-in-wp-content-plugins-inline-spoilers-inlin/
