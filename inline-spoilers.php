@@ -29,6 +29,7 @@ function is_spoiler_shortcode( $atts, $content ) {
 	$output = '';
 	$head   = '';
 	$body   = '';
+	$extra  = '';
 
 	$attributes = shortcode_atts( array(
 		'title'         => __( 'Spoiler', 'inline-spoilers' ),
