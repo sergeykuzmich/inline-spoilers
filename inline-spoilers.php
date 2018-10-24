@@ -31,10 +31,14 @@ function is_spoiler_shortcode( $atts, $content ) {
 	$body   = '';
 	$extra  = '';
 
-	$attributes = shortcode_atts( array(
-		'title'         => __( 'Spoiler', 'inline-spoilers' ),
-		'initial_state' => 'collapsed',
-	), $atts, 'spoiler' );
+	$attributes = shortcode_atts(
+		array(
+			'title'         => __( 'Spoiler', 'inline-spoilers' ),
+			'initial_state' => 'collapsed',
+		),
+		$atts,
+		'spoiler'
+	);
 
 	$title         = $attributes['title'];
 	$initial_state = $attributes['initial_state'];
