@@ -15,7 +15,7 @@
 
 **Requires PHP at least:** 5.5
 
-**Stable tag:** 1.3.3
+**Stable tag:** 1.3.3-2
 
 **License:** GPLv3 or later
 
