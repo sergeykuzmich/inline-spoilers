@@ -9,7 +9,6 @@ php:
 branches:
   only:
   - master
-  - "/\\d\\.\\d\\.\\d(?:\\-\\d)?/"
 before_install:
   - export PHPCS_DIR=/tmp/phpcs
   - export PHPCS_REPO=https://github.com/squizlabs/PHP_CodeSniffer.git
