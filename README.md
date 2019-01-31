@@ -36,7 +36,7 @@ The plugin allows to create content spoilers with simple shortcode.
 
 ## Frequently Asked Questions ##
 
-### How do I can customize design of the spoiler? ###
+### How can I customize design of the spoiler? ###
 To change layout of a spoiler, please, edit `styles/inline-spoilers-styles.css` file.
 
 ### How to remove text from the title? ###
