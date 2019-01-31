@@ -17,26 +17,38 @@ cd ../svn/trunk/
 #  4. Move assets/ to SVN /assets/
 mv ./assets/ ../assets/
 
-#  5. Delete .git/
+#  5. Cleanup repository
+#  5.1 Delete .git/
 rm -rf .git/
-
-#  6. Delete deploy/
+#  5.2 Delete deploy/
 rm -rf deploy/
-
-#  7. Delete .travis.yml
+#  5.3 Delete .travis.yml
 rm -rf .travis.yml
-
-#  8. Delete README.md
+#  5.4 Delete README.md
 rm -rf README.md
 
-#  9. Go to SVN home directory
+#  6. Go to SVN home directory
 cd ../
 
-# 10. Copy trunk/ to tags/{tag}/
-svn cp trunk tags/$TRAVIS_TAG
+#. 7. Check for semver tag
+semver_pattern="^[0-9]+\.[0-9]+\.[0-9]+$"
+if [[ $TRAVIS_TAG =~ $semver_pattern ]]; then
+  #  8. Draft new release
+  #  8.1 Copy trunk/ to tags/{tag}/
+  svn cp trunk tags/$TRAVIS_TAG
+  #  8.2 Remove readme.txt from plugin archive
+  rm -rf tags/$TRAVIS_TAG/readme.txt
 
-# 11. Commit SVN tag
-svn ci  --message "Release $TRAVIS_TAG" \
+  #  9. Set commit message
+  SVN_COMMIT_MESSAGE="Release $TRAVIS_TAG"
+else
+  #  8. Just update trunk
+  #  9. Set commit message
+  SVN_COMMIT_MESSAGE="Update readme.txt"
+fi
+
+#  9. Commit SVN tag
+svn ci  --message $SVN_COMMIT_MESSAGE \
         --username $SVN_USERNAME \
         --password $SVN_PASSWORD \
         --non-interactive

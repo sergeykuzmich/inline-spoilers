@@ -2,7 +2,7 @@
 Contributors: sergeykuzmich
 Tags: shortcode, spoiler
 Requires at least: 3.9.1
-Tested up to: 5.0.0
+Tested up to: 5.0.3
 Requires PHP at least: 5.5
 Stable tag: 1.3.3-2
 License: GPLv3 or later
