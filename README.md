@@ -30,9 +30,10 @@ The plugin allows to create content spoilers with simple shortcode.
 
 ## Installation ##
 
-1. Upload folder `inline-spoiler` to the `/wp-content/plugins/` directory;
-1. Activate the plugin through the 'Plugins' menu in WordPress;
-1. Place shortcode (*Example:* `[spoiler title="Expand Me"]Spoiler content[/spoiler]`) in your content;
+1. Insall via WordPress Dashboard or upload `inline-spoiler.zip`;
+2. Activate the plugin through the 'Plugins' menu in WordPress;
+3. Use shortcode in your content;
+(*Example:* `[spoiler title="Expand Me"]Spoiler content[/spoiler]`)
 
 ## Frequently Asked Questions ##
 
