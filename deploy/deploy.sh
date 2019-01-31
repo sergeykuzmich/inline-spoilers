@@ -58,8 +58,8 @@ fi
 
 #  9. Commit SVN tag
 printf "9. Commit changes '$SVN_COMMIT_MESSAGE'...\n"
-cd trunk/
 svn ci  --message $SVN_COMMIT_MESSAGE \
         --username $SVN_USERNAME \
         --password $SVN_PASSWORD \
-        --non-interactive
+        --non-interactive \
+        --trust-server-cert
