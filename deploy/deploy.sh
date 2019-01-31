@@ -53,11 +53,11 @@ else
   #  8. Just update trunk
   printf "8. Just update trunk...\n"
   #  8.2 Set commit message
-  SVN_COMMIT_MESSAGE="Update readme.txt"
+  SVN_COMMIT_MESSAGE="Revise $TRAVIS_TAG"
 fi
 
 #  9. Commit SVN tag
-printf "9. Commit changes...\n"
+printf "9. Commit changes '$SVN_COMMIT_MESSAGE'...\n"
 cd trunk/
 svn ci  --message $SVN_COMMIT_MESSAGE \
         --username $SVN_USERNAME \
