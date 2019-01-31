@@ -13,9 +13,9 @@
 
 **Tested up to:** 5.0.3
 
-**Requires PHP at least:** 5.5
+**Requires PHP at least:** 5.6
 
-**Stable tag:** 1.3.3-2
+**Stable tag:** 1.3.4
 
 **License:** GPLv3 or later
 
@@ -61,5 +61,5 @@ To remove default title you can use
 
 ## Changelog ##
 
-### 1.3.3 ###
-* Fix https://wordpress.org/support/topic/notice-undefined-variable-extra-in-wp-content-plugins-inline-spoilers-inlin/
+### 1.3.4 ###
+* Refactor Travis CI deployment strategy
