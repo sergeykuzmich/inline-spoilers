@@ -42,4 +42,4 @@ To remove default title you can use
 == Changelog ==
 
 = 1.3.4 =
-* Refactor Travis CI deployment strategy
+* Refactor deployment strategy to support multiply revisions for the same plugin version
