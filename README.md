@@ -52,7 +52,38 @@ To remove default title you can use
 ### 1.3.7 ###
 * Refactor deployment strategy to support multiply revisions for the same plugin version
 
-## Upgrade Notice ##
+### 1.3.3 ###
+* Fix https://wordpress.org/support/topic/notice-undefined-variable-extra-in-wp-content-plugins-inline-spoilers-inlin/
 
-### 1.3.7 ###
-This version is completely backward compatible with the previous one.
+### 1.3.2 ###
+* Compatibility up to Wordpress 4.9.8
+
+### 1.3.1 ###
+* Always show spoiler contents while javascript is disabled
+
+### 1.2.8 ###
+* Setup automated deployment with TravisCI
+
+### 1.2.5 ###
+* Balance content html tags
+
+### 1.2.4 ###
+* Add WP_DEBUG mode
+* Fix incorrect paragraph tags inside the spoiler
+
+### 1.2.3 ###
+* JavaScript bug fix
+
+### 1.2.2 ###
+* Update spoiler default behaviour
+
+### 1.1.2 ###
+* Update Russian translation
+* Add attribute 'initial_state' to define default state of a spoiler `initial_state=(expanded|collapsed)`. Default state is 'collapsed'
+* Security updates
+
+### 1.0.2 ###
+* Update Russian translation
+
+### 1.0.1 ###
+* Release the plugin 
