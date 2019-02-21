@@ -1,9 +1,10 @@
 === Inline Spoilers ===
 Contributors: sergeykuzmich
+Donate link: https://www.buymeacoffee.com/sergeykuzmich
 Tags: shortcode, spoiler
 Requires at least: 3.9.1
 Tested up to: 5.0.3
-Requires PHP at least: 5.6
+Requires PHP: 5.6
 Stable tag: 1.3.7
 License: GPLv3 or later
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
@@ -44,3 +45,8 @@ To remove default title you can use
 
 = 1.3.7 =
 * Refactor deployment strategy to support multiply revisions for the same plugin version
+
+== Upgrade Notice ==
+
+= 1.3.7 =
+This version is completely backward compatible with the previous one.
