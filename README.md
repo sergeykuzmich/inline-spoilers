@@ -13,6 +13,8 @@ The plugin allows to create content spoilers with simple shortcode.
 
 ## Description ##
 
+The plugin allows to create content spoilers with simple shortcode.
+
 `Example: [spoiler title="Expand Me"]Spoiler content[/spoiler]`
 
 ## Installation ##
