@@ -1,4 +1,10 @@
 === Inline Spoilers ===
+
+[![Plugin Downloads](https://img.shields.io/wordpress/plugin/dt/inline-spoilers.svg)](https://wordpress.org/plugins/inline-spoilers/)
+[![Plugin Version](https://img.shields.io/wordpress/plugin/v/inline-spoilers.svg)](https://wordpress.org/plugins/inline-spoilers/)
+[![Wordpress Version](https://img.shields.io/wordpress/v/inline-spoilers.svg)](https://wordpress.org/plugins/inline-spoilers/)
+[![Plugin Rating](https://img.shields.io/wordpress/plugin/r/inline-spoilers.svg)](https://wordpress.org/plugins/inline-spoilers/)
+
 Contributors: sergeykuzmich
 Donate link: https://www.buymeacoffee.com/sergeykuzmich
 Tags: shortcode, spoiler
@@ -11,16 +17,11 @@ License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
 The plugin allows to create content spoilers with simple shortcode.
 
-[![Plugin Downloads](https://img.shields.io/wordpress/plugin/dt/inline-spoilers.svg)](https://wordpress.org/plugins/inline-spoilers/)
-[![Plugin Version](https://img.shields.io/wordpress/plugin/v/inline-spoilers.svg)](https://wordpress.org/plugins/inline-spoilers/)
-[![Wordpress Version](https://img.shields.io/wordpress/v/inline-spoilers.svg)](https://wordpress.org/plugins/inline-spoilers/)
-[![Plugin Rating](https://img.shields.io/wordpress/plugin/r/inline-spoilers.svg)](https://wordpress.org/plugins/inline-spoilers/)
-
 == Description ==
 
 The plugin allows to create content spoilers with simple shortcode.
 
-Example:
+Example:  
 `[spoiler title="Expand Me"]Spoiler content[/spoiler]`
 
 == Installation ==
