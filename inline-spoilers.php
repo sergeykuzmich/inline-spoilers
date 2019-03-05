@@ -95,3 +95,52 @@ function is_styles_scripts() {
 		wp_localize_script( 'inline-spoilers_script', 'title', $translation_array );
 	}
 }
+
+/**
+ * Registers all block assets so that they can be enqueued through Gutenberg in
+ * the corresponding context.
+ *
+ * @see https://wordpress.org/gutenberg/handbook/blocks/writing-your-first-block-type/#enqueuing-block-scripts
+ */
+function spoiler_block_init() {
+	// Skip block registration if Gutenberg is not enabled/merged.
+	if ( ! function_exists( 'register_block_type' ) ) {
+		return;
+	}
+	$dir = dirname( __FILE__ );
+
+	$index_js = 'block/index.js';
+	wp_register_script(
+		'block-editor',
+		plugins_url( $index_js, __FILE__ ),
+		array(
+			'wp-blocks',
+			'wp-i18n',
+			'wp-element',
+		),
+		filemtime( "$dir/$index_js" )
+	);
+
+	$editor_css = 'block/editor.css';
+	wp_register_style(
+		'block-editor',
+		plugins_url( $editor_css, __FILE__ ),
+		array(),
+		filemtime( "$dir/$editor_css" )
+	);
+
+	$style_css = 'block/style.css';
+	wp_register_style(
+		'block',
+		plugins_url( $style_css, __FILE__ ),
+		array(),
+		filemtime( "$dir/$style_css" )
+	);
+
+	register_block_type( 'inline-spoilers/block', array(
+		'editor_script' => 'block-editor',
+		'editor_style'  => 'block-editor',
+		'style'         => 'block',
+	) );
+}
+add_action( 'init', 'spoiler_block_init' );

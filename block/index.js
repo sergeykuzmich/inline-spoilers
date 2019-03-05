@@ -19,18 +19,18 @@
 	 * Every block starts by registering a new block type definition.
 	 * @see https://wordpress.org/gutenberg/handbook/block-api/
 	 */
-	registerBlockType( 'inline-spoilers/spoiler', {
+	registerBlockType( 'inline-spoilers/block', {
 		/**
 		 * This is the display title for your block, which can be translated with `i18n` functions.
 		 * The block inserter will show this name.
 		 */
-		title: __( 'Inline block', 'inline-spoilers' ),
+		title: __( 'Inline Spoilers', 'inline-spoilers' ),
 
 		/**
 		 * An icon property should be specified to make it easier to identify a block.
 		 * These can be any of WordPress’ Dashicons, or a custom svg element.
 		 */
-		icon: 'visibilit',
+		icon: 'visibility',
 
 		/**
 		 * Blocks are grouped into categories to help users browse and discover them.
@@ -43,7 +43,7 @@
 		 */
 		supports: {
 			// Removes support for an HTML mode.
-			html: false,
+			html: true,
 		},
 
 		/**
