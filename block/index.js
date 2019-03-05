@@ -1,4 +1,4 @@
-( function( wp ) {
+( function( wp, blocks, editor, i18n, element ) {
 	/**
 	 * Registers a new block provided a unique name and an object defining its behavior.
 	 * @see https://github.com/WordPress/gutenberg/tree/master/blocks#api
@@ -9,6 +9,8 @@
 	 * @see https://github.com/WordPress/gutenberg/tree/master/element#element
 	 */
 	var el = wp.element.createElement;
+
+	var RichText = editor.RichText;
 	/**
 	 * Retrieves the translation of text.
 	 * @see https://github.com/WordPress/gutenberg/tree/master/i18n#api
@@ -30,13 +32,22 @@
 		 * An icon property should be specified to make it easier to identify a block.
 		 * These can be any of WordPress’ Dashicons, or a custom svg element.
 		 */
-		icon: 'visibility',
+		icon: 'hidden',
 
 		/**
 		 * Blocks are grouped into categories to help users browse and discover them.
 		 * The categories provided by core are `common`, `embed`, `formatting`, `layout` and `widgets`.
 		 */
-		category: 'widgets',
+		category: 'formatting',
+
+		attributes: {
+			content: {
+				type: 'array',
+				source: 'children',
+				selector: 'p',
+				default: '[spoiler title="Expand Me"]Spoiler content[/spoiler]',
+			},
+		},
 
 		/**
 		 * Optional block extended support features.
@@ -54,11 +65,21 @@
 		 * @param {Object} [props] Properties passed from the editor.
 		 * @return {Element}       Element to render.
 		 */
+
 		edit: function( props ) {
+			var content = props.attributes.content;
+			function onChangeContent( newContent ) {
+				props.setAttributes( { content: newContent } );
+			}
+
 			return el(
-				'p',
-				{ className: props.className },
-				__( 'Hello from the editor!', 'inline-spoilers' )
+				RichText,
+				{
+					tagName: 'p',
+					className: props.className,
+					onChange: onChangeContent,
+					value: content,
+				}
 			);
 		},
 
@@ -69,14 +90,16 @@
 		 *
 		 * @return {Element}       Element to render.
 		 */
-		save: function() {
-			return el(
-				'p',
-				{},
-				__( 'Hello from the saved content!', 'inline-spoilers' )
-			);
-		}
+		save: function( props ) {
+			return el( RichText.Content, {
+				tagName: 'p', value: props.attributes.content,
+			} );
+		},
 	} );
 } )(
-	window.wp
+	window.wp,
+	window.wp.blocks,
+	window.wp.editor,
+	window.wp.i18n,
+	window.wp.element
 );
