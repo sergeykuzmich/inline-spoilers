@@ -9,7 +9,7 @@
 **Donate link:** https://www.buymeacoffee.com/sergeykuzmich  
 **Tags:** shortcode, spoiler  
 **Requires at least:** 3.9.1  
-**Tested up to:** 5.0.3  
+**Tested up to:** 5.1.0  
 **Requires PHP:** 5.6  
 **Stable tag:** 1.3.7  
 **License:** GPLv3 or later  
@@ -21,14 +21,14 @@ The plugin allows to create content spoilers with simple shortcode.
 
 The plugin allows to create content spoilers with simple shortcode.
 
-`Example: [spoiler title="Expand Me"]Spoiler content[/spoiler]`
+Example:  
+`[spoiler title="Expand Me"]Spoiler content[/spoiler]`
 
 ## Installation ##
 
 1. Insall via WordPress Dashboard or upload `inline-spoiler.zip`;
 2. Activate the plugin through the 'Plugins' menu in WordPress;
 3. Use shortcode in your content;
-(*Example:* `[spoiler title="Expand Me"]Spoiler content[/spoiler]`)
 
 ## Frequently Asked Questions ##
 
