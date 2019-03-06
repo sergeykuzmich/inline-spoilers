@@ -118,7 +118,8 @@ function spoiler_block_init() {
 			'wp-i18n',
 			'wp-element',
 		),
-		filemtime( "$dir/$index_js" )
+		filemtime( "$dir/$index_js" ),
+		true
 	);
 
 	$editor_css = 'block/editor.css';
@@ -137,10 +138,13 @@ function spoiler_block_init() {
 		filemtime( "$dir/$style_css" )
 	);
 
-	register_block_type( 'inline-spoilers/block', array(
-		'editor_script' => 'block-editor',
-		'editor_style'  => 'block-editor',
-		'style'         => 'block',
-	) );
+	register_block_type(
+		'inline-spoilers/block',
+		array(
+			'editor_script' => 'block-editor',
+			'editor_style'  => 'block-editor',
+			'style'         => 'block',
+		)
+	);
 }
 add_action( 'init', 'spoiler_block_init' );
