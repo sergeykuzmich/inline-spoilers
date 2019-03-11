@@ -33,7 +33,7 @@ function is_spoiler_shortcode( $atts, $content ) {
 
 	$attributes = shortcode_atts(
 		array(
-			'title'         => __( 'Spoiler', 'inline-spoilers' ),
+			'title'         => '&nbsp;',
 			'initial_state' => 'collapsed',
 		),
 		$atts,
