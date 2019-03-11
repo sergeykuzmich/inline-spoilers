@@ -1,17 +1,11 @@
 === Inline Spoilers ===
-
-[![Plugin Downloads](https://img.shields.io/wordpress/plugin/dt/inline-spoilers.svg)](https://wordpress.org/plugins/inline-spoilers/)
-[![Plugin Version](https://img.shields.io/wordpress/plugin/v/inline-spoilers.svg)](https://wordpress.org/plugins/inline-spoilers/)
-[![Wordpress Version](https://img.shields.io/wordpress/v/inline-spoilers.svg)](https://wordpress.org/plugins/inline-spoilers/)
-[![Plugin Rating](https://img.shields.io/wordpress/plugin/r/inline-spoilers.svg)](https://wordpress.org/plugins/inline-spoilers/)
-
 Contributors: sergeykuzmich
 Donate link: https://www.buymeacoffee.com/sergeykuzmich
 Tags: shortcode, spoiler
 Requires at least: 3.9.1
 Tested up to: 5.1.0
 Requires PHP: 5.6
-Stable tag: 1.3.7
+Stable tag: 1.3.8
 License: GPLv3 or later
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -21,8 +15,9 @@ The plugin allows to create content spoilers with simple shortcode.
 
 The plugin allows to create content spoilers with simple shortcode.
 
-Example:  
-`[spoiler title="Expand Me"]Spoiler content[/spoiler]`
+`
+[spoiler title="Expand Me"]Spoiler content[/spoiler]
+`
 
 == Installation ==
 
@@ -35,14 +30,6 @@ Example:
 = How can I customize design of the spoiler? =
 To change layout of a spoiler, please, edit `styles/inline-spoilers-styles.css` file.
 
-= How to remove text from the title? =
-To remove default title you can use
-`
-[spoiler title="&nbsp;"]
-...
-[/spoiler]
-`
-
 == Screenshots ==
 
 1. Spoiler shortcode `[spoiler][/spoiler]`
@@ -50,6 +37,9 @@ To remove default title you can use
 3. Expanded spoiler
 
 == Changelog ==
+
+= 1.3.8 =
+* Allow empty spoiler title by default
 
 = 1.3.7 =
 * Refactor deployment strategy to support multiply revisions for the same plugin version
