@@ -1,9 +1,11 @@
 # Inline Spoilers #
 
-[![Plugin Downloads](https://img.shields.io/wordpress/plugin/dt/inline-spoilers.svg)](https://wordpress.org/plugins/inline-spoilers/)
 [![Plugin Version](https://img.shields.io/wordpress/plugin/v/inline-spoilers.svg)](https://wordpress.org/plugins/inline-spoilers/)
-[![Wordpress Version](https://img.shields.io/wordpress/v/inline-spoilers.svg)](https://wordpress.org/plugins/inline-spoilers/)
+[![Plugin Active Installs](https://img.shields.io/wordpress/plugin/installs/inline-spoilers.svg)](https://wordpress.org/plugins/inline-spoilers/)
+[![Plugin Downloads](https://img.shields.io/wordpress/plugin/dt/inline-spoilers.svg)](https://wordpress.org/plugins/inline-spoilers/)
 [![Plugin Rating](https://img.shields.io/wordpress/plugin/r/inline-spoilers.svg)](https://wordpress.org/plugins/inline-spoilers/)
+[![Wordpress Version](https://img.shields.io/wordpress/v/inline-spoilers.svg)](https://wordpress.org/plugins/inline-spoilers/)
+
 
 **Contributors:** sergeykuzmich  
 **Donate link:** https://www.buymeacoffee.com/sergeykuzmich  
