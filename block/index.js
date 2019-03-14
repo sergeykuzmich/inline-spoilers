@@ -20,31 +20,27 @@
     edit: function( props ) {
       var { title, content } = props.attributes;
 
-      function onChangeTitle(event) {
-        props.setAttributes({title: event.target.value})
-      }
-
-      function onChangeContent(value) {
-        props.setAttributes({content: value});
-      }
-
       return (
         el( 'div', { className: props.className },
-         el("div", { class: "spoiler-title" },
-          el("label", null, "Title"),
-          el("input", {
-            type: "text",
-            placeholder: __( 'Spoiler', 'inline-spoilers' ),
-            value: title,
-            class: "spoiler-title",
-            onChange: onChangeTitle
-          })
-        ),
+          el("div", { class: "spoiler-title" },
+            el("label", null, "Title"),
+            el("input", {
+              type: "text",
+              placeholder: __( 'Spoiler', 'inline-spoilers' ),
+              value: title,
+              class: "spoiler-title",
+              onChange: function(event) {
+                props.setAttributes({title: event.target.value})
+              }
+            })
+          ),
           el( RichText, {
             placeholder: __( 'Spoiler content…', 'inline-spoilers' ),
             value: content,
-            onChange: onChangeContent
-          } )
+            onChange: function(value) {
+              props.setAttributes({content: value});
+            }
+          })
         )
       );
     },
