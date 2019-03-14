@@ -38,17 +38,19 @@ function is_spoiler_shortcode( $atts, $content ) {
 	$initial_state = esc_attr( $attributes['initial_state'] );
 	$title         = esc_attr( $attributes['title'] );
 
-	$props = ( $initial_state === 'collapsed' ) ? [
-								'head_class' => ' collapsed',
-								'body_atts'  => 'style="display: none;"',
-								'head_hint'  => __( 'Expand', 'inline-spoilers' )
-							] : [
+	$props = ( 'collapsed' === $initial_state )
+							? [
 								'head_class' => ' expanded',
 								'body_atts'  => 'style="display: block;"',
-								'head_hint'  => __( 'Collapse', 'inline-spoilers' )
+								'head_hint'  => __( 'Collapse', 'inline-spoilers' ),
+							]
+							: [
+								'head_class' => ' collapsed',
+								'body_atts'  => 'style="display: none;"',
+								'head_hint'  => __( 'Expand', 'inline-spoilers' ),
 							];
 
-	$head  = '<div class="spoiler-head no-icon ' . $props['head_class'] . '" title="' . $props['head_hint'] . '">' . $title . '</div>';
+	$head = '<div class="spoiler-head no-icon ' . $props['head_class'] . '" title="' . $props['head_hint'] . '">' . $title . '</div>';
 
 	$body  = '<div class="spoiler-body" ' . $props['body_atts'] . '>';
 	$body .= balanceTags( do_shortcode( $content ), true );
@@ -60,8 +62,8 @@ function is_spoiler_shortcode( $atts, $content ) {
 
 	$output  = '<div class="spoiler-wrap">';
 	$output .= $head . $body;
-	$output .= ( $initial_state === 'collapsed' )
-								? '<noscript>' . $extra . '</noscript>' : '';
+	$output .= ( 'collapsed' === $initial_state )
+								? '' : '<noscript>' . $extra . '</noscript>';
 	$output .= '</div>';
 
 	return $output;
@@ -89,7 +91,7 @@ function spoiler_block_init() {
 		return;
 	}
 
-	wp_register_script( 'block-editor', plugins_url( 'block/index.js', __FILE__ ), array( 'wp-blocks', 'wp-i18n', 'wp-element', ), '1.0', true );
+	wp_register_script( 'block-editor', plugins_url( 'block/index.js', __FILE__ ), array( 'wp-blocks', 'wp-i18n', 'wp-element' ), '1.0', true );
 	wp_register_style( 'block-editor', plugins_url( 'block/editor.css', __FILE__ ), array(), '1.0' );
 	wp_register_style( 'block', plugins_url( 'block/style.css', __FILE__ ), array(), '1.0' );
 
