@@ -26,11 +26,6 @@ function is_load_textdomain() {
 
 add_shortcode( 'spoiler', 'is_spoiler_shortcode' );
 function is_spoiler_shortcode( $atts, $content ) {
-	$output = '';
-	$head   = '';
-	$body   = '';
-	$extra  = '';
-
 	$attributes = shortcode_atts(
 		array(
 			'title'         => '&nbsp;',
@@ -40,38 +35,33 @@ function is_spoiler_shortcode( $atts, $content ) {
 		'spoiler'
 	);
 
-	$title         = $attributes['title'];
-	$initial_state = $attributes['initial_state'];
+	$initial_state = esc_attr( $attributes['initial_state'] );
+	$title         = esc_attr( $attributes['title'] );
 
-	$title      = esc_attr( $title );
-	$head_class = ( esc_attr( $initial_state ) === 'collapsed' )
-										? ' collapsed'
-										: ' expanded';
+	$props = ( $initial_state === 'collapsed' ) ? [
+								'head_class' => ' collapsed',
+								'body_atts'  => 'style="display: none;"',
+								'head_hint'  => __( 'Expand', 'inline-spoilers' )
+							] : [
+								'head_class' => ' expanded',
+								'body_atts'  => 'style="display: block;"',
+								'head_hint'  => __( 'Collapse', 'inline-spoilers' )
+							];
 
-	$body_atts = ( esc_attr( $initial_state ) === 'collapsed' ) ? 'style="display: none;"' : 'style="display: block;"';
+	$head  = '<div class="spoiler-head no-icon ' . $props['head_class'] . '" title="' . $props['head_hint'] . '">' . $title . '</div>';
 
-	$head_hint = ( esc_attr( $initial_state ) === 'collapsed' )
-									? __( 'Expand', 'inline-spoilers' )
-									: __( 'Collapse', 'inline-spoilers' );
-
-	$head .= '<div class="spoiler-head no-icon ' . $head_class . '" title="' . $head_hint . '">';
-	$head .= $title;
-	$head .= '</div>';
-
-	$body .= '<div class="spoiler-body" ' . $body_atts . '>';
+	$body  = '<div class="spoiler-body" ' . $props['body_atts'] . '>';
 	$body .= balanceTags( do_shortcode( $content ), true );
 	$body .= '</div>';
 
-	$extra .= '<div class="spoiler-body">';
+	$extra  = '<div class="spoiler-body">';
 	$extra .= balanceTags( do_shortcode( $content ), true );
 	$extra .= '</div>';
 
-	$output .= '<div class="spoiler-wrap">';
-	$output .= $head;
-	$output .= $body;
-	$output .= '<noscript>';
-	$output .= ( esc_attr( $initial_state ) === 'collapsed' ) ? $extra : '';
-	$output .= '</noscript>';
+	$output  = '<div class="spoiler-wrap">';
+	$output .= $head . $body;
+	$output .= ( $initial_state === 'collapsed' )
+								? '<noscript>' . $extra . '</noscript>' : '';
 	$output .= '</div>';
 
 	return $output;
@@ -79,64 +69,29 @@ function is_spoiler_shortcode( $atts, $content ) {
 
 add_action( 'wp_enqueue_scripts', 'is_styles_scripts' );
 function is_styles_scripts() {
-	global $post;
 	wp_register_style( 'inline-spoilers_style', plugins_url( 'styles/inline-spoilers-default.css', __FILE__ ), null, '1.0' );
 	wp_register_script( 'inline-spoilers_script', plugins_url( 'scripts/inline-spoilers-scripts.js', __FILE__ ), array( 'jquery' ), '1.0', true );
 
-	if ( has_shortcode( $post->post_content, 'spoiler' ) ) {
-		wp_enqueue_style( 'inline-spoilers_style' );
-		wp_enqueue_script( 'inline-spoilers_script' );
+	wp_enqueue_style( 'inline-spoilers_style' );
+	wp_enqueue_script( 'inline-spoilers_script' );
 
-		$translation_array = array(
-			'expand'   => __( 'Expand', 'inline-spoilers' ),
-			'collapse' => __( 'Collapse', 'inline-spoilers' ),
-		);
+	$translation_array = array(
+		'expand'   => __( 'Expand', 'inline-spoilers' ),
+		'collapse' => __( 'Collapse', 'inline-spoilers' ),
+	);
 
-		wp_localize_script( 'inline-spoilers_script', 'title', $translation_array );
-	}
+	wp_localize_script( 'inline-spoilers_script', 'title', $translation_array );
 }
 
-/**
- * Registers all block assets so that they can be enqueued through Gutenberg in
- * the corresponding context.
- *
- * @see https://wordpress.org/gutenberg/handbook/blocks/writing-your-first-block-type/#enqueuing-block-scripts
- */
+add_action( 'init', 'spoiler_block_init' );
 function spoiler_block_init() {
-	// Skip block registration if Gutenberg is not enabled/merged.
 	if ( ! function_exists( 'register_block_type' ) ) {
 		return;
 	}
-	$dir = dirname( __FILE__ );
 
-	$index_js = 'block/index.js';
-	wp_register_script(
-		'block-editor',
-		plugins_url( $index_js, __FILE__ ),
-		array(
-			'wp-blocks',
-			'wp-i18n',
-			'wp-element',
-		),
-		filemtime( "$dir/$index_js" ),
-		true
-	);
-
-	$editor_css = 'block/editor.css';
-	wp_register_style(
-		'block-editor',
-		plugins_url( $editor_css, __FILE__ ),
-		array(),
-		filemtime( "$dir/$editor_css" )
-	);
-
-	$style_css = 'block/style.css';
-	wp_register_style(
-		'block',
-		plugins_url( $style_css, __FILE__ ),
-		array(),
-		filemtime( "$dir/$style_css" )
-	);
+	wp_register_script( 'block-editor', plugins_url( 'block/index.js', __FILE__ ), array( 'wp-blocks', 'wp-i18n', 'wp-element', ), '1.0', true );
+	wp_register_style( 'block-editor', plugins_url( 'block/editor.css', __FILE__ ), array(), '1.0' );
+	wp_register_style( 'block', plugins_url( 'block/style.css', __FILE__ ), array(), '1.0' );
 
 	register_block_type(
 		'inline-spoilers/block',
@@ -147,4 +102,3 @@ function spoiler_block_init() {
 		)
 	);
 }
-add_action( 'init', 'spoiler_block_init' );
