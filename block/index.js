@@ -3,17 +3,20 @@
   var el = element.createElement;
   var RichText = editor.RichText;
 
-  blocks.registerBlockType( 'inline-spoilers/blocks', {
+  blocks.registerBlockType( 'inline-spoilers/block', {
     title: __( 'Inline Spoiler', 'inline-spoilers' ),
     icon: 'hidden',
     category: 'formatting',
     attributes: {
       title: {
-        type: 'string'
+        type: 'array',
+        selector: '.spoiler-head',
+        source: 'children'
       },
       content: {
-        type: 'string',
-        source: 'html'
+        type: 'array',
+        selector: '.spoiler-body',
+        source: 'children'
       },
     },
 
@@ -26,7 +29,7 @@
             el("label", null, "Title"),
             el("input", {
               type: "text",
-              placeholder: __( 'Spoiler', 'inline-spoilers' ),
+              placeholder: __( 'Expand me...', 'inline-spoilers' ),
               value: title,
               class: "spoiler-title",
               onChange: function(event) {
@@ -49,27 +52,15 @@
       var title = props.attributes.title;
       var content = props.attributes.content;
 
-      //<div class="spoiler-wrap">
-      //  <div class="spoiler-head collapsed" title="Expand">asdf</div>
-      //  <div class="spoiler-body" style="display: none;">
-      //    mem<strong>eme</strong>me
-      //  </div>
-      //  <noscript><div class="spoiler-body">mem<strong>eme</strong>me</div></noscript>
-      //</div>
-
       return (
         el("div", null,
           el("div", { class: "spoiler-wrap" },
             el("div", { class: "spoiler-head collapsed", title: "Expand" },
               title
             ),
-            el("div", { class: "spoiler-body", style: "display: none;" },
-              el( RichText.Content, { tagName: 'div', value: content })
-            ),
+            el( RichText.Content, { tagName: 'div', className: 'spoiler-body', style: {display: 'none'}, value: content } ),
             el("noscript", null,
-              el("div", { class: "spoiler-body" },
-                el( RichText.Content, { tagName: 'div', value: content })
-              )
+              el( RichText.Content, { tagName: 'div', className: 'spoiler-body', value: content } )
             )
           )
         )

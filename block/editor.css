@@ -19,13 +19,15 @@
     font-family: -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif;
 }
 
-.wp-block-inline-spoilers-block .spoiler-title label{
-	display: flex;
+.wp-block-inline-spoilers-block .spoiler-title label {
+	display: block;
     align-items: center;
     margin-right: 8px;
+    overflow: hidden;
     white-space: nowrap;
-    font-weight: 600;
-    flex-shrink: 0;
+    text-indent: 100%;
+    background: url(data:image/gif;base64,R0lGODlhCQAJAMQeAOLt+ff8//z+/4CRxo2by7vF6a254X6PxICQw87a74CQxuXo84CQxM/b7/H6/v7+/oGRxouayoGSxv7+/8LN7IqZyv7//4KSxur0/MrV74OTx9Ld8trl9gwMDP///wAAACH5BAEAAB4ALAAAAAAJAAkAAAU4oFcpwzFAkWgUVLZxCQGxLgdgGtS+t6NJmY5QOEFcNo/kZGLRXGwYR0DQjDSiU8uCIJJIGJdLKgQAOw==) no-repeat left center;
+    width: 10px;
 }
 
 .wp-block-inline-spoilers-block .spoiler-title input {
