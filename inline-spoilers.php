@@ -71,18 +71,22 @@ function is_spoiler_shortcode( $atts, $content ) {
 
 add_action( 'wp_enqueue_scripts', 'is_styles_scripts' );
 function is_styles_scripts() {
+	global $post;
+
 	wp_register_style( 'inline-spoilers_style', plugins_url( 'styles/inline-spoilers-default.css', __FILE__ ), null, '1.4.0' );
 	wp_register_script( 'inline-spoilers_script', plugins_url( 'scripts/inline-spoilers-scripts.js', __FILE__ ), array( 'jquery' ), '1.4.0', true );
 
-	wp_enqueue_style( 'inline-spoilers_style' );
-	wp_enqueue_script( 'inline-spoilers_script' );
+	if ( has_shortcode( $post->post_content, 'spoiler' ) || has_block('inline-spoilers/block', $post) ) {
+		wp_enqueue_style( 'inline-spoilers_style' );
+		wp_enqueue_script( 'inline-spoilers_script' );
 
-	$translation_array = array(
-		'expand'   => __( 'Expand', 'inline-spoilers' ),
-		'collapse' => __( 'Collapse', 'inline-spoilers' ),
-	);
+		$translation_array = array(
+			'expand'   => __( 'Expand', 'inline-spoilers' ),
+			'collapse' => __( 'Collapse', 'inline-spoilers' ),
+		);
 
-	wp_localize_script( 'inline-spoilers_script', 'title', $translation_array );
+		wp_localize_script( 'inline-spoilers_script', 'title', $translation_array );
+	}
 }
 
 add_action( 'init', 'spoiler_block_init' );
