@@ -29,7 +29,7 @@
             el("label", null, "Title"),
             el("input", {
               type: "text",
-              placeholder: __( 'Expand me...', 'inline-spoilers' ),
+              placeholder: __( 'Spoiler', 'inline-spoilers' ),
               value: title,
               class: "spoiler-title",
               onChange: function(event) {
@@ -38,7 +38,7 @@
             })
           ),
           el( RichText, {
-            placeholder: __( 'Spoiler content…', 'inline-spoilers' ),
+            placeholder: __( 'Spoiler content', 'inline-spoilers' ),
             value: content,
             onChange: function(value) {
               props.setAttributes({content: value});
