@@ -93,14 +93,12 @@ function spoiler_block_init() {
 
 	wp_register_script( 'block-editor', plugins_url( 'block/index.js', __FILE__ ), array( 'wp-blocks', 'wp-i18n', 'wp-element' ), '1.0', true );
 	wp_register_style( 'block-editor', plugins_url( 'block/editor.css', __FILE__ ), array(), '1.0' );
-	wp_register_style( 'block', plugins_url( 'block/style.css', __FILE__ ), array(), '1.0' );
 
 	register_block_type(
 		'inline-spoilers/block',
 		array(
 			'editor_script' => 'block-editor',
 			'editor_style'  => 'block-editor',
-			'style'         => 'block',
 		)
 	);
 }
