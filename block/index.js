@@ -1,3 +1,7 @@
+/**
+ * @package Inline Spoilers
+ */
+
 ( function( blocks, editor, i18n, element, components, _ ) {
   var __ = i18n.__;
   var el = element.createElement;
