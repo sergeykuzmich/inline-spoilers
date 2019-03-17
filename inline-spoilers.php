@@ -76,7 +76,7 @@ function is_styles_scripts() {
 	wp_register_style( 'inline-spoilers_style', plugins_url( 'styles/inline-spoilers-default.css', __FILE__ ), null, '1.4.0' );
 	wp_register_script( 'inline-spoilers_script', plugins_url( 'scripts/inline-spoilers-scripts.js', __FILE__ ), array( 'jquery' ), '1.4.0', true );
 
-	if ( has_shortcode( $post->post_content, 'spoiler' ) || has_block('inline-spoilers/block', $post) ) {
+	if ( has_shortcode( $post->post_content, 'spoiler' ) || has_block( 'inline-spoilers/block', $post ) ) {
 		wp_enqueue_style( 'inline-spoilers_style' );
 		wp_enqueue_script( 'inline-spoilers_script' );
 
@@ -102,7 +102,7 @@ function spoiler_block_init() {
 		'inline-spoilers/block',
 		array(
 			'editor_script' => 'block-editor',
-			'editor_style'  => 'block-editor'
+			'editor_style'  => 'block-editor',
 		)
 	);
 }
