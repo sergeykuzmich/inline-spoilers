@@ -8,9 +8,8 @@ div.spoiler-wrap {
     border-left-width: 2px;
     clear: both;
     display: block;
-    margin: 6px auto;
+    margin: 6px 0;
     padding: 0;
-    width: 95%;
 }
 
 div.spoiler-head {
