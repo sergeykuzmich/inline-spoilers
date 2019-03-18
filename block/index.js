@@ -22,10 +22,14 @@
         selector: '.spoiler-body',
         source: 'children'
       },
+      state: {
+        type: 'boolean',
+        default: false
+      }
     },
 
     edit: function( props ) {
-      var { title, content } = props.attributes;
+      var { title, content, state } = props.attributes;
 
       return (
         el( 'div', { className: props.className },
@@ -47,7 +51,13 @@
             onChange: function(value) {
               props.setAttributes({content: value});
             }
-          })
+          }),
+          el( wp.components.ToggleControl, {
+            checked: state,
+            onChange: function(checked) {
+              props.setAttributes({state: !state});
+            }
+          }),
         )
       );
     },
