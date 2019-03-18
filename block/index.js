@@ -65,6 +65,7 @@
     save: function( props ) {
       var title = props.attributes.title;
       var content = props.attributes.content;
+      var state = props.attributes.state;
 
       return (
         el("div", null,
@@ -72,7 +73,7 @@
             el("div", { class: "spoiler-head collapsed", title: "Expand" },
               title
             ),
-            el( RichText.Content, { tagName: 'div', className: 'spoiler-body', style: {display: 'none'}, value: content } ),
+            el( RichText.Content, { tagName: 'div', className: 'spoiler-body', style: {display: ((state) ? 'block' : 'none')}, value: content } ),
             el("noscript", null,
               el( RichText.Content, { tagName: 'div', className: 'spoiler-body', value: content } )
             )
