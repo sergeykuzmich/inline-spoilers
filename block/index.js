@@ -49,12 +49,12 @@
               }
             })
           ),
-            el( wp.components.ToggleControl, {
-              checked: state,
-              onChange: function(checked) {
-                props.setAttributes({state: !state});
-              }
-            }),
+          el( wp.components.ToggleControl, {
+            checked: state,
+            onChange: function(checked) {
+              props.setAttributes({state: !state});
+            }
+          }),
         )
       );
     },
