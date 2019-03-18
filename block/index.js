@@ -29,25 +29,22 @@
 
       return (
         el( 'div', { className: props.className },
-          el("div", { class: "spoiler-title" },
-            el("label", null, "Title"),
-            el("input", {
-              type: "text",
-              placeholder: __( 'Spoiler', 'inline-spoilers' ),
-              value: title,
-              class: "spoiler-title",
-              onChange: function(event) {
-                props.setAttributes({title: event.target.value})
+          el("div", {
+            class: "spoiler-title",
+            contenteditable: "true",
+            onBlur: function(event) {
+              props.setAttributes({title: event.target.innerHTML})
+            }
+          }, title ),
+          el("div", { class: "spoiler-content" },
+            el( RichText, {
+              placeholder: __( 'Spoiler content', 'inline-spoilers' ),
+              value: content,
+              onChange: function(value) {
+                props.setAttributes({content: value});
               }
             })
           ),
-          el( RichText, {
-            placeholder: __( 'Spoiler content', 'inline-spoilers' ),
-            value: content,
-            onChange: function(value) {
-              props.setAttributes({content: value});
-            }
-          })
         )
       );
     },
