@@ -5,7 +5,8 @@
 ( function( blocks, editor, i18n, element, components, _ ) {
   var __ = i18n.__;
   var el = element.createElement;
-  var RichText = editor.RichText;
+
+  const { RichText, BlockControls, BlockFormatControls, AlignmentToolbar } = wp.editor;
 
   var visibleTitle = false;
 
@@ -37,8 +38,26 @@
         visibleTitle = title;
       }
 
+      function onClickShortcodeButton (checked) {
+          props.setAttributes({state: !state});
+      }
+
       return (
         el( 'div', { className: props.className },
+          el( BlockControls, {
+            key: 'controls',
+            controls: [
+              {
+                icon: 'visibility',
+                title: __( 'Show/hide spoiler content' ),
+                onClick: onClickShortcodeButton,
+                isActive: state,
+                onChange: function(checked) {
+                  props.setAttributes({state: !state});
+                }
+              }
+            ]
+          }),
           el("div", {
             class: "spoiler-title",
             contenteditable: "true",
@@ -55,12 +74,6 @@
               }
             })
           ),
-          el( wp.components.ToggleControl, {
-            checked: state,
-            onChange: function(checked) {
-              props.setAttributes({state: !state});
-            }
-          }),
         )
       );
     },
@@ -73,7 +86,7 @@
       return (
         el("div", null,
           el("div", { class: "spoiler-wrap" },
-            el("div", { class: "spoiler-head collapsed", title: "Expand" },
+            el("div", { class: ((state) ? 'spoiler-head expanded' : 'spoiler-head collapsed'), title: "Expand" },
               title
             ),
             el( RichText.Content, { tagName: 'div', className: 'spoiler-body', style: {display: ((state) ? 'block' : 'none')}, value: content } ),
