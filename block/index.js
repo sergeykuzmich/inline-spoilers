@@ -7,6 +7,8 @@
   var el = element.createElement;
   var RichText = editor.RichText;
 
+  var visibleTitle = false;
+
   blocks.registerBlockType( 'inline-spoilers/block', {
     title: __( 'Inline Spoiler', 'inline-spoilers' ),
     icon: 'hidden',
@@ -31,15 +33,19 @@
     edit: function( props ) {
       var { title, content, state } = props.attributes;
 
+      if(!visibleTitle) {
+        visibleTitle = title;
+      }
+
       return (
         el( 'div', { className: props.className },
           el("div", {
             class: "spoiler-title",
             contenteditable: "true",
-            onBlur: function(event) {
+            onInput: function(event) {
               props.setAttributes({title: event.target.innerHTML})
             }
-          }, title ),
+          }, visibleTitle ),
           el("div", { class: "spoiler-content" },
             el( RichText, {
               placeholder: __( 'Spoiler content', 'inline-spoilers' ),
