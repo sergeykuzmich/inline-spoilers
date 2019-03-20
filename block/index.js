@@ -28,11 +28,14 @@
       state: {
         type: 'boolean',
         default: false
-      }
+      },
+      alignment: {
+          type: 'string',
+        },
     },
 
     edit: function( props ) {
-      var { title, content, state } = props.attributes;
+      var { title, content, state, alignment } = props.attributes;
 
       if(!visibleTitle) {
         visibleTitle = title;
@@ -41,6 +44,10 @@
       function onClickShortcodeButton (checked) {
           props.setAttributes({state: !state});
       }
+
+      function onChangeAlignment( updatedAlignment ) {
+          props.setAttributes( { alignment: updatedAlignment } );
+        }
 
       return (
         el( 'div', { className: props.className },
@@ -57,7 +64,15 @@
                 }
               }
             ]
-          }),
+          },
+          el(
+              AlignmentToolbar,
+              {
+                value: alignment,
+                onChange: onChangeAlignment
+              }
+            )
+          ),
           el("div", {
             class: "spoiler-title",
             contenteditable: "true",
@@ -79,9 +94,7 @@
     },
 
     save: function( props ) {
-      var title = props.attributes.title;
-      var content = props.attributes.content;
-      var state = props.attributes.state;
+      var { title, content, state, alignment } = props.attributes;
 
       return (
         el("div", null,
@@ -89,7 +102,7 @@
             el("div", { class: ((state) ? 'spoiler-head expanded' : 'spoiler-head collapsed'), title: "Expand" },
               title
             ),
-            el( RichText.Content, { tagName: 'div', className: 'spoiler-body', style: {display: ((state) ? 'block' : 'none')}, value: content } ),
+            el( RichText.Content, { tagName: 'div', className: 'spoiler-body', style: { display: ((state) ? 'block' : 'none'), textAlign: alignment }, value: content } ),
             el("noscript", null,
               el( RichText.Content, { tagName: 'div', className: 'spoiler-body', value: content } )
             )
