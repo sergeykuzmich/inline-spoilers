@@ -6,7 +6,7 @@
   var __ = i18n.__;
   var el = element.createElement;
 
-  const { RichText, BlockControls, BlockFormatControls, AlignmentToolbar } = wp.editor;
+  const { RichText, BlockControls, AlignmentToolbar } = wp.editor;
 
   var visibleTitle = false;
 
@@ -30,8 +30,8 @@
         default: false
       },
       alignment: {
-          type: 'string',
-        },
+        type: 'string'
+      },
     },
 
     edit: function( props ) {
@@ -41,14 +41,6 @@
         visibleTitle = title;
       }
 
-      function onClickShortcodeButton (checked) {
-          props.setAttributes({state: !state});
-      }
-
-      function onChangeAlignment( updatedAlignment ) {
-          props.setAttributes( { alignment: updatedAlignment } );
-        }
-
       return (
         el( 'div', { className: props.className },
           el( BlockControls, {
@@ -56,36 +48,36 @@
             controls: [
               {
                 icon: 'visibility',
-                title: __( 'Show/hide spoiler content' ),
-                onClick: onClickShortcodeButton,
-                isActive: state,
-                onChange: function(checked) {
-                  props.setAttributes({state: !state});
-                }
+                title: __( 'Show/hide spoiler content', 'inline-spoilers' ),
+                onClick: function( updateState ) {
+                  props.setAttributes( { state: !state } );
+                },
+                isActive: state
               }
             ]
           },
-          el(
-              AlignmentToolbar,
-              {
+          el( AlignmentToolbar, {
                 value: alignment,
-                onChange: onChangeAlignment
+                onChange: function( updatedAlignment ) {
+                  props.setAttributes( { alignment: updatedAlignment } )
+                }
               }
-            )
+            ),
           ),
-          el("div", {
-            class: "spoiler-title",
-            contenteditable: "true",
-            onInput: function(event) {
-              props.setAttributes({title: event.target.innerHTML})
+          el( 'div', {
+            class: 'spoiler-title',
+            contenteditable: 'true',
+            onInput: function( event ) {
+              props.setAttributes( { title: event.target.innerHTML } )
             }
           }, visibleTitle ),
-          el("div", { class: "spoiler-content" },
+          el( 'div', { class: 'spoiler-content' },
             el( RichText, {
               placeholder: __( 'Spoiler content', 'inline-spoilers' ),
               value: content,
-              onChange: function(value) {
-                props.setAttributes({content: value});
+              style: { textAlign: alignment },
+              onChange: function( value ) {
+                props.setAttributes( { content: value } );
               }
             })
           ),
@@ -97,13 +89,13 @@
       var { title, content, state, alignment } = props.attributes;
 
       return (
-        el("div", null,
-          el("div", { class: "spoiler-wrap" },
-            el("div", { class: ((state) ? 'spoiler-head expanded' : 'spoiler-head collapsed'), title: "Expand" },
+        el( 'div', null,
+          el( 'div', { class: 'spoiler-wrap' },
+            el( 'div', { class: ((state) ? 'spoiler-head expanded' : 'spoiler-head collapsed'), title: 'Expand' },
               title
             ),
             el( RichText.Content, { tagName: 'div', className: 'spoiler-body', style: { display: ((state) ? 'block' : 'none'), textAlign: alignment }, value: content } ),
-            el("noscript", null,
+            el( 'noscript', null,
               el( RichText.Content, { tagName: 'div', className: 'spoiler-body', value: content } )
             )
           )
