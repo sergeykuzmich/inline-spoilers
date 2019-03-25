@@ -6,9 +6,9 @@
   var __ = i18n.__;
   var el = element.createElement;
 
-  const { RichText, BlockControls, AlignmentToolbar } = wp.editor;
+  const { RichText, BlockControls } = wp.editor;
 
-  var visibleTitle = false;
+  var visibleTitle = {};
 
   blocks.registerBlockType( 'inline-spoilers/block', {
     title: __( 'Inline Spoiler', 'inline-spoilers' ),
@@ -28,17 +28,15 @@
       state: {
         type: 'boolean',
         default: false
-      },
-      alignment: {
-        type: 'string'
-      },
+      }
     },
 
     edit: function( props ) {
-      var { title, content, state, alignment } = props.attributes;
+      var clientId = props.clientId;
+      var { title, content, state } = props.attributes;
 
-      if(!visibleTitle) {
-        visibleTitle = title;
+      if(!visibleTitle[clientId]) {
+        visibleTitle[clientId] = title;
       }
 
       return (
@@ -55,27 +53,18 @@
                 isActive: state
               }
             ]
-          },
-          el( AlignmentToolbar, {
-                value: alignment,
-                onChange: function( updatedAlignment ) {
-                  props.setAttributes( { alignment: updatedAlignment } )
-                }
-              }
-            ),
-          ),
+          }),
           el( 'div', {
             class: 'spoiler-title',
             contenteditable: 'true',
             onInput: function( event ) {
               props.setAttributes( { title: event.target.innerHTML } )
             }
-          }, visibleTitle ),
+          }, visibleTitle[clientId] ),
           el( 'div', { class: 'spoiler-content' },
             el( RichText, {
               placeholder: __( 'Spoiler content', 'inline-spoilers' ),
               value: content,
-              style: { textAlign: alignment },
               onChange: function( value ) {
                 props.setAttributes( { content: value } );
               }
@@ -86,7 +75,7 @@
     },
 
     save: function( props ) {
-      var { title, content, state, alignment } = props.attributes;
+      var { title, content, state } = props.attributes;
 
       return (
         el( 'div', null,
@@ -94,7 +83,7 @@
             el( 'div', { class: ((state) ? 'spoiler-head expanded' : 'spoiler-head collapsed'), title: 'Expand' },
               title
             ),
-            el( RichText.Content, { tagName: 'div', className: 'spoiler-body', style: { display: ((state) ? 'block' : 'none'), textAlign: alignment }, value: content } ),
+            el( RichText.Content, { tagName: 'div', className: 'spoiler-body', style: { display: ((state) ? 'block' : 'none') }, value: content } ),
             el( 'noscript', null,
               el( RichText.Content, { tagName: 'div', className: 'spoiler-body', value: content } )
             )
