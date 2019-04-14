@@ -4,9 +4,9 @@
 
 ( function( blocks, editor, i18n, element, components, _ ) {
   var __ = i18n.__;
-  var el = element.createElement;
+  var element = element.createElement;
 
-  const { RichText, BlockControls } = wp.editor;
+  const { RichText } = wp.editor;
 
   var visibleTitle = {};
 
@@ -24,45 +24,30 @@
         type: 'array',
         selector: '.spoiler-body',
         source: 'children'
-      },
-      state: {
-        type: 'boolean',
-        default: false
       }
     },
 
     edit: function( props ) {
-      var clientId = props.clientId;
-      var { title, content, state } = props.attributes;
+      var UID = props.clientId;
+      var { title, content } = props.attributes;
 
-      if(!visibleTitle[clientId]) {
-        visibleTitle[clientId] = title;
+      // Prevent spoiler 'visible content'/'value' mismatch,
+      // since visible text & text saved in attributes are different variables.
+      if(!visibleTitle[UID]) {
+        visibleTitle[UID] = title;
       }
 
       return (
-        el( 'div', { className: props.className },
-          el( BlockControls, {
-            key: 'controls',
-            controls: [
-              {
-                icon: 'visibility',
-                title: __( 'Show/hide spoiler content', 'inline-spoilers' ),
-                onClick: function( updateState ) {
-                  props.setAttributes( { state: !state } );
-                },
-                isActive: state
-              }
-            ]
-          }),
-          el( 'div', {
+        element( 'div', { className: props.className },
+          element( 'div', {
             class: 'spoiler-title',
             contenteditable: 'true',
             onInput: function( event ) {
               props.setAttributes( { title: event.target.innerHTML } )
             }
-          }, visibleTitle[clientId] ),
-          el( 'div', { class: 'spoiler-content' },
-            el( RichText, {
+          }, visibleTitle[UID] ),
+          element( 'div', { class: 'spoiler-content' },
+            element( RichText, {
               placeholder: __( 'Spoiler content', 'inline-spoilers' ),
               value: content,
               onChange: function( value ) {
@@ -75,17 +60,17 @@
     },
 
     save: function( props ) {
-      var { title, content, state } = props.attributes;
+      var { title, content } = props.attributes;
 
       return (
-        el( 'div', null,
-          el( 'div', { class: 'spoiler-wrap' },
-            el( 'div', { class: ((state) ? 'spoiler-head expanded' : 'spoiler-head collapsed'), title: 'Expand' },
+        element( 'div', null,
+          element( 'div', { class: 'spoiler-wrap' },
+            element( 'div', { class: 'spoiler-head collapsed', title: 'Expand' },
               title
             ),
-            el( RichText.Content, { tagName: 'div', className: 'spoiler-body', style: { display: ((state) ? 'block' : 'none') }, value: content } ),
-            el( 'noscript', null,
-              el( RichText.Content, { tagName: 'div', className: 'spoiler-body', value: content } )
+            element( RichText.Content, { tagName: 'div', className: 'spoiler-body', style: { display: 'none' }, value: content } ),
+            element( 'noscript', null,
+              element( RichText.Content, { tagName: 'div', className: 'spoiler-body', value: content } )
             )
           )
         )
