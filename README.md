@@ -7,7 +7,7 @@
 [![Wordpress Version](https://img.shields.io/wordpress/v/inline-spoilers.svg)](https://wordpress.org/plugins/inline-spoilers/)
 
 
-**Contributors:** sergeykuzmich  
+**Contributors:** sergeykuzmich, gadswan
 **Donate link:** https://www.buymeacoffee.com/sergeykuzmich  
 **Tags:** shortcode, spoiler  
 **Requires at least:** 3.9.1  
@@ -53,7 +53,7 @@ To change layout of a spoiler, please, edit `styles/inline-spoilers-styles.css` 
 ## Changelog ##
 
 ### 1.4.0 ###
-* Introduce Guttenberg block to create spoilers
+* Introduce Guttenberg block to create spoilers (special thanks to [Sergey Zaytsev](https://www.linkedin.com/in/sergey-zaytsev-b50857b0/) for doing most of things)
 
 ### 1.3.8 ###
 * Allow empty spoiler title by default
