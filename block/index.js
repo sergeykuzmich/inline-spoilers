@@ -43,7 +43,7 @@
             class: 'spoiler-title',
             contenteditable: 'true',
             onInput: function( event ) {
-              props.setAttributes( { title: event.target.innerHTML } )
+              props.setAttributes( { title: event.target.innerText } )
             }
           }, visibleTitle[UID] ),
           element( 'div', { class: 'spoiler-content' },

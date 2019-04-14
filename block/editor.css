@@ -21,6 +21,10 @@
     font-weight: bold;
 }
 
+.wp-block-inline-spoilers-block .spoiler-title br {
+    display: none;
+}
+
 .wp-block-inline-spoilers-block .spoiler-content {
     background-color: #F5F5F5;
     border-top: 1px solid #C3CBD1;
