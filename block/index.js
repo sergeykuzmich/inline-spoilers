@@ -24,6 +24,10 @@
         type: 'array',
         selector: '.spoiler-body',
         source: 'children'
+      },
+      initial_state: {
+        type: 'string',
+        default: 'collapsed'
       }
     },
 
@@ -32,7 +36,7 @@
       var { title, content } = props.attributes;
 
       // Prevent spoiler 'visible content'/'value' mismatch,
-      // since visible text & text saved in attributes are different variables.
+      // since visible & state texts are different items.
       if(!visibleTitle[UID]) {
         visibleTitle[UID] = title;
       }
