@@ -70,7 +70,7 @@
         element( 'div', null,
           element( 'div', { class: 'spoiler-wrap' },
             element( 'div', { class: 'spoiler-head collapsed', title: 'Expand' },
-              title
+              title.length ? title : '&nbsp;'
             ),
             element( RichText.Content, { tagName: 'div', className: 'spoiler-body', style: { display: 'none' }, value: content } ),
             element( 'noscript', null,
