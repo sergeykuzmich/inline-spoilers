@@ -32,9 +32,10 @@ To change layout of a spoiler, please, edit `styles/inline-spoilers-styles.css` 
 
 == Screenshots ==
 
-1. Spoiler shortcode `[spoiler][/spoiler]`
-2. Collapsed spoiler
-3. Expanded spoiler
+1. Guttenberg block
+2. Spoiler shortcode `[spoiler][/spoiler]`
+3. Collapsed spoiler
+4. Expanded spoiler
 
 == Changelog ==
 

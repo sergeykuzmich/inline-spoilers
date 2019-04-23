@@ -40,14 +40,17 @@ To change layout of a spoiler, please, edit `styles/inline-spoilers-styles.css` 
 
 ## Screenshots ##
 
-### 1. Spoiler shortcode `[spoiler][/spoiler]` ###
-![1. Spoiler shortcode `[spoiler][/spoiler]`](http://ps.w.org/inline-spoilers/assets/screenshot-1.png)
+### 1. Guttenberg block ###
+![1. Guttenberg block](http://ps.w.org/inline-spoilers/assets/screenshot-1.gif)
 
-### 2. Collapsed spoiler ###
-![2. Collapsed spoiler](http://ps.w.org/inline-spoilers/assets/screenshot-2.png)
+### 2. Spoiler shortcode `[spoiler][/spoiler]` ###
+![2. Spoiler shortcode `[spoiler][/spoiler]`](http://ps.w.org/inline-spoilers/assets/screenshot-2.png)
 
-### 3. Expanded spoiler ###
-![3. Expanded spoiler](http://ps.w.org/inline-spoilers/assets/screenshot-3.png)
+### 3. Collapsed spoiler ###
+![3. Collapsed spoiler](http://ps.w.org/inline-spoilers/assets/screenshot-3.png)
+
+### 4. Expanded spoiler ###
+![4. Expanded spoiler](http://ps.w.org/inline-spoilers/assets/screenshot-4.png)
 
 
 ## Changelog ##
