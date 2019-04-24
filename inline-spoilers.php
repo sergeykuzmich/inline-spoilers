@@ -20,7 +20,7 @@ if ( ! defined( 'WPINC' ) ) {
 }
 
 // Define has_block function for WordPress 4.9.10 and older.
-if( ! function_exists(has_block) ) {
+if( ! function_exists( 'has_block' ) ) {
 	function has_block( $block, $context ) {
 		return false;
 	}
