@@ -19,6 +19,13 @@ if ( ! defined( 'WPINC' ) ) {
 	die;
 }
 
+// Define has_block function for WordPress 4.9.10 and older.
+if( ! function_exists(has_block) ) {
+	function has_block( $block, $context ) {
+		return false;
+	}
+}
+
 add_action( 'plugins_loaded', 'is_load_textdomain' );
 function is_load_textdomain() {
 	load_plugin_textdomain( 'inline-spoilers', false, dirname( plugin_basename( __FILE__ ) ) . '/languages' );
