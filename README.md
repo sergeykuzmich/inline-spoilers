@@ -7,7 +7,7 @@
 [![Wordpress Version](https://img.shields.io/wordpress/v/inline-spoilers.svg)](https://wordpress.org/plugins/inline-spoilers/)
 
 
-**Contributors:** sergeykuzmich, gadswan
+**Contributors:** sergeykuzmich, gadswan  
 **Donate link:** https://www.buymeacoffee.com/sergeykuzmich  
 **Tags:** shortcode, spoiler  
 **Requires at least:** 3.9.1  
