@@ -3,7 +3,7 @@
 Plugin Name: Inline Spoilers
 Plugin URI: https://wordpress.org/plugins/inline-spoilers/
 Description: The plugin allows to create content spoilers with simple shortcode.
-Version: 1.4.0
+Version: 1.4.1
 Author: Sergey Kuzmich
 Author URI: http://kuzmi.ch
 Text Domain: inline-spoilers
@@ -17,6 +17,13 @@ License: GPLv3
 
 if ( ! defined( 'WPINC' ) ) {
 	die;
+}
+
+// Define has_block function for WordPress 4.9.10 and older.
+if ( ! function_exists( 'has_block' ) ) {
+	function has_block( $block, $context ) {
+		return false;
+	}
 }
 
 add_action( 'plugins_loaded', 'is_load_textdomain' );
@@ -73,8 +80,8 @@ add_action( 'wp_enqueue_scripts', 'is_styles_scripts' );
 function is_styles_scripts() {
 	global $post;
 
-	wp_register_style( 'inline-spoilers_style', plugins_url( 'styles/inline-spoilers-default.css', __FILE__ ), null, '1.4.0' );
-	wp_register_script( 'inline-spoilers_script', plugins_url( 'scripts/inline-spoilers-scripts.js', __FILE__ ), array( 'jquery' ), '1.4.0', true );
+	wp_register_style( 'inline-spoilers_style', plugins_url( 'styles/inline-spoilers-default.css', __FILE__ ), null, '1.4.1' );
+	wp_register_script( 'inline-spoilers_script', plugins_url( 'scripts/inline-spoilers-scripts.js', __FILE__ ), array( 'jquery' ), '1.4.1', true );
 
 	if ( has_shortcode( $post->post_content, 'spoiler' ) || has_block( 'inline-spoilers/block', $post ) ) {
 		wp_enqueue_style( 'inline-spoilers_style' );
@@ -95,8 +102,8 @@ function spoiler_block_init() {
 		return;
 	}
 
-	wp_register_script( 'block-editor', plugins_url( 'block/index.js', __FILE__ ), array( 'wp-blocks', 'wp-i18n', 'wp-element' ), '1.4.0', true );
-	wp_register_style( 'block-editor', plugins_url( 'block/editor.css', __FILE__ ), array(), '1.4.0' );
+	wp_register_script( 'block-editor', plugins_url( 'block/index.js', __FILE__ ), array( 'wp-blocks', 'wp-i18n', 'wp-element' ), '1.4.1', true );
+	wp_register_style( 'block-editor', plugins_url( 'block/editor.css', __FILE__ ), array(), '1.4.1' );
 
 	register_block_type(
 		'inline-spoilers/block',
