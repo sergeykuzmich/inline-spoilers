@@ -11,7 +11,7 @@
 **Donate link:** https://www.buymeacoffee.com/sergeykuzmich  
 **Tags:** shortcode, spoiler  
 **Requires at least:** 3.9.1  
-**Tested up to:** 5.1.1  
+**Tested up to:** 5.2  
 **Requires PHP:** 5.6  
 **Stable tag:** 1.4.1  
 **License:** GPLv3 or later  
