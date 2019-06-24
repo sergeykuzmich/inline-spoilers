@@ -31,6 +31,8 @@ rm -rf deploy/
 rm -rf .travis.yml
 #  5.4 Delete README.md
 rm -rf README.md
+#  5.5 Delete Makefile
+rm -rf Makefile
 
 #  6. Go to SVN home directory
 printf "6. Go to svn root directory...\n"
