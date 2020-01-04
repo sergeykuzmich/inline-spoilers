@@ -19,6 +19,9 @@ if ( ! defined( 'WPINC' ) ) {
 	die;
 }
 
+// Read environment to detect script & style loading optimization
+defined( 'IS_OPTIMIZE_LOADER' ) || define( 'IS_OPTIMIZE_LOADER', true );
+
 // Define has_block function for WordPress 4.9.10 and older.
 if ( ! function_exists( 'has_block' ) ) {
 	function has_block( $block, $context ) {
@@ -29,6 +32,20 @@ if ( ! function_exists( 'has_block' ) ) {
 add_action( 'plugins_loaded', 'is_load_textdomain' );
 function is_load_textdomain() {
 	load_plugin_textdomain( 'inline-spoilers', false, dirname( plugin_basename( __FILE__ ) ) . '/languages' );
+}
+
+function is_get_initial_props( $initial_state ) {
+	return ( 'collapsed' === $initial_state )
+					? array(
+						'head_class' => ' collapsed',
+						'body_atts'  => 'style="display: none;"',
+						'head_hint'  => __( 'Expand', 'inline-spoilers' ),
+					)
+					: array(
+						'head_class' => ' expanded',
+						'body_atts'  => 'style="display: block;"',
+						'head_hint'  => __( 'Collapse', 'inline-spoilers' ),
+					);
 }
 
 add_shortcode( 'spoiler', 'is_spoiler_shortcode' );
@@ -66,20 +83,6 @@ function is_spoiler_shortcode( $atts, $content ) {
 	return $output;
 }
 
-function get_initial_props( $initial_state ) {
-	return ( 'collapsed' === $initial_state )
-					? array(
-						'head_class' => ' collapsed',
-						'body_atts'  => 'style="display: none;"',
-						'head_hint'  => __( 'Expand', 'inline-spoilers' ),
-					)
-					: array(
-						'head_class' => ' expanded',
-						'body_atts'  => 'style="display: block;"',
-						'head_hint'  => __( 'Collapse', 'inline-spoilers' ),
-					);
-}
-
 add_action( 'wp_enqueue_scripts', 'is_styles_scripts' );
 function is_styles_scripts() {
 	global $post;
@@ -87,7 +90,7 @@ function is_styles_scripts() {
 	wp_register_style( 'inline-spoilers_style', plugins_url( 'styles/inline-spoilers-default.css', __FILE__ ), null, '1.4.1' );
 	wp_register_script( 'inline-spoilers_script', plugins_url( 'scripts/inline-spoilers-scripts.js', __FILE__ ), array( 'jquery' ), '1.4.1', true );
 
-	if ( has_shortcode( $post->post_content, 'spoiler' ) || has_block( 'inline-spoilers/block', $post ) ) {
+	if ( ! IS_OPTIMIZE_LOADER || ( has_shortcode( $post->post_content, 'spoiler' ) || has_block( 'inline-spoilers/block', $post ) ) ) {
 		wp_enqueue_style( 'inline-spoilers_style' );
 		wp_enqueue_script( 'inline-spoilers_script' );
 
