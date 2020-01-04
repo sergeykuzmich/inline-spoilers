@@ -28,7 +28,7 @@ The plugin allows to create content spoilers with simple shortcode.
 == Frequently Asked Questions ==
 
 = How can I customize design of the spoiler? =
-To change layout of a spoiler, please, edit `styles/inline-spoilers-styles.css` file.
+Just override classes defined in `styles/inline-spoilers-styles.css` with your theme styles.
 
 == Screenshots ==
 
@@ -40,7 +40,18 @@ To change layout of a spoiler, please, edit `styles/inline-spoilers-styles.css` 
 == Changelog ==
 
 = 1.5.0 =
-* Fix https://wordpress.org/support/topic/fatal-error-when-activating-the-plugin-10/
+* Make flag for non-optimized script & style loading to prevent issues on some child themes (see https://wordpress.org/support/topic/spoiler-doesnt-show-up/ for more information)
+
+`
+wp-config.php:
+
+...
+/** Set FALSE to disable 'Inline Spoliers' plugin script & style optimization
+define( 'IS_OPTIMIZE_LOADER', false ); 
+
+/* That's all, stop editing! Happy publishing. */
+...
+`
 
 = 1.4.1 =
 * Fix https://wordpress.org/support/topic/fatal-error-when-activating-the-plugin-10/
