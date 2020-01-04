@@ -45,17 +45,7 @@ function is_spoiler_shortcode( $atts, $content ) {
 	$initial_state = esc_attr( $attributes['initial_state'] );
 	$title         = esc_attr( $attributes['title'] );
 
-	$props = ( 'collapsed' === $initial_state )
-							? array(
-								'head_class' => ' collapsed',
-								'body_atts'  => 'style="display: none;"',
-								'head_hint'  => __( 'Expand', 'inline-spoilers' ),
-							)
-							: array(
-								'head_class' => ' expanded',
-								'body_atts'  => 'style="display: block;"',
-								'head_hint'  => __( 'Collapse', 'inline-spoilers' ),
-							);
+	$props = is_get_initial_props( $initial_state );
 
 	$head = '<div class="spoiler-head no-icon ' . $props['head_class'] . '" title="' . $props['head_hint'] . '">' . $title . '</div>';
 
@@ -74,6 +64,20 @@ function is_spoiler_shortcode( $atts, $content ) {
 	$output .= '</div>';
 
 	return $output;
+}
+
+function get_initial_props( $initial_state ) {
+	return ( 'collapsed' === $initial_state )
+					? array(
+						'head_class' => ' collapsed',
+						'body_atts'  => 'style="display: none;"',
+						'head_hint'  => __( 'Expand', 'inline-spoilers' ),
+					)
+					: array(
+						'head_class' => ' expanded',
+						'body_atts'  => 'style="display: block;"',
+						'head_hint'  => __( 'Collapse', 'inline-spoilers' ),
+					);
 }
 
 add_action( 'wp_enqueue_scripts', 'is_styles_scripts' );
