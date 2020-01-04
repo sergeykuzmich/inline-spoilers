@@ -46,16 +46,16 @@ function is_spoiler_shortcode( $atts, $content ) {
 	$title         = esc_attr( $attributes['title'] );
 
 	$props = ( 'collapsed' === $initial_state )
-							? [
+							? array(
 								'head_class' => ' collapsed',
 								'body_atts'  => 'style="display: none;"',
 								'head_hint'  => __( 'Expand', 'inline-spoilers' ),
-							]
-							: [
+							)
+							: array(
 								'head_class' => ' expanded',
 								'body_atts'  => 'style="display: block;"',
 								'head_hint'  => __( 'Collapse', 'inline-spoilers' ),
-							];
+							);
 
 	$head = '<div class="spoiler-head no-icon ' . $props['head_class'] . '" title="' . $props['head_hint'] . '">' . $title . '</div>';
 
