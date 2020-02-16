@@ -1,6 +1,5 @@
 === Inline Spoilers ===
 Contributors: sergeykuzmich, gadswan
-Donate link: https://www.buymeacoffee.com/sergeykuzmich
 Tags: shortcode, spoiler
 Requires at least: 4.9
 Tested up to: 5.3
