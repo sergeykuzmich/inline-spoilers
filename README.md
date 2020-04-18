@@ -62,7 +62,7 @@ wp-config.php:
 
 ...
 /** Set FALSE to disable 'Inline Spoliers' plugin script & style optimization
-define( 'IS_OPTIMIZE_LOADER', false ); 
+define( 'IS_OPTIMIZE_LOADER', false );
 
 /* That's all, stop editing! Happy publishing. */
 ...
@@ -114,4 +114,4 @@ define( 'IS_OPTIMIZE_LOADER', false );
 * Update Russian translation
 
 ### 1.0.1 ###
-* Release the plugin 
+* Release the plugin
