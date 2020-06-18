@@ -37,6 +37,7 @@ printf "6. Go to svn root directory...\n"
 cd ../
 
 #  6.1 Confirm all files to be versioned
+printf "6.1 Confirm all files to be versioned...\n"
 svn add --force .
 
 #. 7. Check for semver tag
