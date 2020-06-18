@@ -36,6 +36,9 @@ rm -rf README.md
 printf "6. Go to svn root directory...\n"
 cd ../
 
+#  6.1 Confirm all files to be versioned
+svn add --force .
+
 #. 7. Check for semver tag
 printf "7. Detect deployment type...\n"
 semver_pattern="^[0-9]+\.[0-9]+\.[0-9]+$"
