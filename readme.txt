@@ -8,11 +8,11 @@ Stable tag: 1.5.1
 License: GPLv3 or later
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
-The plugin allows to create content spoilers with simple shortcode.
+The plugin allows to create content spoilers with simple shortcode & guttenberg block.
 
 == Description ==
 
-The plugin allows to create content spoilers with simple shortcode.
+The plugin allows to create content spoilers with simple shortcode & guttenberg block.
 
 `
 [spoiler title="Expand Me"]Spoiler content[/spoiler]
@@ -20,9 +20,9 @@ The plugin allows to create content spoilers with simple shortcode.
 
 == Installation ==
 
-1. Insall via WordPress Dashboard or upload `inline-spoiler.zip`;
+1. Install via WordPress Dashboard or upload `inline-spoiler.zip`;
 2. Activate the plugin through the 'Plugins' menu in WordPress;
-3. Use shortcode in your content;
+3. Use shortcode & block in your content;
 
 == Frequently Asked Questions ==
 
