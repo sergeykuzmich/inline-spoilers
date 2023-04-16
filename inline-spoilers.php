@@ -2,7 +2,7 @@
 /**
 Plugin Name: Inline Spoilers
 Plugin URI: https://wordpress.org/plugins/inline-spoilers/
-Description: The plugin allows to create content spoilers with simple shortcode.
+Description: The plugin allows to create content spoilers with simple shortcode & guttenberg block.
 Version: 1.5.1
 Author: Sergey Kuzmich
 Author URI: http://kuzmi.ch
