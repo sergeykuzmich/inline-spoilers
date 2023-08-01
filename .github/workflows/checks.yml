@@ -49,4 +49,3 @@ jobs:
         run: |
           export PHPCS_DIR=/tmp/phpcs
           $PHPCS_DIR/bin/phpcs --standard=WordPress-Extra --extensions=php .
-          svn version
