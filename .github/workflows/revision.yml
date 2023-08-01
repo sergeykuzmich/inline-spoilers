@@ -1,0 +1,39 @@
+name: Trunk Sync
+concurrency:
+  group: ${{ github.workflow }}-${{ github.event.pull_request.number }}
+  cancel-in-progress: true
+on:
+  push:
+    branches: [master]
+jobs:
+  deploy:
+    name: Renew Metadata
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+      - name: Get WordPress Repository
+        env:
+          SVN_REPOSITORY: ${{ vars.SVN_REPOSITORY }}
+        run: |
+          svn co $SVN_REPOSITORY ${{ runner.temp }}/svn
+      - name: Prepare Repository
+        run: |
+          cp -R ./* ${{ runner.temp }}/svn/trunk/ && cd ${{ runner.temp }}/svn/trunk/
+          mv ./assets/ ../assets/
+          rm -rf ./.git/ ./.github/ ./README.md
+          svn add --force .
+      - name: Publish Changes
+        env:
+          SVN_USERNAME: ${{ secrets.SVN_USERNAME }}
+          SVN_PASSWORD: ${{ secrets.SVN_PASSWORD }}
+        run: |
+          cd ${{ runner.temp }}/svn
+          export SVN_COMMIT_MESSAGE="Metadata Sync"
+          svn ci  --message "$SVN_COMMIT_MESSAGE" \
+                  --username $SVN_USERNAME \
+                  --password $SVN_PASSWORD \
+                  --non-interactive \
+                  --trust-server-cert
+  

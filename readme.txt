@@ -1,12 +1,10 @@
 === Inline Spoilers ===
 Contributors: sergeykuzmich, gadswan
 Tags: shortcode, spoiler
-Requires at least: 4.9
-Tested up to: 5.4.2
-Requires PHP: 5.6
-Stable tag: 1.5.1
+Stable tag: 1.5.3
+Tested up to: 6.2
 License: GPLv3 or later
-License URI: http://www.gnu.org/licenses/gpl-3.0.html
+License URI: https://www.gnu.org/licenses/gpl-3.0.html
 
 The plugin allows to create content spoilers with simple shortcode & guttenberg block.
 
@@ -38,8 +36,13 @@ Just override classes defined in `styles/inline-spoilers-styles.css` with your t
 
 == Changelog ==
 
+= 1.5.3 =
+* Minify assets
+* Update WordPress "Requires at least" version
+* Update WordPress "Tested up to" version
+
 = 1.5.1 =
-* Fix `Inline Spoiler` block doesn't appear in Guttenberg editor (https://wordpress.org/support/topic/block-folder-is-missing/).
+* Fix `Inline Spoiler` block doesn't appear in Guttenberg editor (https://wordpress.org/support/topic/block-folder-is-missing/)
 
 = 1.5.0 =
 * Make flag for non-optimized script & style loading to prevent issues on some child themes (see https://wordpress.org/support/topic/spoiler-doesnt-show-up/ for more information)
