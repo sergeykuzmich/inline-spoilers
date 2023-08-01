@@ -15,7 +15,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        version: ['5.3', '7.4', '8.3']
+        version: ['5.6', '7.4', '8.3']
     steps:
       - uses: actions/checkout@v2
         with:
@@ -29,16 +29,13 @@ jobs:
   codesniffer:
     name: Code Standards
     runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        version: ['5.6', '7.4', '8.3']
     steps:
       - uses: actions/checkout@v2
         with:
           fetch-depth: 0
       - uses: shivammathur/setup-php@v2
         with:
-          php-version: ${{ matrix.version }}
+          php-version: '8.3'
       - name: Setup CodeSniffer
         run: |
           export PHPCS_DIR=/tmp/phpcs
