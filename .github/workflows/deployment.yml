@@ -25,11 +25,17 @@ jobs:
           rm -rf ./.git/ ./.github/ ./README.md
           svn add --force .
       - name: Publish Release
+        env:
+          SVN_USERNAME: ${{ secrets.SVN_USERNAME }}
+          SVN_PASSWORD: ${{ secrets.SVN_REPOSITORY }}
         run: |
           cd ${{ runner.temp }}/svn
           svn cp trunk tags/${GITHUB_REF#refs/*/}
           svn remove --force tags/${GITHUB_REF#refs/*/}/readme.txt
-          export SVN_COMMIT_MESSAGE="Release ${GITHUB_REF#refs/*/}"
-          ls tags/
-          ls tags/${GITHUB_REF#refs/*/}
+          export SVN_COMMIT_MESSAGE="Version ${GITHUB_REF#refs/*/}"
+          svn ci  --message "$SVN_COMMIT_MESSAGE" \
+                  --username $SVN_USERNAME \
+                  --password $SVN_PASSWORD \
+                  --non-interactive \
+                  --trust-server-cert
   
