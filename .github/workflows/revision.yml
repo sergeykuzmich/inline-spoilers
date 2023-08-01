@@ -27,7 +27,7 @@ jobs:
       - name: Publish Changes
         env:
           SVN_USERNAME: ${{ secrets.SVN_USERNAME }}
-          SVN_PASSWORD: ${{ secrets.SVN_REPOSITORY }}
+          SVN_PASSWORD: ${{ secrets.SVN_PASSWORD }}
         run: |
           cd ${{ runner.temp }}/svn
           export SVN_COMMIT_MESSAGE="Metadata Sync"

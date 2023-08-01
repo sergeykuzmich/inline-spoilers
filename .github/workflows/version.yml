@@ -27,7 +27,7 @@ jobs:
       - name: Publish Version
         env:
           SVN_USERNAME: ${{ secrets.SVN_USERNAME }}
-          SVN_PASSWORD: ${{ secrets.SVN_REPOSITORY }}
+          SVN_PASSWORD: ${{ secrets.SVN_PASSWORD }}
         run: |
           cd ${{ runner.temp }}/svn
           svn cp trunk tags/${GITHUB_REF#refs/*/}
