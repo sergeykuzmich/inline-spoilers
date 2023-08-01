@@ -8,8 +8,8 @@
  * Requires PHP:			5.6
  * Author:						Sergey Kuzmich
  * Author URI:				http://kuzmi.ch
- * License:						GPLv3
- * License URI:				https://www.gnu.org/licenses/gpl-3.0.en.html
+ * License:						GPLv3 or later
+ * License URI:				https://www.gnu.org/licenses/gpl-3.0.html
  * Text Domain:				inline-spoilers
  * Domain Path:				/languages/
  */

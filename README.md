@@ -10,8 +10,9 @@
 **Contributors:** sergeykuzmich, gadswan  
 **Tags:** shortcode, spoiler  
 **Stable tag:** 1.5.3  
-**License:** GPLv3 or later  
-**License URI:** http://www.gnu.org/licenses/gpl-3.0.html  
+**Tested up to:** 6.2  
+**License:** GPLv3 or later
+**License URI:** https://www.gnu.org/licenses/gpl-3.0.html  
 
 The plugin allows to create content spoilers with simple shortcode & guttenberg block.
 
