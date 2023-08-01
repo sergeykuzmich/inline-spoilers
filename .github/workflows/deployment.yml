@@ -1,0 +1,34 @@
+name: Plugin Release
+concurrency:
+  group: ${{ github.workflow }}-${{ github.event.pull_request.number }}
+  cancel-in-progress: true
+on:
+  release:
+    types: [published]
+jobs:
+  deploy:
+    name: Publish Version
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+      - name: Get Current Repository
+        env:
+          SVN_REPOSITORY: ${{ vars.SVN_REPOSITORY }}
+        run: |
+          svn co $SVN_REPOSITORY ../svn
+      - name: Prepare Release
+        run: |
+          cp -R ./* ../svn/trunk/ && cd ../svn/trunk/
+          mv ./assets/ ../assets/
+          rm -rf ./.git/ ./.github/ ./README.md
+          svn add --force .
+      - name: Publish Release
+        run: |
+          cd ../svn/
+          svn cp trunk tags/$GITHUB_REF
+          svn remove --force tags/$GITHUB_REF/readme.txt
+          export SVN_COMMIT_MESSAGE="Release $GITHUB_REF"
+          ls tags/
+  
