@@ -1,13 +1,13 @@
-name: New Version
+name: Trunk Sync
 concurrency:
   group: ${{ github.workflow }}-${{ github.event.pull_request.number }}
   cancel-in-progress: true
 on:
-  release:
-    types: [published]
+  push:
+    branches: [master]
 jobs:
   deploy:
-    name: Publish Version
+    name: Renew Metadata
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
@@ -18,21 +18,19 @@ jobs:
           SVN_REPOSITORY: ${{ vars.SVN_REPOSITORY }}
         run: |
           svn co $SVN_REPOSITORY ${{ runner.temp }}/svn
-      - name: Prepare Release
+      - name: Prepare Repository
         run: |
           cp -R ./* ${{ runner.temp }}/svn/trunk/ && cd ${{ runner.temp }}/svn/trunk/
           mv ./assets/ ../assets/
           rm -rf ./.git/ ./.github/ ./README.md
           svn add --force .
-      - name: Publish Release
+      - name: Publish Changes
         env:
           SVN_USERNAME: ${{ secrets.SVN_USERNAME }}
           SVN_PASSWORD: ${{ secrets.SVN_REPOSITORY }}
         run: |
           cd ${{ runner.temp }}/svn
-          svn cp trunk tags/${GITHUB_REF#refs/*/}
-          svn remove --force tags/${GITHUB_REF#refs/*/}/readme.txt
-          export SVN_COMMIT_MESSAGE="Version ${GITHUB_REF#refs/*/}"
+          export SVN_COMMIT_MESSAGE="Metadata Sync"
           svn ci  --message "$SVN_COMMIT_MESSAGE" \
                   --username $SVN_USERNAME \
                   --password $SVN_PASSWORD \
