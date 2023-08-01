@@ -31,7 +31,6 @@ jobs:
         run: |
           cd ${{ runner.temp }}/svn
           svn cp trunk tags/${GITHUB_REF#refs/*/}
-          svn remove --force tags/${GITHUB_REF#refs/*/}/readme.txt
           export SVN_COMMIT_MESSAGE="Version ${GITHUB_REF#refs/*/}"
           svn ci  --message "$SVN_COMMIT_MESSAGE" \
                   --username $SVN_USERNAME \
