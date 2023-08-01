@@ -10,10 +10,45 @@ on:
     branches: [master]
   workflow_dispatch:
 jobs:
-  job:
-    name: Job
+  lint:
+    name: Code Lint
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        version: ['5.3', '7.4', '8.3']
     steps:
       - uses: actions/checkout@v2
         with:
           fetch-depth: 0
+      - uses: shivammathur/setup-php@v2
+        with:
+          php-version: ${{ matrix.version }}
+      - name: Run Linter
+        run: |
+          php -l *.php
+  codesniffer:
+    name: Code Standards
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        version: ['5.3', '7.4', '8.3']
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+      - uses: shivammathur/setup-php@v2
+        with:
+          php-version: ${{ matrix.version }}
+      - name: Setup CodeSniffer
+        run: |
+          export PHPCS_DIR=/tmp/phpcs
+          export PHPCS_REPO=https://github.com/squizlabs/PHP_CodeSniffer.git
+          export WPCS_DIR=/tmp/sniffs
+          export WPCS_REPO=https://github.com/WordPress-Coding-Standards/WordPress-Coding-Standards.git
+          git clone -b master $PHPCS_REPO $PHPCS_DIR --depth 5
+          git clone -b master $WPCS_REPO $WPCS_DIR --depth 5
+          $PHPCS_DIR/bin/phpcs --config-set installed_paths $WPCS_DIR
+      - name: Check WordPress Coding Standards
+        run: |
+          export PHPCS_DIR=/tmp/phpcs
+          $PHPCS_DIR/bin/phpcs --standard=WordPress-Extra --extensions=php .
