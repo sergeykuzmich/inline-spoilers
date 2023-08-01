@@ -17,18 +17,19 @@ jobs:
         env:
           SVN_REPOSITORY: ${{ vars.SVN_REPOSITORY }}
         run: |
-          svn co $SVN_REPOSITORY ${{ runner.temp }}/svn
-      - name: Prepare Release
-        run: |
-          cp -R ./* ${{ runner.temp }}/svn/trunk/ && cd ${{ runner.temp }}/svn/trunk/
-          mv ./assets/ ../assets/
-          rm -rf ./.git/ ./.github/ ./README.md
-          svn add --force .
-      - name: Publish Release
-        run: |
-          cd ${{ runner.temp }}/svn
-          svn cp trunk tags/$GITHUB_REF
-          svn remove --force tags/$GITHUB_REF/readme.txt
-          export SVN_COMMIT_MESSAGE="Release $GITHUB_REF"
-          ls tags/
+          echo ${GITHUB_REF#refs/*/}
+      #     svn co $SVN_REPOSITORY ${{ runner.temp }}/svn
+      # - name: Prepare Release
+      #   run: |
+      #     cp -R ./* ${{ runner.temp }}/svn/trunk/ && cd ${{ runner.temp }}/svn/trunk/
+      #     mv ./assets/ ../assets/
+      #     rm -rf ./.git/ ./.github/ ./README.md
+      #     svn add --force .
+      # - name: Publish Release
+      #   run: |
+      #     cd ${{ runner.temp }}/svn
+      #     svn cp trunk tags/$GITHUB_REF
+      #     svn remove --force tags/$GITHUB_REF/readme.txt
+      #     export SVN_COMMIT_MESSAGE="Release $GITHUB_REF"
+      #     ls tags/
   
