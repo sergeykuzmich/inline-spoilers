@@ -9,8 +9,10 @@
 
 **Contributors:** sergeykuzmich, gadswan  
 **Tags:** shortcode, spoiler  
-**Stable tag:** 1.5.3  
-**Tested up to:** 6.2  
+**Stable tag:** 1.5.4  
+**Tested up to:** 6.2.2
+**Requires at least:** 5.2  
+**Requires PHP:** 5.6  
 **License:** GPLv3 or later
 **License URI:** https://www.gnu.org/licenses/gpl-3.0.html  
 
@@ -52,7 +54,7 @@ Just override classes defined in `styles/inline-spoilers-styles.css` with your t
 
 ## Changelog ##
 
-### 1.5.3 ###
+### 1.5.4 ###
 * Minify assets
 * Update WordPress "Requires at least" version
 * Update WordPress "Tested up to" version
