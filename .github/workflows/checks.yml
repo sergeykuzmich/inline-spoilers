@@ -37,14 +37,11 @@ jobs:
         run: |
           export PHPCS_DIR=/tmp/phpcs
           export PHPCS_REPO=https://github.com/squizlabs/PHP_CodeSniffer.git
-          export PHPCSUTILS_DIR=/tmp/phpcs-utils
-          export PHPCSUTILS_REPO=https://github.com/PHPCSStandards/PHPCSUtils.git
           export WPCS_DIR=/tmp/sniffs
           export WPCS_REPO=https://github.com/WordPress-Coding-Standards/WordPress-Coding-Standards.git
           git clone -b master $PHPCS_REPO $PHPCS_DIR --depth 5
-          git clone -b stable $PHPCSUTILS_REPO $PHPCSUTILS_DIR --depth 5
-          git clone -b develop $WPCS_REPO $WPCS_DIR --depth 5
-          $PHPCS_DIR/bin/phpcs --config-set installed_paths $WPCS_DIR,$PHPCSUTILS_DIR
+          git clone -b main $WPCS_REPO $WPCS_DIR --depth 5
+          $PHPCS_DIR/bin/phpcs --config-set installed_paths $WPCS_DIR
       - name: Check WordPress Coding Standards
         run: |
           export PHPCS_DIR=/tmp/phpcs
