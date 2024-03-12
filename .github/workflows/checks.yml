@@ -40,7 +40,7 @@ jobs:
           export WPCS_DIR=/tmp/sniffs
           export WPCS_REPO=https://github.com/WordPress-Coding-Standards/WordPress-Coding-Standards.git
           git clone -b master $PHPCS_REPO $PHPCS_DIR --depth 5
-          git clone -b master $WPCS_REPO $WPCS_DIR --depth 5
+          git clone -b main $WPCS_REPO $WPCS_DIR --depth 5
           $PHPCS_DIR/bin/phpcs --config-set installed_paths $WPCS_DIR
       - name: Check WordPress Coding Standards
         run: |
