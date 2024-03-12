@@ -32,7 +32,7 @@ jobs:
           fetch-depth: 0
       - uses: shivammathur/setup-php@v2
         with:
-          php-version: '8.3'
+          php-version: '7.4'
       - name: Setup CodeSniffer
         run: |
           export PHPCS_DIR=/tmp/phpcs
