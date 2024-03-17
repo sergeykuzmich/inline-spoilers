@@ -80,12 +80,11 @@ function is_spoiler_shortcode( array $atts, string $content ): string {
 	);
 
 	$initial_state = esc_attr( $attributes['initial_state'] );
-	$title         = esc_attr( $attributes['title'] );
 
 	$props = is_get_initial_props( $initial_state );
 
 	$head  = '<div class="spoiler-head no-icon ' . $props['head_class'] . '" title="' . $props['head_hint'] . '">';
-	$head .= $title;
+	$head .= esc_attr( $attributes['title'] );
 	$head .= '</div>';
 
 	$body  = '<div class="spoiler-body" ' . $props['body_atts'] . '>';
