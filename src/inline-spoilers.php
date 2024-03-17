@@ -80,11 +80,11 @@ function is_spoiler_shortcode( $atts, $content ) {
 
 	$head = '<div class="spoiler-head no-icon ' . $props['head_class'] . '" title="' . $props['head_hint'] . '">' . $title . '</div>';
 
-	$body = '<div class="spoiler-body" ' . $props['body_atts'] . '>';
+	$body  = '<div class="spoiler-body" ' . $props['body_atts'] . '>';
 	$body .= balanceTags( do_shortcode( $content ), true );
 	$body .= '</div>';
 
-	$extra = '<div class="spoiler-body">';
+	$extra  = '<div class="spoiler-body">';
 	$extra .= balanceTags( do_shortcode( $content ), true );
 	$extra .= '</div>';
 
@@ -119,11 +119,11 @@ function is_styles_scripts() {
 	);
 
 	if ( ! IS_OPTIMIZE_LOADER || ( has_shortcode(
-		                               $post->post_content,
-		                               'spoiler'
-	                               ) || has_block( 'inline-spoilers/block', $post ) ) ) {
-		wp_enqueue_style( 'inline-spoilers_style' );
-		wp_enqueue_script( 'inline-spoilers_script' );
+		$post->post_content,
+		'spoiler'
+	) || has_block( 'inline-spoilers/block', $post ) ) ) {
+		wp_enqueue_style( 'inline-spoilers_css' );
+		wp_enqueue_script( 'inline-spoilers_js' );
 
 		$translation_array = array(
 			'expand'   => __( 'Expand', 'inline-spoilers' ),
