@@ -1,22 +1,25 @@
 <?php
 /**
+ * Inline Spoilers
+ *
+ * @package           Inline Spoilers
+ * @author            Sergey Kuzmich
+ * @license           GPLv3 or later
+ *
+ * @wordpress-plugin
  * Plugin Name:             Inline Spoilers
- * Plugin URI:              https://wordpress.org/plugins/inline-spoilers/
- * Description:             The plugin allows to create content spoilers with simple shortcode & guttenberg block.
+ * Plugin URI:              https://github.com/sergeykuzmich/inline-spoilers
+ * Description:             The plugin allows to create content spoilers with simple shortcode & guttenberg js.
  * Version:                 2.0.0
  * Requires at least:       5.2
  * Tested up to:            6.5.0
  * Requires PHP:            7.1
  * Author:                  Sergey Kuzmich
- * Author URI:              http://kuzmi.ch
+ * Author URI:              https://kuzmi.ch
  * License:                 GPLv3 or later
  * License URI:             https://www.gnu.org/licenses/gpl-3.0.html
  * Text Domain:             inline-spoilers
  * Domain Path:             /languages/
- */
-
-/**
- * @package                 Inline Spoilers
  */
 
 if ( ! defined( 'WPINC' ) ) {
