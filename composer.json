@@ -1,0 +1,20 @@
+{
+    "name": "sergeykuzmich/inline-spoilers",
+    "description": "The WordPress plugin allows to create content spoilers with simple shortcode & guttenberg block.",
+    "type": "project",
+    "license": "GPLv3 or later",
+    "authors": [
+        {
+            "name": "Sergey Kuzmich",
+            "email": "accounts@kuzmi.ch"
+        }
+    ],
+    "require-dev": {
+        "wp-coding-standards/wpcs": "^3.0"
+    },
+    "config": {
+        "allow-plugins": {
+            "dealerdirect/phpcodesniffer-composer-installer": true
+        }
+    }
+}
