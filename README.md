@@ -64,10 +64,14 @@ Just override classes defined in `public/css/inline-spoilers-default.css` with y
 * Extent Guttenberg block with available options
 * **DEPRECATE** PHP less than 7.1
 
-### OLDER VERSIONS ###
+
 
 <details>
-<summary>EXPAND</summary>
+<summary>
+
+### OLDER VERSIONS ###
+
+</summary>
 
 ### 1.5.4 ###
 
@@ -149,9 +153,9 @@ define( 'IS_OPTIMIZE_LOADER', false );
 ### 1.1.2 ###
 
 * Update Russian translation
-  * Add attribute 'initial_state' to define default state of a spoiler `initial_state=(expanded|collapsed)`. Default state
-    is 'collapsed'
-  * Security updates
+* Add attribute 'initial_state' to define default state of a spoiler `initial_state=(expanded|collapsed)`. Default state
+  is 'collapsed'
+* Security updates
 
 ### 1.0.2 ###
 
