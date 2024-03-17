@@ -12,9 +12,9 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        version: ['5.6', '7.4', '8.2']
+        version: ['7.1', '8.3']
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v4
         with:
           fetch-depth: 0
       - uses: shivammathur/setup-php@v2
@@ -22,12 +22,12 @@ jobs:
           php-version: ${{ matrix.version }}
       - name: Run Linter
         run: |
-          php -l *.php
+          php -l src/inline-spoilers.php
   codesniffer:
     name: Code Standards
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v4
         with:
           fetch-depth: 0
       - uses: shivammathur/setup-php@v2
@@ -35,14 +35,7 @@ jobs:
           php-version: '8.3'
       - name: Setup CodeSniffer
         run: |
-          export PHPCS_DIR=/tmp/phpcs
-          export PHPCS_REPO=https://github.com/squizlabs/PHP_CodeSniffer.git
-          export WPCS_DIR=/tmp/sniffs
-          export WPCS_REPO=https://github.com/WordPress-Coding-Standards/WordPress-Coding-Standards.git
-          git clone -b master $PHPCS_REPO $PHPCS_DIR --depth 5
-          git clone -b master $WPCS_REPO $WPCS_DIR --depth 5
-          $PHPCS_DIR/bin/phpcs --config-set installed_paths $WPCS_DIR
+          composer install
       - name: Check WordPress Coding Standards
         run: |
-          export PHPCS_DIR=/tmp/phpcs
-          $PHPCS_DIR/bin/phpcs --standard=WordPress-Extra --extensions=php .
+          ./vendor/bin/phpcs --standard=WordPress --extensions=php ./src/

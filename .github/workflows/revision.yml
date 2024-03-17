@@ -10,7 +10,7 @@ jobs:
     name: Renew Metadata
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v4
         with:
           fetch-depth: 0
       - name: Get WordPress Repository
@@ -20,9 +20,8 @@ jobs:
           svn co $SVN_REPOSITORY ${{ runner.temp }}/svn
       - name: Prepare Repository
         run: |
-          cp -R ./* ${{ runner.temp }}/svn/trunk/ && cd ${{ runner.temp }}/svn/trunk/
+          cp -R ./src/* ${{ runner.temp }}/svn/trunk/ && cd ${{ runner.temp }}/svn/trunk/
           mv ./assets/ ../assets/
-          rm -rf ./.git/ ./.github/ ./README.md
           svn add --force .
       - name: Publish Changes
         env:
@@ -36,4 +35,3 @@ jobs:
                   --password $SVN_PASSWORD \
                   --non-interactive \
                   --trust-server-cert
-  
