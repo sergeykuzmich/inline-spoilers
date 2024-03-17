@@ -67,7 +67,7 @@ Just override classes defined in `public/css/inline-spoilers-default.css` with y
 
 
 <details>
-<summary> <h3>OLDER VERSIONS</h3> </summary>
+<summary> <strong>OLDER VERSIONS</strong> </summary>
 
 ### 1.5.4 ###
 
