@@ -9,11 +9,11 @@
 
 **Contributors:** sergeykuzmich, gadswan  
 **Tags:** shortcode, spoiler  
-**Stable tag:** 1.5.4  
-**Tested up to:** 6.2.2
+**Stable tag:** 2.0.0  
+**Tested up to:** 6.5.0  
 **Requires at least:** 5.2  
-**Requires PHP:** 5.6  
-**License:** GPLv3 or later
+**Requires PHP:** 7.1  
+**License:** GPLv3 or later  
 **License URI:** https://www.gnu.org/licenses/gpl-3.0.html
 
 The plugin allows to create content spoilers with simple shortcode & guttenberg block.
@@ -36,7 +36,7 @@ The plugin allows to create content spoilers with simple shortcode & guttenberg 
 
 ### How can I customize design of the spoiler? ###
 
-Just override classes defined in `styles/inline-spoilers-styles.css` with your theme styles.
+Just override classes defined in `public/css/inline-spoilers-default.css` with your theme styles.
 
 ## Screenshots ##
 
@@ -57,6 +57,15 @@ Just override classes defined in `styles/inline-spoilers-styles.css` with your t
 ![4. Expanded spoiler](assets/screenshot-4.png)
 
 ## Changelog ##
+
+### 2.0.0 ###
+
+* Use more semantic HTML layout
+* Extent Guttenberg block with available options
+* **DEPRECATE** PHP less than 7.1
+
+<details>
+<summary>OLDER VERSIONS</summary>
 
 ### 1.5.4 ###
 
@@ -125,7 +134,7 @@ define( 'IS_OPTIMIZE_LOADER', false );
 ### 1.2.4 ###
 
 * Add WP_DEBUG mode
-* Fix incorrect paragraph tags inside the spoiler
+  * Fix incorrect paragraph tags inside the spoiler
 
 ### 1.2.3 ###
 
@@ -138,9 +147,9 @@ define( 'IS_OPTIMIZE_LOADER', false );
 ### 1.1.2 ###
 
 * Update Russian translation
-* Add attribute 'initial_state' to define default state of a spoiler `initial_state=(expanded|collapsed)`. Default state
-  is 'collapsed'
-* Security updates
+  * Add attribute 'initial_state' to define default state of a spoiler `initial_state=(expanded|collapsed)`. Default state
+    is 'collapsed'
+  * Security updates
 
 ### 1.0.2 ###
 
@@ -149,3 +158,4 @@ define( 'IS_OPTIMIZE_LOADER', false );
 ### 1.0.1 ###
 
 * Release the plugin
+</details>

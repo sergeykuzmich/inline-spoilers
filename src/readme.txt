@@ -1,10 +1,10 @@
 === Inline Spoilers ===
 Contributors: sergeykuzmich, gadswan
 Tags: shortcode, spoiler
-Stable tag: 1.5.4
-Tested up to: 6.2.2
+Stable tag: 2.0.0
+Tested up to: 6.5.0
 Requires at least: 5.2
-Requires PHP: 5.6
+Requires PHP: 7.1
 License: GPLv3 or later
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 
@@ -27,7 +27,7 @@ The plugin allows to create content spoilers with simple shortcode & guttenberg 
 == Frequently Asked Questions ==
 
 = How can I customize design of the spoiler? =
-Just override classes defined in `styles/inline-spoilers-styles.css` with your theme styles.
+Just override classes defined in `public/css/inline-spoilers-default.css` with your theme styles.
 
 == Screenshots ==
 
