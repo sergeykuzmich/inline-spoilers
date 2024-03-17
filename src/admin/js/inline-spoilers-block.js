@@ -23,7 +23,7 @@
       content: {
         type: 'array',
         selector: '.spoiler-body',
-        source: 'children'
+        source: 'string'
       },
       initial_state: {
         type: 'string',
