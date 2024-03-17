@@ -64,8 +64,10 @@ Just override classes defined in `public/css/inline-spoilers-default.css` with y
 * Extent Guttenberg block with available options
 * **DEPRECATE** PHP less than 7.1
 
+### OLDER VERSIONS ###
+
 <details>
-<summary>OLDER VERSIONS</summary>
+<summary>EXPAND</summary>
 
 ### 1.5.4 ###
 
