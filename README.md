@@ -65,7 +65,7 @@ Just override classes defined in `public/css/inline-spoilers-default.css` with y
 * **DEPRECATE** PHP less than 7.1
 
 
-
+<a name="older-versions"></a>
 <details>
 <summary> <strong>OLDER VERSIONS</strong> </summary>
 
