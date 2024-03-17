@@ -105,17 +105,17 @@ function is_styles_scripts() {
 	global $post;
 
 	wp_register_style(
-		'inline-spoilers_style',
-		plugins_url( 'styles/inline-spoilers-default.css', __FILE__ ),
+		'inline-spoilers_css',
+		plugins_url( 'public/css/inline-spoilers-default.css', __FILE__ ),
 		null,
-		'1.4.1'
+		'2.0.0'
 	);
 	wp_register_script(
-		'inline-spoilers_script',
-		plugins_url( 'scripts/inline-spoilers-scripts.js', __FILE__ ),
+		'inline-spoilers_js',
+		plugins_url( 'public/js/inline-spoilers.js', __FILE__ ),
 		array( 'jquery' ),
-		'1.4.1',
-		true
+		'2.0.0',
+		array( 'in_footer' => true )
 	);
 
 	if ( ! IS_OPTIMIZE_LOADER || ( has_shortcode(
@@ -130,7 +130,7 @@ function is_styles_scripts() {
 			'collapse' => __( 'Collapse', 'inline-spoilers' ),
 		);
 
-		wp_localize_script( 'inline-spoilers_script', 'title', $translation_array );
+		wp_localize_script( 'inline-spoilers_js', 'title', $translation_array );
 	}
 }
 
@@ -143,20 +143,26 @@ function spoiler_block_init() {
 		return;
 	}
 
-	wp_register_script(
-		'block-editor',
-		plugins_url( 'block/index.js', __FILE__ ),
-		array( 'wp-blocks', 'wp-i18n', 'wp-element' ),
-		'1.4.1',
-		true
+	wp_register_style(
+		'inline-spoilers_block_css',
+		plugins_url( 'admin/css/inline-spoilers-block.css', __FILE__ ),
+		array(),
+		'2.0.0'
 	);
-	wp_register_style( 'block-editor', plugins_url( 'block/editor.css', __FILE__ ), array(), '1.4.1' );
+
+	wp_register_script(
+		'inline-spoilers_block_js',
+		plugins_url( 'admin/js/inline-spoilers-block.js', __FILE__ ),
+		array( 'wp-blocks', 'wp-i18n', 'wp-element' ),
+		'2.0.0',
+		array( 'in_footer' => true )
+	);
 
 	register_block_type(
 		'inline-spoilers/block',
 		array(
-			'editor_script' => 'block-editor',
-			'editor_style'  => 'block-editor',
+			'editor_script' => 'inline-spoilers_block_js',
+			'editor_style'  => 'inline-spoilers_block_css',
 		)
 	);
 }
