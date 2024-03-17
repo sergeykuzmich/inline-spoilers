@@ -88,7 +88,7 @@ function is_spoiler_shortcode( $atts, $content ) {
 	$extra .= balanceTags( do_shortcode( $content ), true );
 	$extra .= '</div>';
 
-	$output = '<div><div class="spoiler-wrap">';
+	$output  = '<div><div class="spoiler-wrap">';
 	$output .= $head . $body;
 	$output .= ( 'collapsed' === $initial_state )
 		? '<noscript>' . $extra . '</noscript>' : '';
