@@ -3,17 +3,19 @@
  * Plugin Name:             Inline Spoilers
  * Plugin URI:              https://wordpress.org/plugins/inline-spoilers/
  * Description:             The plugin allows to create content spoilers with simple shortcode & guttenberg block.
- * Version:                 1.5.4
+ * Version:                 2.0.0
  * Requires at least:       5.2
- * Tested up to:            6.2.2
- * Requires PHP:            5.6
+ * Tested up to:            6.5.0
+ * Requires PHP:            7.1
  * Author:                  Sergey Kuzmich
  * Author URI:              http://kuzmi.ch
  * License:                 GPLv3 or later
  * License URI:             https://www.gnu.org/licenses/gpl-3.0.html
  * Text Domain:             inline-spoilers
  * Domain Path:             /languages/
- *
+ */
+
+/**
  * @package                 Inline Spoilers
  */
 
@@ -23,20 +25,6 @@ if ( ! defined( 'WPINC' ) ) {
 
 // Read environment to detect script & style loading optimization.
 defined( 'IS_OPTIMIZE_LOADER' ) || define( 'IS_OPTIMIZE_LOADER', true );
-
-if ( ! function_exists( 'has_block' ) ) {
-	/**
-	 * Define has_block function for WordPress 4.9.10 and older.
-	 *
-	 * @param $block_name string Full block type to look for.
-	 * @param $post int|string|WP_Post|null Post content, post ID, or post object.
-	 *
-	 * @return bool
-	 */
-	function has_block( $block_name, $post ) {
-		return false;
-	}
-}
 
 add_action( 'plugins_loaded', 'is_load_textdomain' );
 /**
@@ -89,15 +77,15 @@ function is_spoiler_shortcode( $atts, $content ) {
 
 	$head = '<div class="spoiler-head no-icon ' . $props['head_class'] . '" title="' . $props['head_hint'] . '">' . $title . '</div>';
 
-	$body  = '<div class="spoiler-body" ' . $props['body_atts'] . '>';
+	$body = '<div class="spoiler-body" ' . $props['body_atts'] . '>';
 	$body .= balanceTags( do_shortcode( $content ), true );
 	$body .= '</div>';
 
-	$extra  = '<div class="spoiler-body">';
+	$extra = '<div class="spoiler-body">';
 	$extra .= balanceTags( do_shortcode( $content ), true );
 	$extra .= '</div>';
 
-	$output  = '<div><div class="spoiler-wrap">';
+	$output = '<div><div class="spoiler-wrap">';
 	$output .= $head . $body;
 	$output .= ( 'collapsed' === $initial_state )
 		? '<noscript>' . $extra . '</noscript>' : '';
@@ -128,9 +116,9 @@ function is_styles_scripts() {
 	);
 
 	if ( ! IS_OPTIMIZE_LOADER || ( has_shortcode(
-		$post->post_content,
-		'spoiler'
-	) || has_block( 'inline-spoilers/block', $post ) ) ) {
+		                               $post->post_content,
+		                               'spoiler'
+	                               ) || has_block( 'inline-spoilers/block', $post ) ) ) {
 		wp_enqueue_style( 'inline-spoilers_style' );
 		wp_enqueue_script( 'inline-spoilers_script' );
 
