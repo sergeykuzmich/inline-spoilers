@@ -6,11 +6,11 @@
   var __ = i18n.__;
   var element = element.createElement;
 
-  const { RichText } = wp.editor;
+  const { RichText } = wp.blockEditor;
 
   var visibleTitle = {};
 
-  blocks.registerBlockType( 'inline-spoilers/js', {
+  blocks.registerBlockType( 'inline-spoilers/block', {
     title: __( 'Inline Spoiler', 'inline-spoilers' ),
     icon: 'hidden',
     category: 'formatting',
