@@ -60,11 +60,11 @@ Just override classes defined in `public/css/inline-spoilers-default.css` with y
 
 ### 2.0.0 ###
 
-* Use more semantic HTML layout for spoilers
+* More semantic HTML layout for spoilers is used
   * **IMPORTANT:** All previously created spoilers will work as before, but the new ones will have different HTML structure
   * **WARNING:** In case you have custom styles for spoilers, you may need to update them
-* Extent Guttenberg block with available options
-* **DEPRECATE** PHP less than 7.1
+* Extended Guttenberg block with available options
+* **DEPRECATED** PHP less than 7.1
 
 
 <a name="older-versions"></a>
