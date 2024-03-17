@@ -31,6 +31,8 @@ defined( 'IS_OPTIMIZE_LOADER' ) || define( 'IS_OPTIMIZE_LOADER', true );
 
 add_action( 'plugins_loaded', 'is_load_textdomain' );
 /**
+ * Load plugin translation files.
+ *
  * @return void
  */
 function is_load_textdomain() {
@@ -38,7 +40,9 @@ function is_load_textdomain() {
 }
 
 /**
- * @param $initial_state
+ * Decides which props to use based on the initial state.
+ *
+ * @param string $initial_state The initial state of the spoiler.
  *
  * @return array
  */
@@ -58,8 +62,10 @@ function is_get_initial_props( $initial_state ) {
 
 add_shortcode( 'spoiler', 'is_spoiler_shortcode' );
 /**
- * @param $atts
- * @param $content
+ * Register the shortcode.
+ *
+ * @param array  $atts List of attributes.
+ * @param string $content The content to be placed inside the spoiler.
  *
  * @return string
  */
@@ -99,6 +105,8 @@ function is_spoiler_shortcode( $atts, $content ) {
 
 add_action( 'wp_enqueue_scripts', 'is_styles_scripts' );
 /**
+ * Enqueue styles and scripts.
+ *
  * @return void
  */
 function is_styles_scripts() {
@@ -136,6 +144,8 @@ function is_styles_scripts() {
 
 add_action( 'init', 'spoiler_block_init' );
 /**
+ * Init Gutenberg block to use in the editor.
+ *
  * @return void
  */
 function spoiler_block_init() {
