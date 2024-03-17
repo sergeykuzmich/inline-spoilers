@@ -42,7 +42,7 @@ function is_load_textdomain() {
 /**
  * Decides which props to use based on the initial state.
  *
- * @param  string $initial_state The initial state of the spoiler.
+ * @param  string $initial_state  The initial state of the spoiler.
  *
  * @return array
  */
@@ -64,8 +64,8 @@ add_shortcode( 'spoiler', 'is_spoiler_shortcode' );
 /**
  * Register the shortcode.
  *
- * @param  array  $atts List of attributes.
- * @param  string $content The content to be placed inside the spoiler.
+ * @param  array  $atts  List of attributes.
+ * @param  string $content  The content to be placed inside the spoiler.
  *
  * @return string
  */
