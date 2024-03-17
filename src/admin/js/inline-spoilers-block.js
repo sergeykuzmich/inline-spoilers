@@ -10,7 +10,7 @@
 
   var visibleTitle = {};
 
-  blocks.registerBlockType( 'inline-spoilers/block', {
+  blocks.registerBlockType( 'inline-spoilers/js', {
     title: __( 'Inline Spoiler', 'inline-spoilers' ),
     icon: 'hidden',
     category: 'formatting',
