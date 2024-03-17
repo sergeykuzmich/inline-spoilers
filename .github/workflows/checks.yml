@@ -22,7 +22,7 @@ jobs:
           php-version: ${{ matrix.version }}
       - name: Run Linter
         run: |
-          php -l *.php
+          php -l src/inline-spoilers.php
   codesniffer:
     name: Code Standards
     runs-on: ubuntu-latest
