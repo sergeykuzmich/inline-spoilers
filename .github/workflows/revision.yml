@@ -4,7 +4,7 @@ concurrency:
   cancel-in-progress: true
 on:
   push:
-    branches: [master, fix/svn-workflow]
+    branches: [master]
 jobs:
   deploy:
     name: Renew Metadata
@@ -21,8 +21,7 @@ jobs:
       - name: Prepare Repository
         run: |
           cp -R ./src/* ${{ runner.temp }}/svn/trunk/
-          mv ./assets/ ${{ runner.temp }}/svn/assets/
-          cd ${{ runner.temp }}/svn/trunk/
+          cp -R ./assets/* ${{ runner.temp }}/svn/assets
           svn add --force ${{ runner.temp }}/svn/
       - name: Publish Changes
         env:
