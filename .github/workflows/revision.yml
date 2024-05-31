@@ -20,9 +20,9 @@ jobs:
           svn co $SVN_REPOSITORY ${{ runner.temp }}/svn
       - name: Prepare Repository
         run: |
-          cp -R ./src/* ${{ runner.temp }}/svn/trunk/ && cd ${{ runner.temp }}/svn/trunk/
-          ls
+          cp -R ./src/* ${{ runner.temp }}/svn/trunk/
           mv ./assets/ ${{ runner.temp }}/svn/assets/
+          cd ${{ runner.temp }}/svn/trunk/
           svn add --force ${{ runner.temp }}/svn/
       - name: Publish Changes
         env:
