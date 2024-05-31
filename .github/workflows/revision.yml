@@ -4,7 +4,7 @@ concurrency:
   cancel-in-progress: true
 on:
   push:
-    branches: [master]
+    branches: [master, fix/svn-workflow]
 jobs:
   deploy:
     name: Renew Metadata
