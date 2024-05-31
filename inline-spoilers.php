@@ -3,7 +3,7 @@
  * Plugin Name:				Inline Spoilers
  * Plugin URI:				https://wordpress.org/plugins/inline-spoilers/
  * Description:				The plugin allows to create content spoilers with simple shortcode & guttenberg block.
- * Version:						1.5.4
+ * Version:						1.5.5
  * Requires at least:	5.2
  * Tested up to:			6.2.2
  * Requires PHP:			5.6
@@ -22,9 +22,6 @@
 if ( ! defined( 'WPINC' ) ) {
 	die;
 }
-
-// Read environment to detect script & style loading optimization
-defined( 'IS_OPTIMIZE_LOADER' ) || define( 'IS_OPTIMIZE_LOADER', true );
 
 // Define has_block function for WordPress 4.9.10 and older.
 if ( ! function_exists( 'has_block' ) ) {
@@ -94,17 +91,15 @@ function is_styles_scripts() {
 	wp_register_style( 'inline-spoilers_style', plugins_url( 'styles/inline-spoilers-default.css', __FILE__ ), null, '1.4.1' );
 	wp_register_script( 'inline-spoilers_script', plugins_url( 'scripts/inline-spoilers-scripts.js', __FILE__ ), array( 'jquery' ), '1.4.1', true );
 
-	if ( ! IS_OPTIMIZE_LOADER || ( has_shortcode( $post->post_content, 'spoiler' ) || has_block( 'inline-spoilers/block', $post ) ) ) {
-		wp_enqueue_style( 'inline-spoilers_style' );
-		wp_enqueue_script( 'inline-spoilers_script' );
+	wp_enqueue_style( 'inline-spoilers_style' );
+	wp_enqueue_script( 'inline-spoilers_script' );
 
-		$translation_array = array(
-			'expand'   => __( 'Expand', 'inline-spoilers' ),
-			'collapse' => __( 'Collapse', 'inline-spoilers' ),
-		);
+	$translation_array = array(
+		'expand'   => __( 'Expand', 'inline-spoilers' ),
+		'collapse' => __( 'Collapse', 'inline-spoilers' ),
+	);
 
-		wp_localize_script( 'inline-spoilers_script', 'title', $translation_array );
-	}
+	wp_localize_script( 'inline-spoilers_script', 'title', $translation_array );
 }
 
 add_action( 'init', 'spoiler_block_init' );
