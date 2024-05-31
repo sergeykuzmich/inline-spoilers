@@ -21,6 +21,7 @@ jobs:
       - name: Prepare Release
         run: |
           cp -R ./* ${{ runner.temp }}/svn/trunk/ && cd ${{ runner.temp }}/svn/trunk/
+          rm -rf ../assets
           mv ./assets/ ../assets/
           rm -rf ./.git/ ./.github/ ./README.md
           svn add --force .
