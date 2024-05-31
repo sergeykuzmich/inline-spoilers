@@ -26,9 +26,6 @@ if ( ! defined( 'WPINC' ) ) {
 	die;
 }
 
-// Read environment to detect script & style loading optimization.
-defined( 'IS_OPTIMIZE_LOADER' ) || define( 'IS_OPTIMIZE_LOADER', true );
-
 add_action( 'plugins_loaded', 'is_load_textdomain' );
 /**
  * Load plugin translation files.
@@ -132,23 +129,16 @@ add_action( 'wp_enqueue_scripts', 'is_js_css' );
  * @return void
  */
 function is_js_css() {
-	global $post;
+	is_register_public_css_js();
+	wp_enqueue_style( 'inline-spoilers_css' );
+	wp_enqueue_script( 'inline-spoilers_js' );
 
-	if ( ! IS_OPTIMIZE_LOADER || ( has_shortcode(
-		$post->post_content,
-		'spoiler'
-	) || has_block( 'inline-spoilers/block', $post ) ) ) {
-		is_register_public_css_js();
-		wp_enqueue_style( 'inline-spoilers_css' );
-		wp_enqueue_script( 'inline-spoilers_js' );
+	$translation_array = array(
+		'expand'   => __( 'Expand', 'inline-spoilers' ),
+		'collapse' => __( 'Collapse', 'inline-spoilers' ),
+	);
 
-		$translation_array = array(
-			'expand'   => __( 'Expand', 'inline-spoilers' ),
-			'collapse' => __( 'Collapse', 'inline-spoilers' ),
-		);
-
-		wp_localize_script( 'inline-spoilers_js', 'title', $translation_array );
-	}
+	wp_localize_script( 'inline-spoilers_js', 'title', $translation_array );
 }
 
 /**
