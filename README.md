@@ -54,6 +54,9 @@ Just override classes defined in `styles/inline-spoilers-styles.css` with your t
 
 ## Changelog ##
 
+### 1.5.5 ###
+* Fix https://wordpress.org/support/topic/attempt-to-read-property-post_content-2/
+
 ### 1.5.4 ###
 * Minify assets
 * Update WordPress "Requires at least" version
