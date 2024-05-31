@@ -6,7 +6,7 @@
   var __ = i18n.__;
   var element = element.createElement;
 
-  const { RichText } = wp.editor;
+  const { RichText } = wp.blockEditor;
 
   var visibleTitle = {};
 
@@ -23,7 +23,7 @@
       content: {
         type: 'array',
         selector: '.spoiler-body',
-        source: 'children'
+        source: 'string'
       },
       initial_state: {
         type: 'string',
