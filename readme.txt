@@ -1,7 +1,7 @@
 === Inline Spoilers ===
 Contributors: sergeykuzmich, gadswan
 Tags: shortcode, spoiler
-Stable tag: 1.5.4
+Stable tag: 1.5.5
 Tested up to: 6.2.2
 Requires at least: 5.2
 Requires PHP: 5.6
