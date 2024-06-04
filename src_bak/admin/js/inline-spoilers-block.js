@@ -10,8 +10,8 @@
 
   var visibleTitle = {};
 
-  blocks.registerBlockType( 'inline-spoilers/block', {
-    title: __( 'Inline Spoiler', 'inline-spoilers' ),
+  blocks.registerBlockType( 'inline-plugin/block', {
+    title: __( 'Inline Spoiler', 'inline-plugin' ),
     icon: 'hidden',
     category: 'formatting',
     attributes: {
@@ -52,7 +52,7 @@
           }, visibleTitle[UID] ),
           element( 'div', { class: 'spoiler-content' },
             element( InnerBlocks, {
-              placeholder: __( 'Spoiler content', 'inline-spoilers' ),
+              placeholder: __( 'Spoiler content', 'inline-plugin' ),
               value: content,
               onChange: function( value ) {
                 props.setAttributes( { content: value } );

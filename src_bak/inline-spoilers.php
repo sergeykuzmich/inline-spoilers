@@ -9,7 +9,7 @@
  * @wordpress-plugin
  * Plugin Name:             Inline Spoilers
  * Plugin URI:              https://github.com/sergeykuzmich/inline-spoilers
- * Description:             The plugin allows to create content spoilers with simple shortcode & guttenberg js.
+ * Description:             The plugin allows to create content plugin with simple shortcode & guttenberg js.
  * Version:                 2.0.0
  * Requires at least:       5.2
  * Tested up to:            6.5.0
@@ -18,7 +18,7 @@
  * Author URI:              https://kuzmi.ch
  * License:                 GPLv3 or later
  * License URI:             https://www.gnu.org/licenses/gpl-3.0.html
- * Text Domain:             inline-spoilers
+ * Text Domain:             inline-plugin
  * Domain Path:             /languages/
  */
 
@@ -33,7 +33,7 @@ add_action( 'plugins_loaded', 'is_load_textdomain' );
  * @return void
  */
 function is_load_textdomain() {
-	load_plugin_textdomain( 'inline-spoilers', false, dirname( plugin_basename( __FILE__ ) ) . '/languages' );
+	load_plugin_textdomain( 'inline-plugin', false, dirname( plugin_basename( __FILE__ ) ) . '/languages' );
 }
 
 /**
@@ -48,61 +48,32 @@ function is_get_initial_props( string $initial_state ): array {
 		? array(
 			'head_class' => ' collapsed',
 			'body_atts'  => 'style="display: none;"',
-			'head_hint'  => __( 'Expand', 'inline-spoilers' ),
+			'head_hint'  => __( 'Expand', 'inline-plugin' ),
 		)
 		: array(
 			'head_class' => ' expanded',
 			'body_atts'  => 'style="display: block;"',
-			'head_hint'  => __( 'Collapse', 'inline-spoilers' ),
+			'head_hint'  => __( 'Collapse', 'inline-plugin' ),
 		);
 }
 
-add_shortcode( 'spoiler', 'is_spoiler_shortcode' );
-/**
- * Register the shortcode.
- *
- * @param  array  $atts  List of attributes.
- * @param  string $content  The content to be placed inside the spoiler.
- *
- * @return string
- */
-function is_spoiler_shortcode( array $atts, string $content ): string {
-	$attributes = shortcode_atts(
-		array(
-			'title'         => '&nbsp;',
-			'initial_state' => 'collapsed',
-		),
-		$atts,
-		'spoiler'
-	);
 
-	$initial_state = esc_attr( $attributes['initial_state'] );
-
-	$props = is_get_initial_props( $initial_state );
-
-	$start = '<details class="spoiler">';
-	$end   = '</details>';
-	$title = '<summary>' . esc_attr( $attributes['title'] ) . '</summary>';
-	$body  = balanceTags( do_shortcode( $content ), true );
-
-	return $start . $title . $body . $end;
-}
 
 /**
- * Register public styles and scripts.
+ * Register shortcode styles and scripts.
  *
  * @return void
  */
 function is_register_public_css_js() {
 	wp_register_style(
 		'inline-spoilers_css',
-		plugins_url( 'public/css/inline-spoilers-default.css', __FILE__ ),
+		plugins_url( 'shortcode/css/inline-plugin-default.css', __FILE__ ),
 		null,
 		'2.0.0'
 	);
 	wp_register_script(
 		'inline-spoilers_js',
-		plugins_url( 'public/js/inline-spoilers.js', __FILE__ ),
+		plugins_url( 'shortcode/js/inline-plugin.js', __FILE__ ),
 		array( 'jquery' ),
 		'2.0.0',
 		array( 'in_footer' => true )
@@ -121,8 +92,8 @@ function is_js_css() {
 	wp_enqueue_script( 'inline-spoilers_js' );
 
 	$translation_array = array(
-		'expand'   => __( 'Expand', 'inline-spoilers' ),
-		'collapse' => __( 'Collapse', 'inline-spoilers' ),
+		'expand'   => __( 'Expand', 'inline-plugin' ),
+		'collapse' => __( 'Collapse', 'inline-plugin' ),
 	);
 
 	wp_localize_script( 'inline-spoilers_js', 'title', $translation_array );
@@ -136,14 +107,14 @@ function is_js_css() {
 function is_register_admin_css_js() {
 	wp_register_style(
 		'inline-spoilers_block_css',
-		plugins_url( 'admin/css/inline-spoilers-block.css', __FILE__ ),
+		plugins_url( 'admin/css/inline-plugin-block.css', __FILE__ ),
 		array(),
 		'2.0.0'
 	);
 
 	wp_register_script(
 		'inline-spoilers_block_js',
-		plugins_url( 'admin/js/inline-spoilers-block.js', __FILE__ ),
+		plugins_url( 'admin/js/inline-plugin-block.js', __FILE__ ),
 		array( 'wp-blocks', 'wp-i18n', 'wp-element' ),
 		'2.0.0',
 		array( 'in_footer' => true )
@@ -163,7 +134,7 @@ function is_block_init() {
 
 	is_register_admin_css_js();
 	register_block_type(
-		'inline-spoilers/block',
+		'inline-plugin/block',
 		array(
 			'editor_script' => 'inline-spoilers_block_js',
 			'editor_style'  => 'inline-spoilers_block_css',
