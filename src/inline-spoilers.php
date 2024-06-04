@@ -80,25 +80,12 @@ function is_spoiler_shortcode( array $atts, string $content ): string {
 
 	$props = is_get_initial_props( $initial_state );
 
-	$head  = '<div class="spoiler-head no-icon ' . $props['head_class'] . '" title="' . $props['head_hint'] . '">';
-	$head .= esc_attr( $attributes['title'] );
-	$head .= '</div>';
+	$start = '<details class="spoiler">';
+	$end   = '</details>';
+	$title = '<summary>' . esc_attr( $attributes['title'] ) . '</summary>';
+	$body  = balanceTags( do_shortcode( $content ), true );
 
-	$body  = '<div class="spoiler-body" ' . $props['body_atts'] . '>';
-	$body .= balanceTags( do_shortcode( $content ), true );
-	$body .= '</div>';
-
-	$extra  = '<div class="spoiler-body">';
-	$extra .= balanceTags( do_shortcode( $content ), true );
-	$extra .= '</div>';
-
-	$output  = '<div><div class="spoiler-wrap">';
-	$output .= $head . $body;
-	$output .= ( 'collapsed' === $initial_state )
-		? '<noscript>' . $extra . '</noscript>' : '';
-	$output .= '</div></div>';
-
-	return $output;
+	return $start . $title . $body . $end;
 }
 
 /**

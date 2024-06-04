@@ -6,7 +6,7 @@
   var __ = i18n.__;
   var element = element.createElement;
 
-  const { RichText } = wp.blockEditor;
+  const { InnerBlocks } = wp.blockEditor;
 
   var visibleTitle = {};
 
@@ -51,7 +51,7 @@
             }
           }, visibleTitle[UID] ),
           element( 'div', { class: 'spoiler-content' },
-            element( RichText, {
+            element( InnerBlocks, {
               placeholder: __( 'Spoiler content', 'inline-spoilers' ),
               value: content,
               onChange: function( value ) {
