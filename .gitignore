@@ -37,3 +37,6 @@ Thumb.db
 # IDE
 .idea/
 .vscode/
+
+# Compiled
+build/

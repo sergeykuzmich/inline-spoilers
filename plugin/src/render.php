@@ -1,8 +1,12 @@
 <?php
 /**
- * @see https://github.com/WordPress/gutenberg/blob/trunk/docs/reference-guides/block-api/block-metadata.md#render
+ *  Inline Spoilers - Render
+ *
+ * @package           Inline Spoilers
  */
+
 ?>
+
 <p <?php echo get_block_wrapper_attributes(); ?>>
-	<?php esc_html_e( 'Inline – hello from a dynamic block!', 'plugin' ); ?>
+	<?php esc_html_e( 'Inline Spoilers!', 'plugin' ); ?>
 </p>

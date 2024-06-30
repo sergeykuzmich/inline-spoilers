@@ -1,12 +1,12 @@
 {
 	"$schema": "https://schemas.wp.org/trunk/block.json",
 	"apiVersion": 3,
-	"name": "inline-spoilers/spoiler",
+	"name": "inline-spoilers/block",
 	"version": "2.0.0",
 	"title": "Inline Spoiler",
-	"category": "widgets",
+	"category": "text",
 	"icon": "hidden",
-	"description": "Example block scaffolded with Create Block tool.",
+	"description": "Hide text that can be revealed by clicking a button.",
 	"example": {},
 	"supports": {
 		"html": false
