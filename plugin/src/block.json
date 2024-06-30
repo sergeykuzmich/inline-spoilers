@@ -11,6 +11,20 @@
 	"supports": {
 		"html": false
 	},
+	"attributes": {
+		"open": {
+			"type": "boolean",
+			"default": false
+		},
+		"title": {
+			"type": "string",
+			"default": "Spoiler"
+		},
+		"content": {
+			"type": "string",
+			"default": "Hidden text."
+		}
+	},
 	"textdomain": "inline-spoilers",
 	"editorScript": "file:./index.js",
 	"editorStyle": "file:./index.css",

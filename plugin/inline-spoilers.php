@@ -59,7 +59,7 @@ function inline_spoilers_spoiler_shortcode( array $atts, string $content ): stri
 		'spoiler'
 	);
 
-	$start = '<details class="spoiler"' . ( $attributes['open'] ? ' open' : '' ) . '>';
+	$start = '<details class="wp-shortcode-inline-spoilers-shortcode"' . ( $attributes['open'] ? ' open' : '' ) . '>';
 	$title = '<summary>' . esc_attr( $attributes['title'] ) . '</summary>';
 	$body  = balanceTags( do_shortcode( $content ), true );
 	$end   = '</details>';
@@ -77,7 +77,7 @@ add_shortcode( 'spoiler', 'inline_spoilers_spoiler_shortcode' );
 function inline_spoilers_register_shortcode_css_js() {
 	wp_register_style(
 		'inline-spoilers-shortcode_css',
-		plugins_url( 'shortcode/css/inline-spoilers-shortcode.css', __FILE__ ),
+		plugins_url( 'shortcode/css/style.css', __FILE__ ),
 		null,
 		'2.0.0'
 	);
@@ -85,8 +85,8 @@ function inline_spoilers_register_shortcode_css_js() {
 
 	wp_register_script(
 		'inline-spoilers-shortcode_js',
-		plugins_url( 'shortcode/js/inline-spoilers-shortcode.js', __FILE__ ),
-		array( 'jquery' ),
+		plugins_url( 'shortcode/js/index.js', __FILE__ ),
+		array(),
 		'2.0.0',
 		array( 'in_footer' => true )
 	);

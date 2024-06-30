@@ -1,25 +1,68 @@
-/**
- * Use this file for JavaScript code that you want to run in the front-end
- * on posts/pages that contain this block.
- *
- * When this file is defined as the value of the `viewScript` property
- * in `block.json` it will be enqueued on the front end of the site.
- *
- * Example:
- *
- * ```js
- * {
- *   "viewScript": "file:./view.js"
- * }
- * ```
- *
- * If you're not making any changes to this file because your project doesn't need any
- * JavaScript running in the front-end, then you should delete this file and remove
- * the `viewScript` property from `block.json`.
- *
- * @see https://developer.wordpress.org/block-editor/reference-guides/block-api/block-metadata/#view-script
- */
+document.body.addEventListener( 'click', ( event ) => {
+	const spoiler = event.target.closest(
+		'details.wp-block-inline-spoilers-block'
+	);
+	if ( ! spoiler ) {
+		return;
+	}
 
-/* eslint-disable no-console */
-console.log( 'Hello World! (from inline-plugin-plugin block)' );
-/* eslint-enable no-console */
+	const summary = spoiler.querySelector( 'summary' );
+
+	event.preventDefault();
+	if ( spoiler.open ) {
+		const border = parseInt(
+			window
+				.getComputedStyle( summary )
+				.getPropertyValue( 'border-bottom-width' )
+				.slice( 0, -2 )
+		);
+
+		const to = `${ summary.offsetHeight + border }px`;
+		const from = `${ spoiler.offsetHeight }px`;
+
+		spoiler.style.overflow = 'hidden';
+
+		const ani = spoiler.animate(
+			{
+				height: [ from, to ],
+			},
+			{
+				duration: 200,
+				easing: 'ease-in-out',
+			}
+		);
+
+		ani.onfinish = () => {
+			spoiler.style.overflow = '';
+			spoiler.open = ! spoiler.open;
+		};
+	} else {
+		spoiler.style.overflow = 'hidden';
+		spoiler.style.height = `${ summary.offsetHeight }px`;
+		spoiler.open = ! spoiler.open;
+
+		const border = parseInt(
+			window
+				.getComputedStyle( summary )
+				.getPropertyValue( 'border-bottom-width' )
+				.slice( 0, -2 )
+		);
+
+		const from = `${ summary.offsetHeight + border }px`;
+		const to = `${ spoiler.scrollHeight }px`;
+
+		const ani = spoiler.animate(
+			{
+				height: [ from, to ],
+			},
+			{
+				duration: 200,
+				easing: 'ease-in-out',
+			}
+		);
+
+		ani.onfinish = () => {
+			spoiler.style.height = spoiler.style.overflow = '';
+		};
+	}
+} );

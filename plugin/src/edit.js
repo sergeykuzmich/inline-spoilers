@@ -11,7 +11,13 @@ import { __ } from '@wordpress/i18n';
  *
  * @see https://developer.wordpress.org/block-editor/reference-guides/packages/packages-block-editor/#useblockprops
  */
-import { useBlockProps } from '@wordpress/block-editor';
+import {
+	InnerBlocks,
+	InspectorControls,
+	RichText,
+	useBlockProps,
+} from '@wordpress/block-editor';
+import { PanelBody, ToggleControl } from '@wordpress/components';
 
 /**
  * Lets webpack process CSS, SASS or SCSS files referenced in JavaScript files.
@@ -29,13 +35,34 @@ import './editor.scss';
  *
  * @return {Element} Element to render.
  */
-export default function Edit() {
+export default function Edit( { attributes, setAttributes } ) {
+	const { title, open } = attributes;
+
 	return (
-		<p { ...useBlockProps() }>
-			{ __(
-				'INLINE SPOILERS – hello from the editor!',
-				'inline-spoilers'
-			) }
-		</p>
+		<>
+			<InspectorControls>
+				<PanelBody title={ __( 'Settings', 'inline-spoilers' ) }>
+					<ToggleControl
+						checked={ !! open }
+						label={ __( 'Expanded', 'inline-spoilers' ) }
+						onChange={ () =>
+							setAttributes( {
+								open: ! open,
+							} )
+						}
+					/>
+				</PanelBody>
+			</InspectorControls>
+			<details { ...useBlockProps() } open>
+				<RichText
+					tagName="summary"
+					disableLineBreaks={ true }
+					withoutInteractiveFormatting={ true }
+					onChange={ ( value ) => setAttributes( { value } ) }
+					value={ title }
+				/>
+				<InnerBlocks />
+			</details>
+		</>
 	);
 }

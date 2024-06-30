@@ -1,6 +1,6 @@
 {
     "name": "sergeykuzmich/inline-spoilers",
-    "description": "The WordPress plugin allows to create content plugin with simple shortcode & guttenberg block.",
+    "description": "The WordPress plugin allows to create content spoilers with simple shortcode & guttenberg block.",
     "type": "project",
     "license": "GPLv3 or later",
     "authors": [

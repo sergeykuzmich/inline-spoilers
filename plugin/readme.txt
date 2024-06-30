@@ -46,9 +46,3 @@ Just override classes defined in `public/css/inline-spoilers-default.css` with y
 * **DEPRECATED** PHP less than 7.1
 
 [OLDER VERSIONS](https://github.com/sergeykuzmich/inline-spoilers?tab=readme-ov-file#older-versions)
-
-== Arbitrary section ==
-
-You may provide arbitrary sections, in the same format as the ones above. This may be of use for extremely complicated
-plugins where more information needs to be conveyed that doesn't fit into the categories of "description" or
-"installation." Arbitrary sections will be shown below the built-in sections outlined above.

@@ -1,9 +1,3 @@
-/**
- * The following styles get applied inside the editor only.
- *
- * Replace them with your own styles or remove the file completely.
- */
-
-.wp-block-inline-spoilers-block {
-	border: 1px dotted #0f0;
+details.wp-block-inline-spoilers-block summary {
+	pointer-events: none;
 }

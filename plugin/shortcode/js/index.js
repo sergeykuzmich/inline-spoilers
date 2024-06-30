@@ -1,5 +1,7 @@
 document.body.addEventListener( 'click', ( event ) => {
-	const spoiler = event.target.closest( 'details.spoiler' );
+	const spoiler = event.target.closest(
+		'details.wp-shortcode-inline-spoilers-shortcode'
+	);
 	if ( ! spoiler ) {
 		return;
 	}
