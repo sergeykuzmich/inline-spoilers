@@ -10,7 +10,7 @@
 **Contributors:** sergeykuzmich, gadswan  
 **Tags:** shortcode, spoiler  
 **Stable tag:** 2.0.0  
-**Tested up to:** 6.5.0  
+**Tested up to:** 6.5.3  
 **Requires at least:** 5.2  
 **Requires PHP:** 7.1  
 **License:** GPLv3 or later  
