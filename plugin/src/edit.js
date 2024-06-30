@@ -32,7 +32,10 @@ import './editor.scss';
 export default function Edit() {
 	return (
 		<p { ...useBlockProps() }>
-			{ __( 'INLINE SPOILERS – hello from the editor!', 'inline-spoilers' ) }
+			{ __(
+				'INLINE SPOILERS – hello from the editor!',
+				'inline-spoilers'
+			) }
 		</p>
 	);
 }
