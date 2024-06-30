@@ -26,9 +26,6 @@ jobs:
   js-css-lint:
     name: JS & CSS Code Lint
     runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        version: ['7.1', '8.3']
     steps:
       - uses: actions/checkout@v4
         with:
