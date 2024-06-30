@@ -1,8 +1,12 @@
 <?php
 /**
- *  Inline Spoilers - Render
+ *  Inline Spoilers - Render Script
  *
- * @package           Inline Spoilers
+ * @param  array     $attributes  The array of attributes for this block.
+ * @param  string    $content     Rendered block output.
+ * @param  WP_Block  $block       The instance of the WP_Block class that represents the block being rendered.
+ *
+ * @package Inline Spoilers
  */
 
 ?>
