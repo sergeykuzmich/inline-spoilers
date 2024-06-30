@@ -1,19 +1,22 @@
 document.body.addEventListener( 'click', ( event ) => {
 	const spoiler = event.target.closest( 'details.spoiler' );
-	if ( ! spoiler ) return;
+	if ( ! spoiler ) {
+		return;
+	}
 
 	const summary = spoiler.querySelector( 'summary' );
 
 	event.preventDefault();
 	if ( spoiler.open ) {
 		const border = parseInt(
-			getComputedStyle( summary )
+			window
+				.getComputedStyle( summary )
 				.getPropertyValue( 'border-bottom-width' )
 				.slice( 0, -2 )
 		);
 
-		let to = `${ summary.offsetHeight + border }px`;
-		let from = `${ spoiler.offsetHeight }px`;
+		const to = `${ summary.offsetHeight + border }px`;
+		const from = `${ spoiler.offsetHeight }px`;
 
 		spoiler.style.overflow = 'hidden';
 
@@ -27,7 +30,7 @@ document.body.addEventListener( 'click', ( event ) => {
 			}
 		);
 
-		ani.onfinish = ( event ) => {
+		ani.onfinish = () => {
 			spoiler.style.overflow = '';
 			spoiler.open = ! spoiler.open;
 		};
@@ -37,13 +40,14 @@ document.body.addEventListener( 'click', ( event ) => {
 		spoiler.open = ! spoiler.open;
 
 		const border = parseInt(
-			getComputedStyle( summary )
+			window
+				.getComputedStyle( summary )
 				.getPropertyValue( 'border-bottom-width' )
 				.slice( 0, -2 )
 		);
 
-		let from = `${ summary.offsetHeight + border }px`;
-		let to = `${ spoiler.scrollHeight }px`;
+		const from = `${ summary.offsetHeight + border }px`;
+		const to = `${ spoiler.scrollHeight }px`;
 
 		const ani = spoiler.animate(
 			{
@@ -55,7 +59,7 @@ document.body.addEventListener( 'click', ( event ) => {
 			}
 		);
 
-		ani.onfinish = ( event ) => {
+		ani.onfinish = () => {
 			spoiler.style.height = spoiler.style.overflow = '';
 		};
 	}

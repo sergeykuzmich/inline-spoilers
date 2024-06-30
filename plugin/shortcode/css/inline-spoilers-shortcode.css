@@ -18,7 +18,7 @@ details.spoiler summary {
 	border-bottom: 1px solid #c3cbd1;
 	cursor: pointer;
 	font-weight: 700;
-	line-height: 1.5em;
+	line-height: 1.5;
 	padding: 0 6px 0 23px;
 	text-align: left;
 }
