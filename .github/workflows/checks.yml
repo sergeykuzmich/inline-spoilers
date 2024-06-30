@@ -21,8 +21,7 @@ jobs:
         with:
           php-version: ${{ matrix.version }}
       - name: Run Linter
-        run: |
-          php -l plugin/inline-spoilers.php
+        run: php -l plugin/inline-spoilers.php
   js-css-lint:
     name: JS & CSS Code Lint
     runs-on: ubuntu-latest
@@ -34,7 +33,7 @@ jobs:
         with:
             node-version: '20.11.1'
             cache: 'npm'
-            cache-dependency-path: 'package-lock.json'
+            cache-dependency-path: 'plugin/package-lock.json'
       - name: Install Dependencies
         working-directory: ./plugin
         run: npm ci
@@ -54,8 +53,6 @@ jobs:
         with:
           php-version: '8.3'
       - name: Setup CodeSniffer
-        run: |
-          composer install
+        run: composer install
       - name: Check WordPress Coding Standards
-        run: |
-          ./vendor/bin/phpcs --standard=WordPress --extensions=php ./plugin/
+        run: ./vendor/bin/phpcs --standard=WordPress --extensions=php ./plugin/
