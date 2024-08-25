@@ -10,7 +10,7 @@
 **Contributors:** sergeykuzmich, gadswan  
 **Tags:** shortcode, spoiler  
 **Stable tag:** 2.0.0  
-**Tested up to:** 6.5.3  
+**Tested up to:** 6.6.1  
 **Requires at least:** 5.2  
 **Requires PHP:** 7.1  
 **License:** GPLv3 or later  
@@ -60,16 +60,14 @@ Just override classes defined in `public/css/inline-spoilers-default.css` with y
 
 ### 2.0.0 ###
 
-* More semantic HTML layout for spoilers is used
-  * **IMPORTANT:** All previously created spoilers will work as before, but the new ones will have different HTML structure
-  * **WARNING:** In case you have custom styles for spoilers, you may need to update them
-* Extended Guttenberg block with available options
+* Change spoiler HTML semantic
+* Add Guttenberg block options
+* Allow spoilers inside spoilers (as well as other Guttengerg blocks)
 * **DEPRECATED** PHP less than 7.1
-
 
 <a name="older-versions"></a>
 <details>
-<summary> <strong>OLDER VERSIONS</strong> </summary>
+<summary><strong>1.*.* VERSIONS</strong></summary>
 
 ### 1.5.4 ###
 
