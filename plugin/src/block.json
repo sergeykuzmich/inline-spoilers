@@ -32,3 +32,37 @@
 	"render": "file:./render.php",
 	"viewScript": "file:./view.js"
 }
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "inline-spoilers/block",
+	"version": "2.0.0",
+	"title": "Inline Spoiler",
+	"category": "text",
+	"icon": "hidden",
+	"description": "Hide text that can be revealed by clicking a button.",
+	"example": {},
+	"supports": {
+		"html": false
+	},
+	"attributes": {
+		"open": {
+			"type": "boolean",
+			"default": false
+		},
+		"title": {
+			"type": "string",
+			"default": "Spoiler"
+		},
+		"content": {
+			"type": "string",
+			"default": "Hidden text."
+		}
+	},
+	"textdomain": "inline-spoilers",
+	"editorScript": "file:./index.js",
+	"editorStyle": "file:./index.css",
+	"style": "file:./style-index.css",
+	"render": "file:./render.php",
+	"viewScript": "file:./view.js"
+}

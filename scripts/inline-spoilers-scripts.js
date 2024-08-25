@@ -1,0 +1,1 @@
+jQuery(function(){jQuery(".spoiler-head").removeClass("no-icon"),jQuery(".spoiler-head").on("click",function(e){$isExpanded=($this=jQuery(this)).hasClass("expanded"),$this.toggleClass("expanded").toggleClass("collapsed"),$this.prop("title",$isExpanded?title.collapse:title.expand),$isExpanded?$this.next().slideUp("fast"):$this.next().slideDown("fast")})});
