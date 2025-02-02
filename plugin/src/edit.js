@@ -10,7 +10,7 @@ import { PanelBody, ToggleControl } from '@wordpress/components';
 
 import './editor.scss';
 
-export default function Edit( { attributes, setAttributes, clientId } ) {
+export default function Edit( { attributes, setAttributes } ) {
 	const { title, open } = attributes;
 	const innerBlocksRef = useRef();
 
