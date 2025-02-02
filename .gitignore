@@ -40,3 +40,6 @@ Thumb.db
 
 # Compiled
 build/
+
+# Cache
+*.cache
