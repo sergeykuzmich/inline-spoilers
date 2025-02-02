@@ -31,7 +31,7 @@ if ( ! defined( 'ABSPATH' ) ) {
  *
  * @return void
  */
-function inline_spoilers_block_init() {
+function inline_spoilers_block_init(): void {
 	if ( ! function_exists( 'register_block_type' ) ) {
 		return;
 	}
@@ -74,7 +74,7 @@ add_shortcode( 'spoiler', 'inline_spoilers_spoiler_shortcode' );
  *
  * @return void
  */
-function inline_spoilers_register_shortcode_css_js() {
+function inline_spoilers_register_shortcode_css_js(): void {
 	wp_register_style(
 		'inline-spoilers-shortcode_css',
 		plugins_url( 'shortcode/css/style.css', __FILE__ ),

@@ -5,9 +5,7 @@ document.body.addEventListener( 'click', ( event ) => {
 	if ( ! spoiler ) {
 		return;
 	}
-
 	const summary = spoiler.querySelector( 'summary' );
-
 	event.preventDefault();
 	if ( spoiler.open ) {
 		const border = parseInt(
@@ -40,17 +38,14 @@ document.body.addEventListener( 'click', ( event ) => {
 		spoiler.style.overflow = 'hidden';
 		spoiler.style.height = `${ summary.offsetHeight }px`;
 		spoiler.open = ! spoiler.open;
-
 		const border = parseInt(
 			window
 				.getComputedStyle( summary )
 				.getPropertyValue( 'border-bottom-width' )
 				.slice( 0, -2 )
 		);
-
 		const from = `${ summary.offsetHeight + border }px`;
 		const to = `${ spoiler.scrollHeight }px`;
-
 		const ani = spoiler.animate(
 			{
 				height: [ from, to ],
@@ -60,7 +55,6 @@ document.body.addEventListener( 'click', ( event ) => {
 				easing: 'ease-in-out',
 			}
 		);
-
 		ani.onfinish = () => {
 			spoiler.style.height = spoiler.style.overflow = '';
 		};

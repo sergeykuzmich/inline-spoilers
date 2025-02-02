@@ -9,17 +9,28 @@
  * @package          Inline Spoilers
  */
 
+/**
+ * Attributes of a Gutenberg block or another element.
+ *
+ * @var array $attributes
+ */
+
+/**
+ * The content of the current post or block.
+ *
+ * @var string $content
+ */
 ?>
 
 <details
 	<?php
-	if ( $attributes['open'] ) {
+	if ( true === $attributes['open'] ) {
 		echo 'open';
 	}
 	?>
 	<?php echo wp_kses_data( get_block_wrapper_attributes() ); ?>>
 	<summary>
-		<?php echo wp_kses( $attributes['title'] ); ?>
+		<?php echo wp_kses( $attributes['title'], array() ); ?>
 	</summary>
-	<?php echo wp_kses( $content ); ?>
+	<?php echo wp_kses( $content, 'post' ); ?>
 </details>
