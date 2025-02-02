@@ -21,8 +21,9 @@ $spoiler_title = $attributes['title'] ? $attributes['title'] : '&nbsp;';
  *
  * @var string $content
  */
-?>
 
+if ( ! str_contains( $content, 'spoiler-wrap' ) ) :
+	?>
 <details
 	<?php
 	if ( true === $attributes['open'] ) {
@@ -35,3 +36,10 @@ $spoiler_title = $attributes['title'] ? $attributes['title'] : '&nbsp;';
 	</summary>
 	<?php echo wp_kses( $content, 'post' ); ?>
 </details>
+<?php else : ?>
+	<?php
+	// Allow no-escape rendering of the content for blocks created
+	// in version of Plugin prior to 2.0.0.
+	echo $content; // phpcs:ignore WordPress.Security.EscapeOutput
+	?>
+<?php endif; ?>

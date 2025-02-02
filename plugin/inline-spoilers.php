@@ -78,7 +78,7 @@ function inline_spoilers_register_shortcode_css_js(): void {
 	wp_register_style(
 		'inline-spoilers-shortcode_css',
 		plugins_url( 'shortcode/css/style.css', __FILE__ ),
-		null,
+		array(),
 		'2.0.0'
 	);
 	wp_enqueue_style( 'inline-spoilers-shortcode_css' );
@@ -91,6 +91,22 @@ function inline_spoilers_register_shortcode_css_js(): void {
 		array( 'in_footer' => true )
 	);
 	wp_enqueue_script( 'inline-spoilers-shortcode_js' );
+
+	wp_register_style(
+		'inline-spoilers-compatibility_css',
+		plugins_url( 'shortcode/css/compatibility.css', __FILE__ ),
+		array(),
+		'1.5.5'
+	);
+	wp_enqueue_style( 'inline-spoilers-compatibility_css' );
+	wp_register_script(
+		'inline-spoilers-compatibility_js',
+		plugins_url( 'shortcode/js/compatibility.js', __FILE__ ),
+		array( 'jquery' ),
+		'1.5.5',
+		array( 'in_footer' => true )
+	);
+	wp_enqueue_script( 'inline-spoilers-compatibility_js' );
 }
 
 add_action( 'wp_enqueue_scripts', 'inline_spoilers_register_shortcode_css_js' );
