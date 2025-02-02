@@ -22,7 +22,7 @@
 		},
 		"content": {
 			"type": "string",
-			"default": "Hidden text."
+			"default": ""
 		}
 	},
 	"textdomain": "inline-spoilers",

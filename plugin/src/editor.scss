@@ -1,3 +1,40 @@
-details.wp-block-inline-spoilers-block summary {
-	pointer-events: none;
+.wp-block-inline-spoilers-block {
+	background-color: #E9E9E6;
+	border: 1px solid #C3CBD1;
+	border-left-width: 2px;
+
+	.spoiler-title {
+		background: #E9E9E6 url(data:image/gif;base64,R0lGODlhCQAJAMQeAOLt+ff8//z+/4CRxo2by7vF6a254X6PxICQw87a74CQxuXo84CQxM/b7/H6/v7+/oGRxouayoGSxv7+/8LN7IqZyv7//4KSxur0/MrV74OTx9Ld8trl9gwMDP///wAAACH5BAEAAB4ALAAAAAAJAAkAAAU4oFcpwzFAkWgUVLZxCQGxLgdgGtS+t6NJmY5QOEFcNo/kZGLRXGwYR0DQjDSiU8uCIJJIGJdLKgQAOw==) no-repeat left center;
+		line-height: 1.5em;
+		margin-left: 10px;
+		padding: 0 6px 0 14px;
+		color: #2A2A2A !important;
+		font-weight: bold;
+
+		br {
+			display: none;
+		}
+	}
+
+	.spoiler-content {
+		background-color: #F5F5F5;
+		border-top: 1px solid #C3CBD1;
+		padding: 2px 10px 0 10px;
+		overflow: hidden;
+	}
+
+	// Guttenberg Utils
+	.block-list-appender:last-child {
+		position: static;
+		margin-block-start: .5rem;
+		margin-block-end: .5rem;
+
+		.block-editor-default-block-appender {
+			text-align: center;
+		}
+
+		.block-editor-inserter {
+			right: calc(50% - 12px);
+		}
+	}
 }

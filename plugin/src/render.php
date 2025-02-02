@@ -14,6 +14,7 @@
  *
  * @var array $attributes
  */
+$spoiler_title = $attributes['title'] ? $attributes['title'] : '&nbsp;';
 
 /**
  * The content of the current post or block.
@@ -30,7 +31,7 @@
 	?>
 	<?php echo wp_kses_data( get_block_wrapper_attributes() ); ?>>
 	<summary>
-		<?php echo wp_kses( $attributes['title'], array() ); ?>
+		<?php echo wp_kses( $spoiler_title, array() ); ?>
 	</summary>
 	<?php echo wp_kses( $content, 'post' ); ?>
 </details>
