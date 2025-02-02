@@ -19,6 +19,6 @@
 		"@wordpress/components": "^29.3.0",
 		"@wordpress/element": "^6.17.0",
 		"@wordpress/i18n": "^5.17.0",
-		"@wordpress/scripts": "^30.9.0"
+		"@wordpress/scripts": "^30.10.0"
 	}
 }
