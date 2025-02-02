@@ -12,7 +12,7 @@
  * Description:             The plugin allows to create content plugin with simple shortcode or guttenberg block.
  * Version:                 2.0.0
  * Requires at least:       5.2
- * Tested up to:            6.5.3
+ * Tested up to:            6.7.1
  * Requires PHP:            7.1
  * Author:                  Sergey Kuzmich
  * Author URI:              https://kuzmi.ch
