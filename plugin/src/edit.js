@@ -17,7 +17,7 @@ export default function Edit( { attributes, setAttributes } ) {
 	useEffect( () => {
 		setTimeout( () => {
 			if ( innerBlocksRef.current ) {
-				innerBlocksRef.current.querySelector( 'p' ).click();
+				innerBlocksRef.current.querySelector( 'p' )?.click();
 			}
 		}, 50 );
 	}, [] );

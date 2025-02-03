@@ -19,10 +19,6 @@
 		"title": {
 			"type": "string",
 			"default": "Spoiler"
-		},
-		"content": {
-			"type": "string",
-			"default": ""
 		}
 	},
 	"textdomain": "inline-spoilers",
