@@ -3,9 +3,8 @@
  *
  * @see https://developer.wordpress.org/block-editor/reference-guides/block-api/block-registration/
  */
-import {registerBlockType} from '@wordpress/blocks';
-import {RichText,InnerBlocks} from '@wordpress/block-editor';
-
+import { registerBlockType } from '@wordpress/blocks';
+import { RichText, InnerBlocks } from '@wordpress/block-editor';
 
 /**
  * Lets webpack process CSS, SASS or SCSS files referenced in JavaScript files.
@@ -27,14 +26,14 @@ import metadata from './block.json';
  *
  * @see https://developer.wordpress.org/block-editor/reference-guides/block-api/block-registration/
  */
-registerBlockType(metadata.name, {
+registerBlockType( metadata.name, {
 	deprecated: [
 		{
 			attributes: {
 				title: {
 					type: 'string',
 					selector: '.spoiler-head',
-					source: 'text'
+					source: 'text',
 				},
 				content: {
 					type: 'string',
@@ -43,16 +42,19 @@ registerBlockType(metadata.name, {
 				},
 				initial_state: {
 					type: 'string',
-					default: 'collapsed'
-				}
+					default: 'collapsed',
+				},
 			},
-			save: function (props) {
-				const { title, content } = props.attributes;
+			save( { attributes } ) {
+				const { title, content } = attributes;
 
 				return (
 					<div className="wp-block-inline-spoilers-block">
 						<div className="spoiler-wrap">
-							<div className="spoiler-head collapsed" title="Expand">
+							<div
+								className="spoiler-head collapsed"
+								title="Expand"
+							>
 								{ title.length ? title : '\u00A0' }
 							</div>
 							<RichText.Content
@@ -82,34 +84,4 @@ registerBlockType(metadata.name, {
 	save: () => {
 		return <InnerBlocks.Content />;
 	},
-});
-
-
-function renderContentArray( contentArray ) {
-	return contentArray.map( item => {
-		if ( typeof item === 'string' ) {
-			return item;
-		} else if ( typeof item === 'object' && item.type ) {
-			const type = item.type;
-			const props = item.props || {};
-			const children = renderContentArray( props.children || [] );
-
-			const attributes = Object.keys( props )
-				.filter( key => key !== 'children' )
-				.map( key => {
-					const value = props[ key ];
-					return `${ key }="${ value }"`;
-				} )
-				.join( ' ' );
-
-			// Self-closing tags
-			const selfClosingTags = [ 'img', 'br', 'hr', 'input', 'meta', 'link' ];
-			if ( selfClosingTags.includes( type ) ) {
-				return `<${ type } ${ attributes } />`;
-			} else {
-				return `<${ type } ${ attributes }>${ children }</${ type }>`;
-			}
-		}
-		return '';
-	} ).join( '' );
-}
+} );

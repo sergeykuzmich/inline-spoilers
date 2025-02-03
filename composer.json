@@ -15,8 +15,8 @@
 		}
 	},
 	"scripts": {
-		"lint": "phpcs --standard=WordPress --extensions=php",
-		"format": "phpcbf --standard=WordPress --extensions=php"
+		"lint": "phpcs --standard=WordPress --extensions=php --ignore=vendor,node_modules,build plugin/",
+		"format": "phpcbf --standard=WordPress --extensions=php --ignore=vendor,node_modules,build plugin/"
 	},
 	"require-dev": {
 		"wp-coding-standards/wpcs": "^3.1",
