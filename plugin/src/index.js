@@ -3,7 +3,7 @@
  *
  * @see https://developer.wordpress.org/block-editor/reference-guides/block-api/block-registration/
  */
-import { registerBlockType } from '@wordpress/blocks';
+import { rawHandler, registerBlockType } from '@wordpress/blocks';
 import { RichText, InnerBlocks } from '@wordpress/block-editor';
 
 /**
@@ -44,6 +44,11 @@ registerBlockType( metadata.name, {
 					type: 'string',
 					default: 'collapsed',
 				},
+			},
+			migrate( attributes ) {
+				const { content } = attributes;
+
+				return [ { ...attributes }, rawHandler( { HTML: content } ) ];
 			},
 			save( { attributes } ) {
 				const { title, content } = attributes;
