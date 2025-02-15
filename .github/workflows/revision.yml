@@ -10,6 +10,10 @@ jobs:
     name: Renew Metadata
     runs-on: ubuntu-latest
     steps:
+      - name: Update package lists
+        run: sudo apt update
+      - name: Install SVN
+        run: sudo apt install -y subversion
       - uses: actions/checkout@v4
         with:
           fetch-depth: 0
