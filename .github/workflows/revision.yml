@@ -32,7 +32,7 @@ jobs:
           cp -R ./plugin/* ${{ runner.temp }}/svn/trunk/
           cp -R ./assets/* ${{ runner.temp }}/svn/assets/        
       - name: Stage Changes
-        working-directory: ${{ runner.temp }}/svn/trunk/
+        working-directory: ${{ runner.temp }}/svn/trunk
         run: |
           svn add --force .
       - name: Publish Changes
