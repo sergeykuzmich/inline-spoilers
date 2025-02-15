@@ -13,6 +13,15 @@ jobs:
       - uses: actions/checkout@v4
         with:
           fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with:
+            node-version: '20.18.0'
+            cache: 'npm'
+            cache-dependency-path: 'package-lock.json'
+      - name: Install Dependencies
+        run: npm ci
+      - name: Build Guttnberg block
+        run: npm run build && rm -rf node_modules
       - name: Get WordPress Repository
         env:
           SVN_REPOSITORY: ${{ vars.SVN_REPOSITORY }}
@@ -20,9 +29,9 @@ jobs:
           svn co $SVN_REPOSITORY ${{ runner.temp }}/svn
       - name: Prepare Release
         run: |
-          cp -R ./* ${{ runner.temp }}/svn/trunk/ && cd ${{ runner.temp }}/svn/trunk/
-          mv ./assets/ ../assets/
-          rm -rf ./.git/ ./.github/ ./README.md
+          cp -R ./plugin/* ${{ runner.temp }}/svn/trunk/
+          cp -R ./assets/* ${{ runner.temp }}/svn/assets/
+          cd ${{ runner.temp }}/svn/trunk/
           svn add --force .
       - name: Publish Version
         env:
@@ -30,7 +39,12 @@ jobs:
           SVN_PASSWORD: ${{ secrets.SVN_PASSWORD }}
         run: |
           cd ${{ runner.temp }}/svn
-          svn cp trunk tags/${GITHUB_REF#refs/*/}
+          
+          svn cp trunk/build tags/${GITHUB_REF#refs/*/}/build
+          svn cp trunk/block_155 tags/${GITHUB_REF#refs/*/}/block_155
+          svn cp trunk/inline-spoilers.php tags/${GITHUB_REF#refs/*/}/inline-spoilers.php
+          svn cp trunk/readme.txt tags/${GITHUB_REF#refs/*/}/readme.txt
+          
           export SVN_COMMIT_MESSAGE="Version ${GITHUB_REF#refs/*/}"
           svn ci  --message "$SVN_COMMIT_MESSAGE" \
                   --username $SVN_USERNAME \
