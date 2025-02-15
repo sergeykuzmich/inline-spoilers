@@ -19,8 +19,10 @@ jobs:
             cache: 'npm'
             cache-dependency-path: 'plugin/package-lock.json'
       - name: Install Dependencies
+        working-directory: ./plugin
         run: npm ci
       - name: Build Guttnberg block
+        working-directory: ./plugin
         run: npm run build && rm -rf node_modules
       - name: Get WordPress Repository
         env:
