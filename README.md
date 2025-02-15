@@ -8,7 +8,7 @@
 [![Wordpress Tested Version](https://img.shields.io/wordpress/plugin/tested/inline-spoilers.svg)](https://wordpress.org/plugins/inline-spoilers/)
 
 **Contributors:** sergeykuzmich, gadswan
-**Tags:** shortcode, spoiler, bbcode, toggle, guttenberg, block
+**Tags:** shortcode, spoiler, bbcode, guttenberg, block
 **Stable tag:** 2.0.0
 **Tested up to:** 6.7.1
 **Requires at least:** 6.6
