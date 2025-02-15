@@ -20,20 +20,20 @@ jobs:
           svn co $SVN_REPOSITORY ${{ runner.temp }}/svn
       - name: Prepare Repository
         run: |
-          cp -R ./* ${{ runner.temp }}/svn/trunk/ && cd ${{ runner.temp }}/svn/trunk/
-          mv ./assets/ ../assets/
-          rm -rf ./.git/ ./.github/ ./README.md
+          cp -R ./plugin/* ${{ runner.temp }}/svn/trunk/
+          cp -R ./assets/* ${{ runner.temp }}/svn/assets/
+          cd ${{ runner.temp }}/svn/trunk/
           svn add --force .
       - name: Publish Changes
         env:
           SVN_USERNAME: ${{ secrets.SVN_USERNAME }}
           SVN_PASSWORD: ${{ secrets.SVN_PASSWORD }}
+          SVN_COMMIT_MESSAGE: "Metadata Sync"
         run: |
           cd ${{ runner.temp }}/svn
-          export SVN_COMMIT_MESSAGE="Metadata Sync"
           svn ci  --message "$SVN_COMMIT_MESSAGE" \
                   --username $SVN_USERNAME \
                   --password $SVN_PASSWORD \
                   --non-interactive \
                   --trust-server-cert
-  
+                  
