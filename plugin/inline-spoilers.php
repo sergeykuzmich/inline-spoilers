@@ -9,17 +9,16 @@
  * @wordpress-plugin
  * Plugin Name:             Inline Spoilers
  * Plugin URI:              https://github.com/sergeykuzmich/inline-spoilers
- * Description:             The plugin allows to create content plugin with simple shortcode or guttenberg block.
+ * Description:             The plugin allows to create content spoilers with Guttenberg block or simple shortcode.
  * Version:                 2.0.0
- * Requires at least:       5.2
+ * Requires at least:       6.6
  * Tested up to:            6.7.1
- * Requires PHP:            7.1
+ * Requires PHP:            7.2
  * Author:                  Sergey Kuzmich
  * Author URI:              https://kuzmi.ch
  * License:                 GPLv3 or later
  * License URI:             https://www.gnu.org/licenses/gpl-3.0.html
  * Text Domain:             inline-plugin
- * Domain Path:             /languages/
  */
 
 if ( ! defined( 'ABSPATH' ) ) {
@@ -59,7 +58,7 @@ function inline_spoilers_spoiler_shortcode( array $atts, string $content ): stri
 		'spoiler'
 	);
 
-	$start = '<details class="wp-shortcode-inline-spoilers-shortcode"' . ( $attributes['open'] ? ' open' : '' ) . '>';
+	$start = '<details class="wp-block-inline-spoilers-block"' . ( $attributes['open'] ? ' open' : '' ) . '>';
 	$title = '<summary>' . esc_attr( $attributes['title'] ) . '</summary>';
 	$body  = balanceTags( do_shortcode( $content ), true );
 	$end   = '</details>';
@@ -70,38 +69,22 @@ function inline_spoilers_spoiler_shortcode( array $atts, string $content ): stri
 add_shortcode( 'spoiler', 'inline_spoilers_spoiler_shortcode' );
 
 /**
- * Register shortcode styles and scripts.
+ * Register styles and scripts of block version 1.5.5.
  *
  * @return void
  */
-function inline_spoilers_register_shortcode_css_js(): void {
-	wp_register_style(
-		'inline-spoilers-shortcode_css',
-		plugins_url( 'shortcode/css/style.css', __FILE__ ),
-		array(),
-		'2.0.0'
-	);
-	wp_enqueue_style( 'inline-spoilers-shortcode_css' );
-
-	wp_register_script(
-		'inline-spoilers-shortcode_js',
-		plugins_url( 'shortcode/js/index.js', __FILE__ ),
-		array(),
-		'2.0.0',
-		array( 'in_footer' => true )
-	);
-	wp_enqueue_script( 'inline-spoilers-shortcode_js' );
-
+function inline_spoilers_block_155_css_js(): void {
 	wp_register_style(
 		'inline-spoilers-compatibility_css',
-		plugins_url( 'shortcode/css/compatibility.css', __FILE__ ),
+		plugins_url( 'block_155/css/compatibility.css', __FILE__ ),
 		array(),
 		'1.5.5'
 	);
 	wp_enqueue_style( 'inline-spoilers-compatibility_css' );
+
 	wp_register_script(
 		'inline-spoilers-compatibility_js',
-		plugins_url( 'shortcode/js/compatibility.js', __FILE__ ),
+		plugins_url( 'block_155/js/compatibility.js', __FILE__ ),
 		array( 'jquery' ),
 		'1.5.5',
 		array( 'in_footer' => true )
@@ -109,4 +92,4 @@ function inline_spoilers_register_shortcode_css_js(): void {
 	wp_enqueue_script( 'inline-spoilers-compatibility_js' );
 }
 
-add_action( 'wp_enqueue_scripts', 'inline_spoilers_register_shortcode_css_js' );
+add_action( 'wp_enqueue_scripts', 'inline_spoilers_block_155_css_js' );

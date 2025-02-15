@@ -16,11 +16,9 @@
 **License:** GPLv3 or later
 **License URI:** https://www.gnu.org/licenses/gpl-3.0.html
 
-The plugin allows to create content spoilers with simple shortcode & guttenberg block.
-
 ## Description ##
 
-The plugin allows to create content spoilers with simple shortcode & guttenberg block.
+The plugin allows to create content spoilers with Guttenberg block or simple shortcode.
 
 `
 [spoiler title="Expand Me"]Spoiler content[/spoiler]
@@ -30,7 +28,7 @@ The plugin allows to create content spoilers with simple shortcode & guttenberg 
 
 1. Install via WordPress Dashboard or upload `inline-spoiler.zip`;
 2. Activate the plugin through the 'Plugins' menu in WordPress;
-3. Use shortcode & block in your content;
+3. Use Guttenberg block or shortcode in your content;
 
 ## Frequently Asked Questions ##
 
@@ -61,8 +59,8 @@ Just override classes defined in `public/css/inline-spoilers-default.css` with y
 ### 2.0.0 ###
 
 * Change spoiler HTML semantic (from `div` to `details` & `summary`)
-  * All blocks created with the previous version will be the same as before, until you edit them
-* Allow spoilers inside spoilers (as well as other Guttengerg blocks)
+	* All blocks created with the previous version of Guttenberg block will be the same as before, until you edit them
+* Allow spoilers inside spoilers (as well as any other Guttengerg blocks allowed in post)
 
 #### WARNING ####
 * Minimal required WordPress version is 6.6 (for JSX support, [JSX in WordPress 6.6](https://make.wordpress.org/core/2024/06/06/jsx-in-wordpress-6-6/))

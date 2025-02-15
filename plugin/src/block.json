@@ -18,7 +18,7 @@
 		},
 		"title": {
 			"type": "string",
-			"default": "Spoiler"
+			"default": "&nbsp;"
 		}
 	},
 	"textdomain": "inline-spoilers",
