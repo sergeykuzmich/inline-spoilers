@@ -10,9 +10,26 @@ jobs:
     name: Release New Version
     runs-on: ubuntu-latest
     steps:
+      - name: Update package lists
+        run: sudo apt update
+      - name: Install SVN
+        run: sudo apt install -y subversion
       - uses: actions/checkout@v4
         with:
           fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with:
+            node-version: '22.14.0'
+            cache: 'npm'
+            cache-dependency-path: 'plugin/package-lock.json'
+      - name: Install Dependencies
+        working-directory: ./plugin
+        run: |
+          npm ci
+      - name: Build Guttnberg block
+        working-directory: ./plugin
+        run: |
+          npm run build && rm -rf node_modules
       - name: Get WordPress Repository
         env:
           SVN_REPOSITORY: ${{ vars.SVN_REPOSITORY }}
@@ -20,19 +37,29 @@ jobs:
           svn co $SVN_REPOSITORY ${{ runner.temp }}/svn
       - name: Prepare Release
         run: |
-          cp -R ./src/* ${{ runner.temp }}/svn/trunk/
+          cp -R ./plugin/* ${{ runner.temp }}/svn/trunk/
           cp -R ./assets/* ${{ runner.temp }}/svn/assets/
-          svn add --force ${{ runner.temp }}/svn/
+      - name: Stage Changes
+        working-directory: ${{ runner.temp }}/svn/trunk
+        run: |
+          svn add --force .
       - name: Publish Version
         env:
           SVN_USERNAME: ${{ secrets.SVN_USERNAME }}
           SVN_PASSWORD: ${{ secrets.SVN_PASSWORD }}
+        working-directory: ${{ runner.temp }}/svn
         run: |
-          cd ${{ runner.temp }}/svn
-          svn cp trunk tags/${GITHUB_REF#refs/*/}
+          svn mkdir tags/${GITHUB_REF#refs/*/}
+          
+          svn cp trunk/build tags/${GITHUB_REF#refs/*/}/build
+          svn cp trunk/block_155 tags/${GITHUB_REF#refs/*/}/block_155
+          svn cp trunk/inline-spoilers.php tags/${GITHUB_REF#refs/*/}/inline-spoilers.php
+          svn cp trunk/readme.txt tags/${GITHUB_REF#refs/*/}/readme.txt
+          
           export SVN_COMMIT_MESSAGE="Version ${GITHUB_REF#refs/*/}"
           svn ci  --message "$SVN_COMMIT_MESSAGE" \
                   --username $SVN_USERNAME \
                   --password $SVN_PASSWORD \
                   --non-interactive \
                   --trust-server-cert
+  

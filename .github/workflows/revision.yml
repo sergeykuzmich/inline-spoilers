@@ -10,28 +10,47 @@ jobs:
     name: Renew Metadata
     runs-on: ubuntu-latest
     steps:
+      - name: Update package lists
+        run: sudo apt update
+      - name: Install SVN
+        run: sudo apt install -y subversion
       - uses: actions/checkout@v4
         with:
           fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with:
+            node-version: '22.14.0'
+            cache: 'npm'
+            cache-dependency-path: 'plugin/package-lock.json'
+      - name: Install Dependencies
+        working-directory: ./plugin
+        run: npm ci
+      - name: Build Guttnberg block
+        working-directory: ./plugin
+        run: npm run build && rm -rf node_modules
       - name: Get WordPress Repository
         env:
           SVN_REPOSITORY: ${{ vars.SVN_REPOSITORY }}
         run: |
           svn co $SVN_REPOSITORY ${{ runner.temp }}/svn
-      - name: Prepare Repository
+      - name: Prepare Repository   
         run: |
-          cp -R ./src/* ${{ runner.temp }}/svn/trunk/
-          cp -R ./assets/* ${{ runner.temp }}/svn/assets
-          svn add --force ${{ runner.temp }}/svn/
+          cp -R ./plugin/* ${{ runner.temp }}/svn/trunk/
+          cp -R ./assets/* ${{ runner.temp }}/svn/assets/        
+      - name: Stage Changes
+        working-directory: ${{ runner.temp }}/svn/trunk
+        run: |
+          svn add --force .
       - name: Publish Changes
         env:
           SVN_USERNAME: ${{ secrets.SVN_USERNAME }}
           SVN_PASSWORD: ${{ secrets.SVN_PASSWORD }}
+          SVN_COMMIT_MESSAGE: "Metadata Sync"
+        working-directory: ${{ runner.temp }}/svn
         run: |
-          cd ${{ runner.temp }}/svn
-          export SVN_COMMIT_MESSAGE="Metadata Sync"
           svn ci  --message "$SVN_COMMIT_MESSAGE" \
                   --username $SVN_USERNAME \
                   --password $SVN_PASSWORD \
                   --non-interactive \
                   --trust-server-cert
+                  

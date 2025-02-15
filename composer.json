@@ -1,20 +1,25 @@
 {
-    "name": "sergeykuzmich/inline-spoilers",
-    "description": "The WordPress plugin allows to create content spoilers with simple shortcode & guttenberg block.",
-    "type": "project",
-    "license": "GPLv3 or later",
-    "authors": [
-        {
-            "name": "Sergey Kuzmich",
-            "email": "accounts@kuzmi.ch"
-        }
-    ],
-    "require-dev": {
-        "wp-coding-standards/wpcs": "^3.0"
-    },
-    "config": {
-        "allow-plugins": {
-            "dealerdirect/phpcodesniffer-composer-installer": true
-        }
-    }
+	"name": "sergeykuzmich/inline-spoilers",
+	"description": "The WordPress plugin allows to create content spoilers with simple shortcode & guttenberg block.",
+	"type": "project",
+	"license": "GPLv3 or later",
+	"authors": [
+		{
+			"name": "Sergey Kuzmich",
+			"email": "accounts@kuzmi.ch"
+		}
+	],
+	"config": {
+		"allow-plugins": {
+			"dealerdirect/phpcodesniffer-composer-installer": true
+		}
+	},
+	"scripts": {
+		"lint": "phpcs --standard=WordPress --extensions=php --ignore=vendor,node_modules,build plugin/",
+		"format": "phpcbf --standard=WordPress --extensions=php --ignore=vendor,node_modules,build plugin/"
+	},
+	"require-dev": {
+		"wp-coding-standards/wpcs": "^3.1",
+		"squizlabs/php_codesniffer": "^3.11"
+	}
 }

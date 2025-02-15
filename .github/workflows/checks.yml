@@ -7,8 +7,8 @@ on:
     types: [opened, synchronize, reopened]
     branches: [master]
 jobs:
-  lint:
-    name: Code Lint
+  php-lint:
+    name: PHP Code Lint
     runs-on: ubuntu-latest
     strategy:
       matrix:
@@ -21,8 +21,27 @@ jobs:
         with:
           php-version: ${{ matrix.version }}
       - name: Run Linter
+        run: php -l plugin/inline-spoilers.php
+  js-css-lint:
+    name: JS & CSS Code Lint
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with:
+            node-version: '22.14.0'
+            cache: 'npm'
+            cache-dependency-path: 'plugin/package-lock.json'
+      - name: Install Dependencies
+        working-directory: ./plugin
+        run: npm ci
+      - name: Run Linter
+        working-directory: ./plugin
         run: |
-          php -l src/inline-spoilers.php
+          npm run lint:js
+          npm run lint:css
   codesniffer:
     name: Code Standards
     runs-on: ubuntu-latest
@@ -34,8 +53,6 @@ jobs:
         with:
           php-version: '8.3'
       - name: Setup CodeSniffer
-        run: |
-          composer install
+        run: composer install
       - name: Check WordPress Coding Standards
-        run: |
-          ./vendor/bin/phpcs --standard=WordPress --extensions=php ./src/
+        run: ./vendor/bin/phpcs --standard=WordPress --extensions=php ./plugin/

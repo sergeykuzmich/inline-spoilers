@@ -1,0 +1,15 @@
+@use "style";
+
+.wp-block-inline-spoilers-block .block-list-appender:last-child {
+	position: static;
+	margin-block-start: 0.5rem;
+	margin-block-end: 0.5rem;
+
+	.block-editor-default-block-appender {
+		text-align: center;
+	}
+
+	.block-editor-inserter {
+		right: calc(50% - 12px);
+	}
+}
