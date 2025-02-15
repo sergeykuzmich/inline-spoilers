@@ -49,9 +49,9 @@ jobs:
           SVN_PASSWORD: ${{ secrets.SVN_PASSWORD }}
         working-directory: ${{ runner.temp }}/svn
         run: |
-          mkdir tags/${GITHUB_REF#refs/*/}
+          svn mkdir tags/${GITHUB_REF#refs/*/}
           
-          svn cp trunk/build tags/${GITHUB_REF#refs/*/}/build
+          svn cp trunk tags/${GITHUB_REF#refs/*/}
           svn cp trunk/block_155 tags/${GITHUB_REF#refs/*/}/block_155
           svn cp trunk/inline-spoilers.php tags/${GITHUB_REF#refs/*/}/inline-spoilers.php
           svn cp trunk/readme.txt tags/${GITHUB_REF#refs/*/}/readme.txt
