@@ -56,6 +56,27 @@ Just override classes defined in `public/css/inline-spoilers-default.css` with y
 
 ## Changelog ##
 
+### 2.1.0 ###
+
+* Fixed styling for the spoiler made with the shortcode, when there is no spoiler block
+* BETA: Enable support for dynamic shortcodes `[shortcode-{variable}]` (experimental)
+	* Set `IS_DYNAMIC_SHORTCODE` to `true` in `wp-config.php` to enable the feature
+
+Usage example:
+```
+[shortcode-alpha title="Parent"]
+	[shortcode-beta title="The First Child"]
+		Hello World!
+		[shortcode-gamma title="Grand Child"]
+			I was born!
+		[/shortcode-gamma]
+	[/shortcode-beta]
+	[shortcode-beta title="The Second Child"]
+		Goodbye World!
+	[/shortcode-beta]
+[/shortcode-alpha]
+```
+
 ### 2.0.0 ###
 
 * Change spoiler HTML semantic (from `div` to `details` & `summary`)
@@ -66,9 +87,11 @@ Just override classes defined in `public/css/inline-spoilers-default.css` with y
 * Minimal required WordPress version is 6.6 (for JSX support, [JSX in WordPress 6.6](https://make.wordpress.org/core/2024/06/06/jsx-in-wordpress-6-6/))
 * The plugin is not fully tested with PHP versions lower than 8.1 due to the lack of available [official docker images](https://hub.docker.com/_/wordpress/)
 
+### Older Versions ###
+
 <a name="older-versions"></a>
 <details>
-<summary><strong>1.*.* VERSIONS</strong></summary>
+<summary>1.*.*</summary>
 
 ### 1.5.4 ###
 

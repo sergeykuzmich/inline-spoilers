@@ -10,7 +10,7 @@
  * Plugin Name:             Inline Spoilers
  * Plugin URI:              https://github.com/sergeykuzmich/inline-spoilers
  * Description:             The plugin allows to create content spoilers with Guttenberg block or simple shortcode.
- * Version:                 2.0.0
+ * Version:                 2.1.0
  * Requires at least:       6.6
  * Tested up to:            6.7.1
  * Requires PHP:            7.2
@@ -73,23 +73,23 @@ add_shortcode( 'spoiler', 'inline_spoilers_spoiler_shortcode' );
  *
  * @return void
  */
-function inline_spoilers_block_155_css_js(): void {
+function inline_spoilers_shortcode_css_js(): void {
 	wp_register_style(
-		'inline-spoilers-compatibility_css',
-		plugins_url( 'block_155/css/compatibility.css', __FILE__ ),
+		'inline-spoilers-css',
+		plugins_url( 'build/style-index.css', __FILE__ ),
 		array(),
-		'1.5.5'
+		'2.1.0'
 	);
-	wp_enqueue_style( 'inline-spoilers-compatibility_css' );
+	wp_enqueue_style( 'inline-spoilers-css' );
 
 	wp_register_script(
-		'inline-spoilers-compatibility_js',
-		plugins_url( 'block_155/js/compatibility.js', __FILE__ ),
+		'inline-spoilers-js',
+		plugins_url( 'build/view.js', __FILE__ ),
 		array( 'jquery' ),
-		'1.5.5',
+		'2.1.0',
 		array( 'in_footer' => true )
 	);
-	wp_enqueue_script( 'inline-spoilers-compatibility_js' );
+	wp_enqueue_script( 'inline-spoilers-js' );
 }
 
-add_action( 'wp_enqueue_scripts', 'inline_spoilers_block_155_css_js' );
+add_action( 'wp_enqueue_scripts', 'inline_spoilers_shortcode_css_js' );

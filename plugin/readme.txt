@@ -1,7 +1,7 @@
 === Inline Spoilers ===
 Contributors: sergeykuzmich, gadswan
 Tags: shortcode, spoiler, bbcode, guttenberg, block
-Stable tag: 2.0.0
+Stable tag: 2.1.0
 Tested up to: 6.7.1
 Requires at least: 6.6
 Requires PHP: 7.2
@@ -37,6 +37,27 @@ Just override classes defined in `build/style-index.css` with your theme styles.
 4. Expanded spoiler
 
 == Changelog ==
+
+= 2.1.0 =
+
+* Fixed styling for the spoiler made with the shortcode, when there is no spoiler block
+* BETA: Enable support for dynamic shortcodes `[shortcode-{variable}]` (experimental)
+	* Set `IS_DYNAMIC_SHORTCODE` to `true` in `wp-config.php` to enable the feature
+
+Usage example:
+```
+[shortcode-alpha title="Parent"]
+	[shortcode-beta title="The First Child"]
+		Hello World!
+		[shortcode-gamma title="Grand Child"]
+			I was born!
+		[/shortcode-gamma]
+	[/shortcode-beta]
+	[shortcode-beta title="The Second Child"]
+		Goodbye World!
+	[/shortcode-beta]
+[/shortcode-alpha]
+```
 
 = 2.0.0 =
 

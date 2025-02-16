@@ -31,7 +31,7 @@ if ( ! str_contains( $content, 'spoiler-wrap' ) ) :
 	?>
 	<?php echo wp_kses_data( get_block_wrapper_attributes() ); ?>>
 	<summary>
-		<?php echo wp_kses( $attributes['title'], array() ); ?>
+		<?php echo wp_kses( ! empty( $attributes['title'] ) ? $attributes['title'] : '&nbsp;', array() ); ?>
 	</summary>
 	<?php echo wp_kses( $content, 'post' ); ?>
 </details>
