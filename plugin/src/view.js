@@ -70,14 +70,18 @@ window.inlineSpoilersAnimation = () => {
 
 // Inline Spoilers 1.5.5 block compatibility
 window.inlineSpoilersBlockAnimationCompatibility = () => {
+	const jQuery = window.jQuery;
+
 	jQuery( function () {
-		jQuery( '.spoiler-head' ).on( 'click', function ( e ) {
+		jQuery( '.spoiler-head' ).on( 'click', function () {
 			const $this = jQuery( this );
-			let $isExpanded = $this.hasClass( 'expanded' );
+			const $isExpanded = $this.hasClass( 'expanded' );
 			$this.toggleClass( 'expanded' ).toggleClass( 'collapsed' );
-			$isExpanded
-				? $this.next().slideUp( 'fast' )
-				: $this.next().slideDown( 'fast' );
+			if ( $isExpanded ) {
+				$this.next().slideUp( 'fast' );
+			} else {
+				$this.next().slideDown( 'fast' );
+			}
 		} );
 	} );
 };
