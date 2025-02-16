@@ -93,3 +93,34 @@ function inline_spoilers_shortcode_css_js(): void {
 }
 
 add_action( 'wp_enqueue_scripts', 'inline_spoilers_shortcode_css_js' );
+
+/**
+ * Experimental feature to detect and register dynamic shortcodes.
+ */
+if ( defined( 'IS_DYNAMIC_SHORTCODE' ) && constant( 'IS_DYNAMIC_SHORTCODE' ) === true ) {
+	/**
+	 * Detect and register all shortcodes with prefix "spoiler-".
+	 *
+	 * @param  string $content The content of the current post or block.
+	 *
+	 * @return string
+	 */
+	function inline_spoilers_detect_and_register_dynamic_shortcodes( string $content ): string {
+		preg_match_all( '/\[spoiler-([a-zA-Z0-9_-]+)([^\]]*)\]/', $content, $matches );
+
+		if ( ! empty( $matches[1] ) ) {
+			foreach ( $matches[1] as $key ) {
+				$shortcode_name = "spoiler-{$key}";
+
+				if ( ! shortcode_exists( $shortcode_name ) ) {
+					add_shortcode( $shortcode_name, 'inline_spoilers_spoiler_shortcode' );
+				}
+			}
+		}
+
+		return $content;
+	}
+
+	add_filter( 'the_content', 'inline_spoilers_detect_and_register_dynamic_shortcodes', 1 );
+	add_filter( 'widget_text', 'inline_spoilers_detect_and_register_dynamic_shortcodes', 1 );
+}

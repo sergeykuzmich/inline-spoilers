@@ -64,17 +64,17 @@ Just override classes defined in `public/css/inline-spoilers-default.css` with y
 
 Usage example:
 ```
-[shortcode-alpha title="Parent"]
-	[shortcode-beta title="The First Child"]
-		Hello World!
-		[shortcode-gamma title="Grand Child"]
-			I was born!
-		[/shortcode-gamma]
-	[/shortcode-beta]
-	[shortcode-beta title="The Second Child"]
-		Goodbye World!
-	[/shortcode-beta]
-[/shortcode-alpha]
+[spoiler-alpha title="Parent"]
+    [spoiler-beta title="The First Child"]
+        Hello World!
+        [spoiler-gamma title="Grand Child"]
+            I was born!
+        [/spoiler-gamma]
+    [/spoiler-beta]
+    [spoiler-beta title="The Second Child"]
+        Goodbye World!
+    [/spoiler-beta]
+[/spoiler-alpha]
 ```
 
 ### 2.0.0 ###

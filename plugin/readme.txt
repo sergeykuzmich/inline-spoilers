@@ -41,22 +41,22 @@ Just override classes defined in `build/style-index.css` with your theme styles.
 = 2.1.0 =
 
 * Fixed styling for the spoiler made with the shortcode, when there is no spoiler block
-* BETA: Enable support for dynamic shortcodes `[shortcode-{variable}]` (experimental)
+* BETA: Enable support for dynamic shortcodes `[spoiler-{variable}]` (experimental)
 	* Set `IS_DYNAMIC_SHORTCODE` to `true` in `wp-config.php` to enable the feature
 
 Usage example:
 ```
-[shortcode-alpha title="Parent"]
-	[shortcode-beta title="The First Child"]
-		Hello World!
-		[shortcode-gamma title="Grand Child"]
-			I was born!
-		[/shortcode-gamma]
-	[/shortcode-beta]
-	[shortcode-beta title="The Second Child"]
-		Goodbye World!
-	[/shortcode-beta]
-[/shortcode-alpha]
+[spoiler-alpha title="Parent"]
+    [spoiler-beta title="The First Child"]
+        Hello World!
+        [spoiler-gamma title="Grand Child"]
+            I was born!
+        [/spoiler-gamma]
+    [/spoiler-beta]
+    [spoiler-beta title="The Second Child"]
+        Goodbye World!
+    [/spoiler-beta]
+[/spoiler-alpha]
 ```
 
 = 2.0.0 =
