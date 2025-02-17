@@ -40,6 +40,7 @@ Just override classes defined in `build/style-index.css` with your theme styles.
 
 = 2.1.0 =
 
+* Fixed interaction with links & other interactive elements inside the spoiler
 * Fixed styling for the spoiler made with the shortcode, when there is no spoiler block
 * BETA: Enable support for dynamic shortcodes `[spoiler-{variable}]` (experimental)
 	* Set `IS_DYNAMIC_SHORTCODE` to `true` in `wp-config.php` to enable the feature
