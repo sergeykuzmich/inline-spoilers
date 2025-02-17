@@ -42,11 +42,15 @@ Just override classes defined in `build/style-index.css` with your theme styles.
 
 * Fixed interaction with links & other interactive elements inside the spoiler
 * Fixed styling for the spoiler made with the shortcode, when there is no spoiler block
-* BETA: Enable support for dynamic shortcodes `[spoiler-{variable}]` (experimental)
-	* Set `IS_DYNAMIC_SHORTCODE` to `true` in `wp-config.php` to enable the feature
+
+***EXPERIMENTAL***
+
+* Provide support for dynamic shortcodes `[spoiler-{variable}]` (e.g. `[spoiler-alpha]`, `[spoiler-beta]`, etc.)
+
+> Set `IS_DYNAMIC_SHORTCODE` to `true` in `wp-config.php` to enable the feature: `define('IS_DYNAMIC_SHORTCODE', true);`
 
 Usage example:
-```
+`
 [spoiler-alpha title="Parent"]
     [spoiler-beta title="The First Child"]
         Hello World!
@@ -58,7 +62,7 @@ Usage example:
         Goodbye World!
     [/spoiler-beta]
 [/spoiler-alpha]
-```
+`
 
 = 2.0.0 =
 
