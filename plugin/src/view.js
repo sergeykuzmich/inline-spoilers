@@ -2,17 +2,19 @@ window.inlineSpoilersAnimation = () => {
 	window.inlineSpoilersAnimationInitialized = true;
 
 	document.body.addEventListener( 'click', ( event ) => {
-		const spoiler = event.target.closest(
-			'details.wp-block-inline-spoilers-block'
+		const summary = event.target.closest(
+			'details.wp-block-inline-spoilers-block summary'
 		);
 
-		if ( ! spoiler ) {
+		if ( ! summary ) {
 			return;
 		}
 
-		event.preventDefault();
+		const spoiler = summary.closest(
+			'details.wp-block-inline-spoilers-block'
+		);
 
-		const summary = spoiler.querySelector( 'summary' );
+		event.preventDefault();
 		if ( spoiler.open ) {
 			const border = parseInt(
 				window
