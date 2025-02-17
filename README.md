@@ -7,13 +7,14 @@
 [![Wordpress Required Version](https://img.shields.io/wordpress/plugin/wp-version/inline-spoilers.svg?label=wordpress%20at%20least)](https://wordpress.org/plugins/inline-spoilers/)
 [![Wordpress Tested Version](https://img.shields.io/wordpress/plugin/tested/inline-spoilers.svg)](https://wordpress.org/plugins/inline-spoilers/)
 
-**Contributors:** sergeykuzmich, gadswan
-**Tags:** shortcode, spoiler, bbcode, guttenberg, block
-**Stable tag:** 2.0.0
-**Tested up to:** 6.7.1
-**Requires at least:** 6.6
-**Requires PHP:** 7.2
+**Contributors:** sergeykuzmich, gadswan  
+**Tags:** shortcode, spoiler, bbcode, guttenberg, block  
+**Stable tag:** 2.1.0  
+**Tested up to:** 6.7.1  
+**Requires at least:** 6.6  
+**Requires PHP:** 7.2  
 **License:** GPLv3 or later
+
 **License URI:** https://www.gnu.org/licenses/gpl-3.0.html
 
 ## Description ##
