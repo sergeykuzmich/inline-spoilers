@@ -1,7 +1,7 @@
 === Inline Spoilers ===
 Contributors: sergeykuzmich, gadswan
 Tags: shortcode, spoiler, bbcode, guttenberg, block
-Stable tag: 2.1.0
+Stable tag: 2.2.0
 Tested up to: 6.7.1
 Requires at least: 6.6
 Requires PHP: 7.2
@@ -15,7 +15,7 @@ The plugin allows to create content spoilers with Guttenberg block or simple sho
 The plugin allows to create content spoilers with Guttenberg block or simple shortcode.
 
 `
-[spoiler title="Expand Me"]Spoiler content[/spoiler]
+[spoiler title="Expand Me"]Hidden content[/spoiler]
 `
 
 == Installation ==
@@ -37,6 +37,12 @@ Just override classes defined in `build/style-index.css` with your theme styles.
 4. Expanded spoiler
 
 == Changelog ==
+
+= 2.2.0 =
+
+* Moved dynamic shortcodes feature from wp-config.php constant to WordPress settings page
+* Added settings page under WordPress Settings menu
+* Improved code organization and documentation
 
 = 2.1.0 =
 

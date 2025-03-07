@@ -10,7 +10,7 @@
  * Plugin Name:             Inline Spoilers
  * Plugin URI:              https://github.com/sergeykuzmich/inline-spoilers
  * Description:             The plugin allows to create content spoilers with Guttenberg block or simple shortcode.
- * Version:                 2.1.0
+ * Version:                 2.2.0
  * Requires at least:       6.6
  * Tested up to:            6.7.1
  * Requires PHP:            7.2
@@ -70,7 +70,7 @@ function inline_spoilers_register_settings(): void {
 
 	add_settings_section(
 		'inline_spoilers_main_section',
-		__('Main Settings', 'inline-spoilers'),
+		__('Experimental Features', 'inline-spoilers'),
 		null,
 		'inline-spoilers-settings'
 	);
@@ -92,7 +92,7 @@ function inline_spoilers_dynamic_shortcode_field(): void {
 	?>
 	<label>
 		<input type="checkbox" name="inline_spoilers_dynamic_shortcode" value="1" <?php checked(get_option('inline_spoilers_dynamic_shortcode')); ?>>
-		<?php esc_html_e('Enable dynamic shortcodes (experimental)', 'inline-spoilers'); ?>
+		<?php esc_html_e('Enabled', 'inline-spoilers'); ?>
 	</label>
 	<p class="description">
 		<?php esc_html_e('Allow using dynamic shortcodes like [spoiler-alpha], [spoiler-beta], etc.', 'inline-spoilers'); ?>
@@ -160,7 +160,7 @@ function inline_spoilers_shortcode_css_js(): void {
 		'inline-spoilers-css',
 		plugins_url( 'build/style-index.css', __FILE__ ),
 		array(),
-		'2.1.0'
+		'2.2.0'
 	);
 	wp_enqueue_style( 'inline-spoilers-css' );
 
@@ -168,7 +168,7 @@ function inline_spoilers_shortcode_css_js(): void {
 		'inline-spoilers-js',
 		plugins_url( 'build/view.js', __FILE__ ),
 		array( 'jquery' ),
-		'2.1.0',
+		'2.2.0',
 		array( 'in_footer' => true )
 	);
 	wp_enqueue_script( 'inline-spoilers-js' );
