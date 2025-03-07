@@ -185,7 +185,7 @@ add_action( 'wp_enqueue_scripts', 'inline_spoilers_shortcode_css_js' );
 /**
  * Experimental feature to detect and register dynamic shortcodes.
  */
-if ( get_option('inline_spoilers_dynamic_shortcode') ) {
+if ( get_option( 'inline_spoilers_dynamic_shortcode' ) ) {
 	/**
 	 * Detect and register all shortcodes with prefix "spoiler-".
 	 *
@@ -194,28 +194,28 @@ if ( get_option('inline_spoilers_dynamic_shortcode') ) {
 	 * @return string
 	 */
 	function inline_spoilers_detect_and_register_dynamic_shortcodes( string $content ): string {
-		// Get cached shortcodes
-		$registered_shortcodes = wp_cache_get('inline_spoilers_dynamic_shortcodes');
-		if (false === $registered_shortcodes) {
+		// Get cached shortcodes.
+		$registered_shortcodes = wp_cache_get( 'inline_spoilers_dynamic_shortcodes' );
+		if ( false === $registered_shortcodes ) {
 			$registered_shortcodes = array();
 		}
 
-		// Find all spoiler shortcodes in content
+		// Find all spoiler shortcodes in content.
 		preg_match_all( '/\[spoiler-([a-zA-Z0-9_-]+)([^\]]*)\]/', $content, $matches );
 
 		if ( ! empty( $matches[1] ) ) {
 			foreach ( $matches[1] as $key ) {
 				$shortcode_name = "spoiler-{$key}";
 
-				// Only register if not already registered
-				if ( ! isset($registered_shortcodes[$shortcode_name]) && ! shortcode_exists( $shortcode_name ) ) {
+				// Only register if not already registered.
+				if ( ! isset( $registered_shortcodes[ $shortcode_name ] ) && ! shortcode_exists( $shortcode_name ) ) {
 					add_shortcode( $shortcode_name, 'inline_spoilers_spoiler_shortcode' );
-					$registered_shortcodes[$shortcode_name] = true;
+					$registered_shortcodes[ $shortcode_name ] = true;
 				}
 			}
 
-			// Cache the updated list of registered shortcodes
-			wp_cache_set('inline_spoilers_dynamic_shortcodes', $registered_shortcodes, '', 3600);
+			// Cache the updated list of registered shortcodes.
+			wp_cache_set( 'inline_spoilers_dynamic_shortcodes', $registered_shortcodes, '', 3600 );
 		}
 
 		return $content;
@@ -228,8 +228,8 @@ if ( get_option('inline_spoilers_dynamic_shortcode') ) {
 	 * Clear shortcodes cache when saving posts.
 	 */
 	function inline_spoilers_clear_shortcodes_cache(): void {
-		wp_cache_delete(INLINE_SPOILERS_DYNAMIC_SHORTCODES_CACHE);
+		wp_cache_delete( INLINE_SPOILERS_DYNAMIC_SHORTCODES_CACHE );
 	}
-	add_action('save_post', 'inline_spoilers_clear_shortcodes_cache');
-	add_action('edit_post', 'inline_spoilers_clear_shortcodes_cache');
+	add_action( 'save_post', 'inline_spoilers_clear_shortcodes_cache' );
+	add_action( 'edit_post', 'inline_spoilers_clear_shortcodes_cache' );
 }
