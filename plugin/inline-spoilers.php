@@ -63,7 +63,7 @@ function inline_spoilers_register_settings(): void {
 		'inline_spoilers_dynamic_shortcode',
 		array(
 			'type' => 'boolean',
-			'default' => false,
+			'default' => defined('IS_DYNAMIC_SHORTCODE') && IS_DYNAMIC_SHORTCODE,
 			'sanitize_callback' => 'rest_sanitize_boolean'
 		)
 	);
