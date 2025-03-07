@@ -45,14 +45,14 @@ add_action( 'init', 'inline_spoilers_block_init' );
  */
 function inline_spoilers_add_settings_page(): void {
 	add_options_page(
-		__('Inline Spoilers Settings', 'inline-spoilers'),
-		__('Inline Spoilers', 'inline-spoilers'),
+		esc_html__( 'Inline Spoilers Settings', 'inline-plugin' ),
+		esc_html__( 'Inline Spoilers', 'inline-plugin' ),
 		'manage_options',
 		'inline-spoilers-settings',
 		'inline_spoilers_settings_page'
 	);
 }
-add_action('admin_menu', 'inline_spoilers_add_settings_page');
+add_action( 'admin_menu', 'inline_spoilers_add_settings_page' );
 
 /**
  * Register settings.
@@ -62,59 +62,65 @@ function inline_spoilers_register_settings(): void {
 		'inline_spoilers_options',
 		'inline_spoilers_dynamic_shortcode',
 		array(
-			'type' => 'boolean',
-			'default' => defined('IS_DYNAMIC_SHORTCODE') && IS_DYNAMIC_SHORTCODE,
-			'sanitize_callback' => 'rest_sanitize_boolean'
+			'type'              => 'boolean',
+			'default'           => defined( 'IS_DYNAMIC_SHORTCODE' ) && IS_DYNAMIC_SHORTCODE,
+			'sanitize_callback' => 'rest_sanitize_boolean',
 		)
 	);
 
 	add_settings_section(
 		'inline_spoilers_main_section',
-		__('Experimental Features', 'inline-spoilers'),
+		esc_html__( 'Experimental Features', 'inline-plugin' ),
 		null,
 		'inline-spoilers-settings'
 	);
 
 	add_settings_field(
 		'inline_spoilers_dynamic_shortcode',
-		__('Dynamic Shortcodes', 'inline-spoilers'),
+		esc_html__( 'Dynamic Shortcodes', 'inline-plugin' ),
 		'inline_spoilers_dynamic_shortcode_field',
 		'inline-spoilers-settings',
 		'inline_spoilers_main_section'
 	);
 }
-add_action('admin_init', 'inline_spoilers_register_settings');
+add_action( 'admin_init', 'inline_spoilers_register_settings' );
 
 /**
  * Render dynamic shortcodes field.
+ *
+ * @since 2.2.0
+ * @return void
  */
 function inline_spoilers_dynamic_shortcode_field(): void {
 	?>
 	<label>
-		<input type="checkbox" name="inline_spoilers_dynamic_shortcode" value="1" <?php checked(get_option('inline_spoilers_dynamic_shortcode')); ?>>
-		<?php esc_html_e('Enabled', 'inline-spoilers'); ?>
+		<input type="checkbox" name="inline_spoilers_dynamic_shortcode" value="1" <?php checked( get_option( 'inline_spoilers_dynamic_shortcode' ) ); ?>>
+		<?php esc_html_e( 'Enabled', 'inline-plugin' ); ?>
 	</label>
 	<p class="description">
-		<?php esc_html_e('Allow using dynamic shortcodes like [spoiler-alpha], [spoiler-beta], etc.', 'inline-spoilers'); ?>
+		<?php esc_html_e( 'Allow using dynamic shortcodes like [spoiler-alpha], [spoiler-beta], etc.', 'inline-plugin' ); ?>
 	</p>
 	<?php
 }
 
 /**
  * Render settings page.
+ *
+ * @since 2.2.0
+ * @return void
  */
 function inline_spoilers_settings_page(): void {
-	// Check user capabilities
-	if (!current_user_can('manage_options')) {
+	// Check user capabilities.
+	if ( ! current_user_can( 'manage_options' ) ) {
 		return;
 	}
 	?>
 	<div class="wrap">
-		<h1><?php echo esc_html(get_admin_page_title()); ?></h1>
+		<h1><?php echo esc_html( get_admin_page_title() ); ?></h1>
 		<form method="post" action="options.php">
 			<?php
-			settings_fields('inline_spoilers_options');
-			do_settings_sections('inline-spoilers-settings');
+			settings_fields( 'inline_spoilers_options' );
+			do_settings_sections( 'inline-spoilers-settings' );
 			submit_button();
 			?>
 		</form>
